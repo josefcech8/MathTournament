@@ -32,7 +32,7 @@ public class GraphicalUserInterface extends JFrame {
         screenSizeY = screenSize.height;
         setBounds(screenSizeX / 2 - frameSizeX / 2, screenSizeY / 2 - frameSizeY / 2, frameSizeX, frameSizeY);
 
-        /*
+/*
         initLoginPanel();
         initRulesPanel();
         initTestPanel();
@@ -207,13 +207,28 @@ public class GraphicalUserInterface extends JFrame {
     }
     //endregion
 
-    //region 5.1| task
-    boolean[] taskIndexes = {true, true, false, true, true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
+    //region 5| task
+    boolean[] taskIndexes = {true, true, true, true, true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
     int totalPoints, taskCoefficient, taskPoints;
-    String[] taskTitles = {"1. úloha: Meziprostorová", "2. úloha", "3. úloha", "4. úloha", "5. úloha", "6. úloha", "7. úloha"};
-    String[] tasks = {"<html>Paťo se náhodou dostal do paralelního vesmíru. Kolik sekund tam trvá jeden rok,<br>" +
-                      "pokud má 6 měsíců, měsíc má 8 týdnů, týden má 5 dnů, den má 30 hodin, hodina má 16 minut a minuta 45 sekund?</html>"};
-    JLabel labelTaskTitle, labelTaskContent, labelTaskCoefficient, labelTaskPoints, labelTotalPoints, labelTime;
+    String[] taskTitles = {"1. úloha: Meziprostorová",
+                           "2. úloha",
+                           "3. úloha", "4. úloha", "5. úloha", "6. úloha", "7. úloha"};
+    String[] tasks = {"<html><p align=\"justify\">Paťo se náhodou dostal do paralelního vesmíru. Kolik sekund tam trvá jeden rok, pokud má 6 měsíců, měsíc má 8 týdnů, týden má 5 dnů, den má 30 hodin, hodina má 16 minut a minuta 45 sekund?</p></html>",
+                      "<html><p align=\"justify\">Při zuřivém zápase jsme zničili pingpongový míček, a proto jsme šli koupit nový. V obchodě nám prodavačka řekla, že pálka je o 1000 korun dražší než míček, a navíc, že míček a pálka stojí celkem 1100 korun. Poněvadž chceme jen míček, kolik musíme zaplatit?</p></html>",
+                      "<html><p align=\"justify\">Mějme dvě čísla: A a B. Čislo A získáme tak, že seřadíme následující stavy vody o stejné hmotnosti podle objemu (za normálního tlaku) od největšího po nejmenší:<br>" +
+                              "1 . . . vodní pára,<br>" +
+                              "2 . . . voda při teplotě 80 °C,<br>" +
+                              "3 . . . led.<br>" +
+                              "Čislo B dostaneme seřazením těchto délkových jednotek od nejmenši po největší:<br>" +
+                              "4 . . . míle,<br>" +
+                              "5 . . . palec,<br>" +
+                              "6 . . . světelný rok.<br>" +
+                              "Určete největši společný dělitel čísel A a B.</p></html>",
+                      "<html><p align=\"justify\">Kuba s Honzou trénují na kolech na stejné trase. Kuba jezdí první kilometr, který je do kopce, obvykle rychlostí 10km/h, zatímco Honza ho zvládá rychlostí 12km/h. Druhý kilometr je už pro oba snazší, Kuba ho jezdí rychlostí 40km/h a Honza rychlostí 24km/h. Který z chlapců má vyšší průměrnou rychlost na celé trase?",
+
+    };
+    Font fontTitle, fontTotalPoints;
+    JLabel labelTaskTitle, labelTaskContent, labelTaskCoefficient, labelTaskPoints, labelTotalPoints, labelTime, labelTeamName;
     JTextField textResult, textUnits;
     JButton buttonTask, buttonRank, buttonRules, buttonSubmit;
     JScrollPane scrollPaneTasks;
@@ -264,6 +279,10 @@ public class GraphicalUserInterface extends JFrame {
         buttonRules.setBackground(Color.LIGHT_GRAY);
         panelTask.add(buttonRules);
 
+        labelTeamName = new JLabel("Tým: CMYK");
+        labelTeamName.setBounds(445, 20, 100, 20);
+        panelTask.add(labelTeamName);
+
         listTasks = new JList(taskTitles);
         listTasks.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         listTasks.setLayoutOrientation(JList.VERTICAL);
@@ -275,7 +294,7 @@ public class GraphicalUserInterface extends JFrame {
             public void valueChanged(ListSelectionEvent e) {
                 if(taskIndexes[listTasks.getSelectedIndex()]) {
                     labelTaskTitle.setText(taskTitles[listTasks.getSelectedIndex()]);
-                    labelTaskContent.setText(tasks[0]);
+                    labelTaskContent.setText(tasks[listTasks.getSelectedIndex()]);
                 } else {
                     labelTaskContent.setText("zámek");
                 }
@@ -287,21 +306,25 @@ public class GraphicalUserInterface extends JFrame {
         scrollPaneTasks.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         panelTask.add(scrollPaneTasks);
 
+        fontTitle = new Font("Serif", Font.BOLD, 20);
+
         labelTaskTitle = new JLabel(taskTitles[listTasks.getSelectedIndex()]);
-        labelTaskTitle.setBounds(445, 70, 220, 20);
+        labelTaskTitle.setBounds(300, 70, 350, 30);
+        labelTaskTitle.setFont(fontTitle);
         panelTask.add(labelTaskTitle);
 
-        labelTaskContent = new JLabel(tasks[0]);
-        labelTaskContent.setBounds(300, 200, 300, 150);
-        panelTask.add(labelTaskContent);
-
         labelTaskCoefficient = new JLabel("násobeno 5x");
-        labelTaskCoefficient.setBounds(300, 110, 80, 20);
+        labelTaskCoefficient.setBounds(200, 500, 80, 20);
         panelTask.add(labelTaskCoefficient);
 
         labelTaskPoints = new JLabel("3 body");
-        labelTaskPoints.setBounds(600, 110, 80, 20);
+        labelTaskPoints.setBounds(300, 500, 80, 20);
         panelTask.add(labelTaskPoints);
+
+        labelTaskContent = new JLabel(tasks[listTasks.getSelectedIndex()]);
+        labelTaskContent.setBounds(300, 120, 370, 220);
+        labelTaskContent.setVerticalAlignment(JLabel.TOP);
+        panelTask.add(labelTaskContent);
 
         textResult = new JTextField("Zadejte výsledek");
         textResult.setBounds(300, 400, 200, 20);
@@ -339,8 +362,11 @@ public class GraphicalUserInterface extends JFrame {
         });
         panelTask.add(buttonSubmit);
 
+        fontTotalPoints = new Font("Serif", Font.BOLD, 30);
+
         labelTotalPoints = new JLabel("0 bodů");
-        labelTotalPoints.setBounds(850, 20, 200, 20);
+        labelTotalPoints.setBounds(850, 20, 200, 30);
+        labelTotalPoints.setFont(fontTotalPoints);
         panelTask.add(labelTotalPoints);
 
         labelTime = new JLabel("2:40");
