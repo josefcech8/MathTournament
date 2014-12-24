@@ -23,13 +23,20 @@ public class GraphicalUserInterface extends JFrame {
         screenSizeY = screenSize.height;
         setBounds(screenSizeX / 2 - frameSizeX / 2, screenSizeY / 2 - frameSizeY / 2, frameSizeX, frameSizeY);
 
+        /*
         initLoginPanel();
+        initRulesPanel();
+        initTestPanel();*/
+        initStartCompetition();
 
         setVisible(true);
     }
 
-    //region login
+    //region 1| login
     JLabel labelTitle;
+    JTextField textUsername;
+    JPasswordField passwordPassword;
+    JButton buttonLogin;
     JPanel panelLogin;
 
     private void initLoginPanel() {
@@ -37,11 +44,169 @@ public class GraphicalUserInterface extends JFrame {
         getContentPane().add(panelLogin);
         panelLogin.setLayout(null);
 
-        labelTitle = new JLabel("Matematický turnaj");
-        labelTitle.setBounds(445, 20, 110, 20);
+        labelTitle = new JLabel("Matematický turnaj", SwingConstants.CENTER);
+        labelTitle.setBounds(0, 20, frameSizeX, 20);
         panelLogin.add(labelTitle);
+
+        textUsername = new JTextField("username");
+        textUsername.setHorizontalAlignment(JTextField.CENTER);
+        textUsername.setBounds(445, 300, 110, 20);
+        panelLogin.add(textUsername);
+
+        passwordPassword = new JPasswordField();
+        passwordPassword.setBounds(445, 340, 110, 20);
+        panelLogin.add(passwordPassword);
+
+        buttonLogin = new JButton("login");
+        buttonLogin.setBounds(445, 390, 110, 20);
+        buttonLogin.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panelLogin.setVisible(false);
+                panelRules.setVisible(true);
+            }
+        });
+        panelLogin.add(buttonLogin);
 
         add(panelLogin);
     }
+    //endregion
+
+    //region 2| rules
+    JLabel labelRulesTitle, labelRulesContent;
+    JScrollPane scrollPaneRulesContent;
+    JCheckBox checkBoxAgreement;
+    JButton buttonRulesProceed;
+    JPanel panelRules;
+
+    private void initRulesPanel() {
+        panelRules = new JPanel();
+        getContentPane().add(panelRules);
+        panelRules.setLayout(null);
+
+        labelRulesTitle = new JLabel("Pravidla");
+        labelRulesTitle.setBounds(445, 20, 50, 20);
+        panelRules.add(labelRulesTitle);
+
+        labelRulesContent = new JLabel("<html><h1>1. HRACÍ PLOCHA</h1>" +
+                "<h2>101  Rozměry hřiště</h2>" +
+                "1. Hřiště má rozměry 40 m x 20 m a je ohraničeno mantinely se zaoblenými rohy.<br>" +
+                "Mantinely musí být schváleny IFF a příslušně označeny.<br>" +
+                "Hřiště je obdélníkové, rozměry udávají délku x šířku.<br>" +
+                "Nejmenší povolené rozměry jsou 36 m x 18 m, největší pak 44 m x 22 m.<br>" +
+                "<h2>102  Značky na hřišti</h2>" +
+                "1. Veškeré označení je provedeno čarami, 4 – 5 cm širokými, jasně viditelnou barvou.<br>" +
+                "2. Středová čára a středový bod jsou vyznačeny.<br>" +
+                "Středová čára je rovnoběžná s kratšími stranami hřiště a rozděluje hřiště na dvě stejné poloviny.<br>" +
+                "3. Velké brankoviště s rozměry 4 m x 5 m je vyznačeno 2,85 m od kratší strany hřiště.<br>" +
+                "Velké brankoviště je obdélníkové, rozměry udávají délku x šířku včetně čar.<br>" +
+                "Velké brankoviště je umístěno centrálně vzhledem k dlouhým stranám hřiště.<br>" +
+                "4. Malé brankoviště s rozměry 1 m x 2,5 m je vyznačeno 0,65 m před zadní čarou velkého brankoviště.</html>");
+
+        scrollPaneRulesContent = new JScrollPane();
+        scrollPaneRulesContent.setViewportView(labelRulesContent);
+        scrollPaneRulesContent.setBounds(80, 100, 600, 200);
+        panelRules.add(scrollPaneRulesContent);
+
+        checkBoxAgreement = new JCheckBox("Souhlasím s pravidly soutěže");
+        checkBoxAgreement.setBounds(200, 400, 200, 20);
+        panelRules.add(checkBoxAgreement);
+
+        buttonRulesProceed = new JButton("Pokračovat");
+        buttonRulesProceed.setBounds(400, 400, 150, 20);
+        buttonRulesProceed.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (checkBoxAgreement.isSelected()) {
+                    panelRules.setVisible(false);
+                    panelTest.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Musíte souhlasit s pravidly soutěže", "Upozornění", JOptionPane.WARNING_MESSAGE);
+                }
+
+            }
+        });
+        panelRules.add(buttonRulesProceed);
+
+        add(panelRules);
+    }
+    //endregion
+
+    //region 3| test
+    JLabel labelTestTitle;
+    JButton buttonTestProceed;
+    JPanel panelTest;
+
+    private void initTestPanel() {
+        panelTest = new JPanel();
+        getContentPane().add(panelTest);
+        panelTest.setLayout(null);
+
+        labelTestTitle = new JLabel("Test");
+        labelTestTitle.setBounds(445, 20, 100, 20);
+        panelTest.add(labelTestTitle);
+
+        buttonTestProceed = new JButton("Pokračovat ...");
+        buttonTestProceed.setBounds(200, 200, 100, 20);
+        buttonTestProceed.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panelTest.setVisible(false);
+                panelStartCompetition.setVisible(true);
+            }
+        });
+        panelTest.add(buttonTestProceed);
+
+        add(panelTest);
+    }
+    //endregion
+
+    //region 4| startCompetition
+    JLabel labelStartTitle, labelStartInfo;
+    JButton buttonStartCompetition;
+    JPanel panelStartCompetition;
+
+    private void initStartCompetition() {
+        panelStartCompetition = new JPanel();
+        getContentPane().add(panelStartCompetition);
+        panelStartCompetition.setLayout(null);
+
+        labelStartTitle = new JLabel("Zahájení");
+        labelStartTitle.setBounds(445, 20, 100, 20);
+        panelStartCompetition.add(labelStartTitle);
+
+        labelStartInfo = new JLabel("<html>Po stisknutí tlačítka zahájíte<br>" +
+                                    "soutěž a spustíte časomíru</html>", SwingConstants.CENTER);
+        labelStartInfo.setVerticalAlignment(SwingConstants.TOP);
+        labelStartInfo.setBounds(100, 200, 200, 200);
+        panelStartCompetition.add(labelStartInfo);
+
+        buttonStartCompetition = new JButton("Zahájit soutěž");
+        buttonStartCompetition.setBounds(400, 200, 150, 20);
+        buttonStartCompetition.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        panelStartCompetition.add(buttonStartCompetition);
+
+        add(panelStartCompetition);
+    }
+    //endregion
+
+    //region 5| task
+    JPanel panelTask;
+
+    private void initTaskPanel() {
+        panelTask = new JPanel();
+        getContentPane().add(panelTask);
+        panelTask.setLayout(null);
+
+
+
+        add(panelTask);
+    }
+
     //endregion
 }
