@@ -207,7 +207,7 @@ public class GraphicalUserInterface extends JFrame {
     }
     //endregion
 
-    //region 5| task
+    //region 5.1| task
     boolean[] taskIndexes = {true, true, false, true, true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
     int totalPoints, taskCoefficient, taskPoints;
     String[] taskTitles = {"1. úloha: Meziprostorová", "2. úloha", "3. úloha", "4. úloha", "5. úloha", "6. úloha", "7. úloha"};
@@ -227,18 +227,41 @@ public class GraphicalUserInterface extends JFrame {
         panelTask.setBackground(Color.decode("#00A08A"));
 
         totalPoints = 0;
+        taskPoints = 3;
+        taskCoefficient = 5;
 
         buttonTask = new JButton("Úlohy");
         buttonTask.setBounds(20, 20, 100, 25);
-        //buttonTask.addActionListener();
+        buttonTask.setBackground(Color.CYAN);
+        buttonTask.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                buttonTask.setBackground(Color.CYAN);
+                buttonRank.setBackground(Color.LIGHT_GRAY);
+                buttonRules.setBackground(Color.LIGHT_GRAY);
+
+                setTaskVisibility(true);
+            }
+        });
         panelTask.add(buttonTask);
 
         buttonRank = new JButton("Pořadí");
         buttonRank.setBounds(120, 20, 100, 25);
+        buttonRank.setBackground(Color.LIGHT_GRAY);
+        buttonRank.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                buttonTask.setBackground(Color.LIGHT_GRAY);
+                buttonRank.setBackground(Color.CYAN);
+
+                setTaskVisibility(false);
+            }
+        });
         panelTask.add(buttonRank);
 
         buttonRules = new JButton("Pravidla");
         buttonRules.setBounds(220, 20, 100, 25);
+        buttonRules.setBackground(Color.LIGHT_GRAY);
         panelTask.add(buttonRules);
 
         listTasks = new JList(taskTitles);
@@ -301,13 +324,15 @@ public class GraphicalUserInterface extends JFrame {
         buttonSubmit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(Integer.parseInt(textResult.getText()) == 5184000) {
+                if(textResult.getText().equals("5184000")) {
                     totalPoints += taskCoefficient * taskPoints;
-
                     labelTotalPoints.setText(String.valueOf(totalPoints) + " bodů");
+                    textResult.setText("");
                 } else {
                     if(taskCoefficient != 0) {
                         taskCoefficient--;
+                        labelTaskCoefficient.setText("násobeno " + taskCoefficient + "x");
+                        textResult.setText("");
                     }
                 }
             }
@@ -331,6 +356,17 @@ public class GraphicalUserInterface extends JFrame {
         panelTask.add(labelBrezinky);
 
         add(panelTask);
+    }
+
+    private void setTaskVisibility(boolean visibility) {
+        scrollPaneTasks.setVisible(visibility);
+        labelTaskTitle.setVisible(visibility);
+        labelTaskCoefficient.setVisible(visibility);
+        labelTaskPoints.setVisible(visibility);
+        labelTaskContent.setVisible(visibility);
+        textResult.setVisible(visibility);
+        textUnits.setVisible(visibility);
+        buttonSubmit.setVisible(visibility);
     }
 
     public class SelectedListCellRenderer extends DefaultListCellRenderer {
