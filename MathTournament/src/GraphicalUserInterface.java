@@ -26,8 +26,9 @@ public class GraphicalUserInterface extends JFrame {
         /*
         initLoginPanel();
         initRulesPanel();
-        initTestPanel();*/
-        initStartCompetition();
+        initTestPanel();
+        initStartCompetition();*/
+        initTaskPanel();
 
         setVisible(true);
     }
@@ -43,6 +44,7 @@ public class GraphicalUserInterface extends JFrame {
         panelLogin = new JPanel();
         getContentPane().add(panelLogin);
         panelLogin.setLayout(null);
+        panelLogin.setBackground(Color.decode("#00A08A"));
 
         labelTitle = new JLabel("Matematický turnaj", SwingConstants.CENTER);
         labelTitle.setBounds(0, 20, frameSizeX, 20);
@@ -186,7 +188,8 @@ public class GraphicalUserInterface extends JFrame {
         buttonStartCompetition.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                panelStartCompetition.setVisible(false);
+                panelTask.setVisible(true);
             }
         });
         panelStartCompetition.add(buttonStartCompetition);
@@ -196,17 +199,45 @@ public class GraphicalUserInterface extends JFrame {
     //endregion
 
     //region 5| task
+    String[] tasks = {"1. úloha: Meziprostorová", "2. úloha", "3. úloha", "4. úloha", "5. úloha", "6. úloha", "7. úloha"};
+    JButton buttonTask, buttonRank, buttonRules;
+    JList listTasks;
     JPanel panelTask;
 
     private void initTaskPanel() {
         panelTask = new JPanel();
         getContentPane().add(panelTask);
         panelTask.setLayout(null);
+        panelTask.setBackground(Color.decode("#00A08A"));
 
+        buttonTask = new JButton("Úlohy");
+        buttonTask.setBounds(20, 20, 100, 25);
+        //buttonTask.addActionListener();
+        panelTask.add(buttonTask);
 
+        buttonRank = new JButton("Pořadí");
+        buttonRank.setBounds(120, 20, 100, 25);
+        panelTask.add(buttonRank);
+
+        buttonRules = new JButton("Pravidla");
+        buttonRules.setBounds(220, 20, 100, 25);
+        panelTask.add(buttonRules);
+
+        listTasks = new JList(tasks);
+        listTasks.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        listTasks.setLayoutOrientation(JList.VERTICAL);
+        listTasks.setVisibleRowCount(-1);
+        //listTasks.addListSelectionListener();
+
+        JScrollPane scrollPane = new JScrollPane(listTasks);
+        scrollPane.setBounds(20, 70, 220, 350);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        panelTask.add(scrollPane);
 
         add(panelTask);
     }
+
+
 
     //endregion
 }
