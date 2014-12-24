@@ -1,9 +1,18 @@
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class GraphicalUserInterface extends JFrame {
+
+    /*devTools*/
+    private JLabel labelMatfyz, labelBrezinky;
+    /*end*/
+
 
     private int screenSizeX, screenSizeY, frameSizeX, frameSizeY;
     private Dimension screenSize;
@@ -199,8 +208,13 @@ public class GraphicalUserInterface extends JFrame {
     //endregion
 
     //region 5| task
-    String[] tasks = {"1. úloha: Meziprostorová", "2. úloha", "3. úloha", "4. úloha", "5. úloha", "6. úloha", "7. úloha"};
-    JButton buttonTask, buttonRank, buttonRules;
+    String[] taskTitles = {"1. úloha: Meziprostorová", "2. úloha", "3. úloha", "4. úloha", "5. úloha", "6. úloha", "7. úloha"};
+    String[] tasks = {"<html>Paťo se náhodou dostal do paralelního vesmíru. Kolik sekund tam trvá jeden rok,<br>" +
+                      "pokud má 6 měsíců, měsíc má 8 týdnů, týden má 5 dnů, den má 30 hodin, hodina má 16 minut a minuta 45 sekund?</html>"};
+    JLabel labelTaskTitle, labelTaskContent, labelTaskCoefficient, labelTaskPoint, labelTotalPoints, labelTime;
+    JTextField textResult, textUnits;
+    JButton buttonTask, buttonRank, buttonRules, buttonSubmit;
+    JScrollPane scrollPaneTasks;
     JList listTasks;
     JPanel panelTask;
 
@@ -223,21 +237,85 @@ public class GraphicalUserInterface extends JFrame {
         buttonRules.setBounds(220, 20, 100, 25);
         panelTask.add(buttonRules);
 
-        listTasks = new JList(tasks);
+        listTasks = new JList(taskTitles);
         listTasks.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         listTasks.setLayoutOrientation(JList.VERTICAL);
         listTasks.setVisibleRowCount(-1);
-        //listTasks.addListSelectionListener();
+        listTasks.setSelectedIndex(0);
+        listTasks.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                labelTaskTitle.setText(taskTitles[listTasks.getSelectedIndex()]);
+                labelTaskContent.setText(tasks[listTasks.getSelectedIndex()]);
+            }
+        });
 
-        JScrollPane scrollPane = new JScrollPane(listTasks);
-        scrollPane.setBounds(20, 70, 220, 350);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        panelTask.add(scrollPane);
+        scrollPaneTasks = new JScrollPane(listTasks);
+        scrollPaneTasks.setBounds(20, 70, 220, 350);
+        scrollPaneTasks.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        panelTask.add(scrollPaneTasks);
+
+        labelTaskTitle = new JLabel(taskTitles[listTasks.getSelectedIndex()]);
+        labelTaskTitle.setBounds(445, 70, 220, 20);
+        panelTask.add(labelTaskTitle);
+
+        labelTaskContent = new JLabel(tasks[listTasks.getSelectedIndex()]);
+        labelTaskContent.setBounds(300, 200, 300, 150);
+        panelTask.add(labelTaskContent);
+
+        labelTaskCoefficient = new JLabel("násobeno 5x");
+        labelTaskCoefficient.setBounds(300, 110, 80, 20);
+        panelTask.add(labelTaskCoefficient);
+
+        labelTaskPoint = new JLabel("3 body");
+        labelTaskPoint.setBounds(600, 110, 80, 20);
+        panelTask.add(labelTaskPoint);
+
+        textResult = new JTextField("Zadejte výsledek");
+        textResult.setBounds(300, 400, 200, 20);
+        textResult.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                JOptionPane.showMessageDialog(null, "Vzorové zadání odpovědi");
+                textResult.setText("");
+            }
+        });
+        panelTask.add(textResult);
+
+        textUnits = new JTextField("km");
+        textUnits.setBounds(500, 400, 50, 20);
+        textUnits.setEditable(false);
+        panelTask.add(textUnits);
+
+        buttonSubmit = new JButton("Potvrdit");
+        buttonSubmit.setBounds(570, 400, 100, 20);
+        buttonSubmit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                /*
+                    Check result
+                 */
+            }
+        });
+        panelTask.add(buttonSubmit);
+
+        labelTotalPoints = new JLabel("36 bodů");
+        labelTotalPoints.setBounds(850, 20, 200, 20);
+        panelTask.add(labelTotalPoints);
+
+        labelTime = new JLabel("2:40");
+        labelTime.setBounds(850, 60, 200, 20);
+        panelTask.add(labelTime);
+
+        labelMatfyz = new JLabel("logo MFF UK");
+        labelMatfyz.setBounds(850, 150, 200, 20);
+        panelTask.add(labelMatfyz);
+
+        labelBrezinky = new JLabel("logo Brezinky");
+        labelBrezinky.setBounds(850, 300, 200, 20);
+        panelTask.add(labelBrezinky);
 
         add(panelTask);
     }
-
-
-
     //endregion
 }
