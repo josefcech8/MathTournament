@@ -208,10 +208,12 @@ public class GraphicalUserInterface extends JFrame {
     //endregion
 
     //region 5| task
+    boolean[] taskIndexes = {true, true, false, true, true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
+    int totalPoints, taskCoefficient, taskPoints;
     String[] taskTitles = {"1. úloha: Meziprostorová", "2. úloha", "3. úloha", "4. úloha", "5. úloha", "6. úloha", "7. úloha"};
     String[] tasks = {"<html>Paťo se náhodou dostal do paralelního vesmíru. Kolik sekund tam trvá jeden rok,<br>" +
                       "pokud má 6 měsíců, měsíc má 8 týdnů, týden má 5 dnů, den má 30 hodin, hodina má 16 minut a minuta 45 sekund?</html>"};
-    JLabel labelTaskTitle, labelTaskContent, labelTaskCoefficient, labelTaskPoint, labelTotalPoints, labelTime;
+    JLabel labelTaskTitle, labelTaskContent, labelTaskCoefficient, labelTaskPoints, labelTotalPoints, labelTime;
     JTextField textResult, textUnits;
     JButton buttonTask, buttonRank, buttonRules, buttonSubmit;
     JScrollPane scrollPaneTasks;
@@ -223,6 +225,8 @@ public class GraphicalUserInterface extends JFrame {
         getContentPane().add(panelTask);
         panelTask.setLayout(null);
         panelTask.setBackground(Color.decode("#00A08A"));
+
+        totalPoints = 0;
 
         buttonTask = new JButton("Úlohy");
         buttonTask.setBounds(20, 20, 100, 25);
@@ -242,11 +246,16 @@ public class GraphicalUserInterface extends JFrame {
         listTasks.setLayoutOrientation(JList.VERTICAL);
         listTasks.setVisibleRowCount(-1);
         listTasks.setSelectedIndex(0);
+        listTasks.setCellRenderer(new SelectedListCellRenderer());
         listTasks.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                labelTaskTitle.setText(taskTitles[listTasks.getSelectedIndex()]);
-                labelTaskContent.setText(tasks[listTasks.getSelectedIndex()]);
+                if(taskIndexes[listTasks.getSelectedIndex()]) {
+                    labelTaskTitle.setText(taskTitles[listTasks.getSelectedIndex()]);
+                    labelTaskContent.setText(tasks[0]);
+                } else {
+                    labelTaskContent.setText("zámek");
+                }
             }
         });
 
@@ -259,7 +268,7 @@ public class GraphicalUserInterface extends JFrame {
         labelTaskTitle.setBounds(445, 70, 220, 20);
         panelTask.add(labelTaskTitle);
 
-        labelTaskContent = new JLabel(tasks[listTasks.getSelectedIndex()]);
+        labelTaskContent = new JLabel(tasks[0]);
         labelTaskContent.setBounds(300, 200, 300, 150);
         panelTask.add(labelTaskContent);
 
@@ -267,9 +276,9 @@ public class GraphicalUserInterface extends JFrame {
         labelTaskCoefficient.setBounds(300, 110, 80, 20);
         panelTask.add(labelTaskCoefficient);
 
-        labelTaskPoint = new JLabel("3 body");
-        labelTaskPoint.setBounds(600, 110, 80, 20);
-        panelTask.add(labelTaskPoint);
+        labelTaskPoints = new JLabel("3 body");
+        labelTaskPoints.setBounds(600, 110, 80, 20);
+        panelTask.add(labelTaskPoints);
 
         textResult = new JTextField("Zadejte výsledek");
         textResult.setBounds(300, 400, 200, 20);
@@ -292,14 +301,20 @@ public class GraphicalUserInterface extends JFrame {
         buttonSubmit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                /*
-                    Check result
-                 */
+                if(Integer.parseInt(textResult.getText()) == 5184000) {
+                    totalPoints += taskCoefficient * taskPoints;
+
+                    labelTotalPoints.setText(String.valueOf(totalPoints) + " bodů");
+                } else {
+                    if(taskCoefficient != 0) {
+                        taskCoefficient--;
+                    }
+                }
             }
         });
         panelTask.add(buttonSubmit);
 
-        labelTotalPoints = new JLabel("36 bodů");
+        labelTotalPoints = new JLabel("0 bodů");
         labelTotalPoints.setBounds(850, 20, 200, 20);
         panelTask.add(labelTotalPoints);
 
@@ -316,6 +331,17 @@ public class GraphicalUserInterface extends JFrame {
         panelTask.add(labelBrezinky);
 
         add(panelTask);
+    }
+
+    public class SelectedListCellRenderer extends DefaultListCellRenderer {
+        @Override
+        public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+            Component c = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+            if(!taskIndexes[index]) {
+                c.setEnabled(false);
+            }
+            return c;
+        }
     }
     //endregion
 }
