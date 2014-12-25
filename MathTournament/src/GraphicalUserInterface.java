@@ -185,7 +185,7 @@ public class GraphicalUserInterface extends JFrame {
 
     //region 5| task
     boolean pointArraysEqual;
-    boolean[] taskIndexes = {true, true, true, true, true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
+    boolean[] taskIndexes = {true, true, true, true, true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
     int totalPoints, taskCoefficient, taskPoints, i, pointsHolder = 0;
     int[] points = {13, 5, 30}, pointsClone;
     String teamNamesHolder;
@@ -232,9 +232,9 @@ public class GraphicalUserInterface extends JFrame {
                            "38. úloha: Stěhování",
                            "39. úloha: Mocninná",
                            "40. úloha: Horská dráha",
-                           "41. úloha: Obraz",};
-                           /*"42. úloha: Kámen"
-    };*/
+                           "41. úloha: Obraz",
+                           "42. úloha: Kámen"
+    };
     String[] tasks = {"<html><p align=\"justify\">Paťo se náhodou dostal do paralelního vesmíru. Kolik sekund tam trvá jeden rok, pokud má 6 měsíců, měsíc má 8 týdnů, týden má 5 dnů, den má 30 hodin, hodina má 16 minut a minuta 45 sekund?</p></html>",
                       "<html><p align=\"justify\">Při zuřivém zápase jsme zničili pingpongový míček, a proto jsme šli koupit nový. V obchodě nám prodavačka řekla, že pálka je o 1000 korun dražší než míček, a navíc, že míček a pálka stojí celkem 1100 korun. Poněvadž chceme jen míček, kolik musíme zaplatit?</p></html>",
                       "<html><p align=\"justify\">Mějme dvě čísla: A a B. Čislo A získáme tak, že seřadíme následující stavy vody o stejné hmotnosti podle objemu (za normálního tlaku) od největšího po nejmenší:<br>" +
@@ -390,7 +390,7 @@ public class GraphicalUserInterface extends JFrame {
         });
 
         scrollPaneTasks = new JScrollPane(listTasks);
-        scrollPaneTasks.setBounds(20, 70, 220, 350);
+        scrollPaneTasks.setBounds(20, 70, 230, 350);
         scrollPaneTasks.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         panelTask.add(scrollPaneTasks);
 
