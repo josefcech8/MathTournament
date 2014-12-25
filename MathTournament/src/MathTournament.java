@@ -7,8 +7,8 @@
     (5) When you pass the task you will get the check sign
     (6) if there will be a lot of teams put rank table to JScrollPane
     (7) highlight your team in the table
+    (8) put <sup> or <sub> and <sup>1</sup>&frasl;<sub>10</sub> tags in taskContent
  */
-
 
 public class MathTournament {
     public static void main(String[] args) {

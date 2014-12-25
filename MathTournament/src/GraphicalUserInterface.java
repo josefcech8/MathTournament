@@ -11,7 +11,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.geom.Line2D;
 
 public class GraphicalUserInterface extends JFrame {
 
@@ -194,8 +193,48 @@ public class GraphicalUserInterface extends JFrame {
     String[] teamNames = {"Cmyk", "Havíři", "Tutor"};
 
     String[] taskTitles = {"1. úloha: Meziprostorová",
-                           "2. úloha",
-                           "3. úloha", "4. úloha", "5. úloha", "6. úloha", "7. úloha"};
+                           "2. úloha: Jdeme na ping-pong!",
+                           "3. úloha: Velké D",
+                           "4. úloha: Cyklisté",
+                           "5. úloha: Rýsujeme",
+                           "6. úloha: Trojúhelníková matematika",
+                           "7. úloha: Těžcí manželé",
+                           "8. úloha: Běh alejí",
+                           "9. úloha: Napouštění vany",
+                           "10. úloha: Jedničky a nuly",
+                           "11. úloha: Sedačka",
+                           "12. úloha: Dožeňte Asterixe!",
+                           "13. úloha: Stavebnice",
+                           "14. úloha: Hrom aby do toho praštil",
+                           "15. úloha: Dobře fungující systém",
+                           "16. úloha: Těžký příbor",
+                           "17. úloha: Komplikovaný obvod",
+                           "18. úloha: Čokoládová hvězda",
+                           "19. úloha: Horolezec amatér",
+                           "20. úloha: Lepicí páska",
+                           "21. úloha: Zaháníme nudu",
+                           "22. úloha: Houpačka",
+                           "23. úloha: Ten nejmenší",
+                           "24. úloha: Teplé mléko",
+                           "25. úloha: Karimatka",
+                           "26. úloha: Zrcadla",
+                           "27. úloha: Dvojhvězda",
+                           "28. úloha: Maturitní",
+                           "29. úloha: Rezistory na sto způsobů",
+                           "30. úloha: Zasolené moře",
+                           "31. úloha: Jedeme na Náboj!",
+                           "32. úloha: Pečeme dort!",
+                           "33. úloha: Autohydraulika",
+                           "34. úloha: Faktoriál",
+                           "35. úloha: Slévání",
+                           "36. úloha: Energeťák",
+                           "37. úloha: Úhelná",
+                           "38. úloha: Stěhování",
+                           "39. úloha: Mocninná",
+                           "40. úloha: Horská dráha",
+                           "41. úloha: Obraz",};
+                           /*"42. úloha: Kámen"
+    };*/
     String[] tasks = {"<html><p align=\"justify\">Paťo se náhodou dostal do paralelního vesmíru. Kolik sekund tam trvá jeden rok, pokud má 6 měsíců, měsíc má 8 týdnů, týden má 5 dnů, den má 30 hodin, hodina má 16 minut a minuta 45 sekund?</p></html>",
                       "<html><p align=\"justify\">Při zuřivém zápase jsme zničili pingpongový míček, a proto jsme šli koupit nový. V obchodě nám prodavačka řekla, že pálka je o 1000 korun dražší než míček, a navíc, že míček a pálka stojí celkem 1100 korun. Poněvadž chceme jen míček, kolik musíme zaplatit?</p></html>",
                       "<html><p align=\"justify\">Mějme dvě čísla: A a B. Čislo A získáme tak, že seřadíme následující stavy vody o stejné hmotnosti podle objemu (za normálního tlaku) od největšího po nejmenší:<br>" +
@@ -207,8 +246,45 @@ public class GraphicalUserInterface extends JFrame {
                               "5 . . . palec,<br>" +
                               "6 . . . světelný rok.<br>" +
                               "Určete největši společný dělitel čísel A a B.</p></html>",
-                      "<html><p align=\"justify\">Kuba s Honzou trénují na kolech na stejné trase. Kuba jezdí první kilometr, který je do kopce, obvykle rychlostí 10km/h, zatímco Honza ho zvládá rychlostí 12km/h. Druhý kilometr je už pro oba snazší, Kuba ho jezdí rychlostí 40km/h a Honza rychlostí 24km/h. Který z chlapců má vyšší průměrnou rychlost na celé trase?",
-
+                      "<html><p align=\"justify\">Kuba s Honzou trénují na kolech na stejné trase. Kuba jezdí první kilometr, který je do kopce, obvykle rychlostí 10km/h, zatímco Honza ho zvládá rychlostí 12km/h. Druhý kilometr je už pro oba snazší, Kuba ho jezdí rychlostí 40km/h a Honza rychlostí 24km/h. Který z chlapců má vyšší průměrnou rychlost na celé trase?</p>",
+                      "<html><p align=\"justify\">Dorýsujte do obrázku (k dispozici máte 4 předlohy) třetí sílu takovou, že výslednice těchto tří sil bude nulová.</p>",
+                      "<html><p align=\"justify\">Doplňte do vrcholů trojúhelníku a na středy jeho stran čísla 1 až 6 tak, že součet čísel na každé straně bude vždy 9. Každé číslo použijte jenom jednou.</p>",
+                      "<html><p align=\"justify\">Manželé Novákovi si na Nový rok řekli, že nejsou zrovna hubení a mohli by trochu shodit. Jejich cílem bylo zhubnout alespoň 10% své původní hmotnosti. Paní Zita Nováková měla na Nový rok hmotnost mZ = 80 kg a její manžel Jakub Novák mJ = 120 kg. Ke konci roku se opět zvážili a zjistili, že paní Nováková sice zhubla o 15%, ale její manžel jen o 5%. O kolik kilogramů více/méně zhubli oba dohromady oproti jejich novoročnímu slibu?</p>",
+                      "<html><p align=\"justify\">Lenka si šla jako každé ráno zaběhat, až se dostala do aleje rovnoměrně vysázených stromů. Od prvního stromu k devátému doběhla za osmnáct sekund. Za jak dlouho s takovou rychlostí doběhne od prvního stromu k šedesátému pátému?</p>",
+                      "<html><p align=\"justify\">Petrova vana má dva kohoutky, jeden na studenou a jeden na úplně horkou vodou. Vana se napustí studenou vodou za 4 minuty, ale horkou vodou až za 12 minut. Petr odpozoroval, že nejlepší teplotu na horkou koupel má vana tehdy, když nechá oba kohoutky – s horkou i studenou vodou – úplně otevřené. Za jak dlouho se Petrova vana napustí v tomto případě?</p>",
+                      "<html><p align=\"justify\">Najděte nejmenší číslo zapsané jen číslicemi 0 a 1, které je beze zbytku dělitelné součinem tří nejmenších prvočísel.</p>",
+                      "<html><p align=\"justify\">Na rohovou sedačku tvaru písmene „L“ položíme šest shodných čtvercových polštářů, a to tak, že na každém konci sedačky je jeden a též v rohu je jeden. Všech šest polštářů je umístěno těsně vedle sebe. Jaké poměry délek stran může mít sedačka?</p>",
+                      "<html><p align=\"justify\">Z Břeclavi vyjíždí nákladní auto s obrázkem Asterixe stálou rychlostí 60km/h. O půl hodiny později za ním vyjíždí ve stejném směru rodinka s Fandou v autě, které řídí Fandův tatínek, rychlostí 80km/h. V jaké vzdálenosti od Břeclavi začne Fanda jásat, že právě předjíždí Asterixe?</p>",
+                      "<html><p align=\"justify\">Arnošt má rád stavebnice. Posledně vzal svou nejnovější stavebnici sestávající ze 192 dřevěných kostek a postavil z nich mrakodrap, tedy kvádr s podstavou 4 × 6 kostek a výškou 8 kostek. Nelíbila se mu však barva jeho mrakodrapu, tak vzal fix a všechny stěny tohoto kvádru (kromě dolní podstavy) nabarvil na modro. Kolik stěn jednotlivých kostiček zůstane neobarvených?</p>",
+                      "<html><p align=\"justify\">Jaká je rychlost zvuku, jestliže Lukáš slyšel hrom o 3 s později, než Terka, když stojí vůči bouřce jako na obrázku?</p>",
+                      "<html><p align=\"justify\">Čtyři dělníci postupně přehazují lopatou písek z jámy na hromadu, z hromady do kolečka, z kolečka do kbelíku a z kbelíku do míchačky. Při prvním úkonu se během přehazování vysype 20% písku, při dalším opět 20%, při třetím 50% a do míchačky se poslední dělník trefí pouze se 40% úspěšností. Kolik procent písku z jámy tato čtveřice přepraví až do míchačky?</p>",
+                      "<html><p align=\"justify\">Kolik váží celý příbor, jestliže vidlička váží 60 g? Hmotnosti pák a kloubů zanedbejte.</p>",
+                      "<html><p align=\"justify\">Na obrázku vidíte elektrický obvod. Skládá se ze dvou rezistorů, z nichž každý má elektrický odpor R = 3Ω a jsou připojené ke zdroji stejnosměrného napětí o velikosti U = 2V. Jaký proud I prochází zdrojem napětí?</p>",
+                      "<html><p align=\"justify\">Ve velmi vzdálené planetární soustavě létají okolo hvězdy Orion tři vesmírné lodě po kruhových drahách. Poloměr dráhy nejvnitřnější lodi je r1 = 150 000km, prostřední lodi r2 = 200 000km a nejvzdálenější lodi r3 = 250 000km. Všechny lodě letí díky svému pohonu na antihmotu shodnou rychlostí v = 50 000km/rok. Na začátku se všechny lodě spolu s centrální hvězdou nacházejí v jedné přímce. Kolikrát oběhne nejvzdálenější loď hvězdu Orion, než se lodě a hvězda opět setkají v jedné přímce?</p>",
+                      "<html><p align=\"justify\">Dan se rozhodl, že si postaví v podkrovním pokojíčku, který je široký s = 6m a dlouhý l = 3m, na jednu ze šikmých stěn horolezeckou stěnu. Kolik metrů čtverečních má k dispozici, když řez střechou je má tvar rovnoramenného trojúhelníku a nejvyšší bod pokoje je v kolmé vzdálenosti od podlahy vzdálený h = 4m?</p>",
+                      "<html><p align=\"justify\">Na stole máme nalepeno 0,5m lepicí pásky. Vezmeme jeden její konec a začneme ho strhávat rychlostí v = 4 cm/s (rychlost ruky). Za jakou dobu odlepíme celou pásku?</p>",
+                      "<html><p align=\"justify\">Pavel se při hodině nudil, proto si prohledal školní tašku a objevil tam obyčejnou hrací kostku. Začal s ní házet a pokaždé si zapsal, kolik hodil. Všiml si, že jeho první hod byl dvakrát větší než druhý, který byl však třetinový vůči třetímu hodu. Počtvrté hodil tolik, kolik byl součet prvního a druhého hodu, a pátým pokusem hodil polovinu toho, co se mu povedlo třetím hodem. Nakonec všech pět hodů sečetl. Víte, jaké číslo mu vyšlo?</p>",
+                      "<html><p align=\"justify\">Bráškové Pepa a Pavel si chtějí postavit houpačku z lehkého prkna dlouhého 4,2m a polena. Když si vše připraví, snaží se ji dát do rovnováhy. V jaké vzdálenosti od Pepy musí poleno umístit, když Pepa váží 24 kg, Pavel 18 kg, a oba sedí na koncích prkna?</p>",
+                      "<html><p align=\"justify\">Pro pravoúhlý rovnoběžník s celočíselnými délkami stran platí, že číselná hodnota jeho obsahu je stejná jako hodnota jeho obvodu. Nalezněte rozměry tohoto čtyřúhelníku, který vlastnost výše splňuje a jeho obsah je nejmenší.</p>",
+                      "<html><p align=\"justify\">Máme chuť na hrnek teplého mléka, a tak si jeden připravíme. Mléko o objemu V = 0,25 ℓ má teplotu t0 = 20 ◦C, a chceme si ho ohřát na teplotu t1 = 42 ◦C. Po ruce máme pouze rychlovarnou konvici. Připojíme ji k elektrickému zdroji, který do konvice přivádí proud I = 3,9A při napětí U = 220V. Jak dlouho musíme čekat, než se nám mléko ohřeje? Hustota mléka je stejná jako hustota vody, měrná tepelná kapacita je c = 3 900 J/(kg·◦C). Tepelné ztráty zanedbejte.</p>",
+                      "<html><p align=\"justify\">Kuba jede na tábor a bere si svoji karimatku, která má tvar kvádru o rozměrech délky l, šířky d a výšky h. Kuba si karimatku natěsno sroluje podél delší strany l do tvaru válce. Jaký bude poloměr tohoto válce? Zanedbejte „zub“, který vznikne u konce karimatky.</p>",
+                      "<html><p align=\"justify\">Ve vlakových kupé jsou dvě zrcadla umístěna proti sobě. To má za následek, že při pohledu do jednoho ze zrcadel mírně zboku vidíme spousty obrazů své tváře: první obraz v zrcadle, na který se díváme, druhý jako obraz obrazu obrazu, třetí jako obraz obrazu obrazu obrazu obrazu a tak dále. V jaké zdánlivé vzdálenosti vidíme druhý pozorovaný obraz, pokud je kupé široké 2m a my stojíme přesně v jeho středu?</p>",
+                      "<html><p align=\"justify\">Ondra na noční obloze pozoruje dvojhvězdu, o které si myslí, že je od Země vzdálena 8,24 parseků (pc). Obě složky dvojhvězdy pozoruje pod úhlem 1′′. Jak daleko jsou od sebe vzdáleny složky dvojhvězdy ve skutečnosti? Vzdálenost vyjádřete v astronomických jednotkách (AU). Tip: jeden parsek je vzdálenost, ze které je jedna astronomická jednotka pozorovaná pod úhlem 1′′.</p>",
+                      "<html><p align=\"justify\">Tři plechovky o poloměru podstavy r = 5 cm postavíme těsně k sobě tak, aby středy jejich podstav tvořily rovnostranný trojúhelník. Jak dlouhou potravinovou fólii budeme potřebovat, abychom plechovky obmotali jednou kolem dokola?</p>",
+                      "<html><p align=\"justify\">Paťo má tři rezistory s odporem R = 1Ω. Paťo rezistory nějak zapojil (ale tak, aby všemi rezistory tekl proud), zapsal si hodnotu výsledného odporu a následně rezistory zapojil jiným způsobem (aby měly jiný odpor). Takto si zapsal hodnoty všech možných výsledných odporů zapojení a výsledky sečetl. Jakou hodnotu dostal?</p>",
+                      "<html><p align=\"justify\">Kolik soli bychom museli nasypat do Baltského moře, aby mělo stejnou salinitu (slanost) jako Rudé moře? Uvažujte rozlohu Baltského moře 400 000km2 a jeho střední hloubku 50m. Průměrná salinita Baltského moře je 10h, Rudého moře 40h (salinita 1h představuje 1 g soli na 1 ℓ vody).</p>",
+                      "<html><p align=\"justify\">Auto jede hodinu rychlostí v. Pak zrychlí a další půlhodinu jede rychlostí 2v. Po příjezdu do cíle cesty řidič zjistil, že jeho průměrná rychlost je o 20km/h vyšší, než rychlost v. Jaká byla jeho průměrná rychlost vp?</p>",
+                      "<html><p align=\"justify\">Radčina nejlepší kamarádka má narozeniny, a tak se Radka rozhodla, že jí upeče dort. Na dort si připravila těsto, ze kterého vytvarovala kruh o poloměru r. Jenže pak si vzpomněla, že chtěla udělat čtvercový dort, a tak z již připraveného kruhu vykrojila největší možný čtverec, ze kterého pak dort upekla. Jak velká část z původního množství těsta Radce zbyla?</p>",
+                      "<html><p align=\"justify\">Simča si nově pořídila hydraulické zařízení, které se skládá ze dvou propojených pístů s plochami 100 cm2 a 1 000 cm2. Na větší píst umístila měřicí přístroj o hmotnosti 250 kg a zjistila, že zvedat ho pomalu do výšky je brnkačka. Jakou práci Simča při zvedání vykonala, pokud přístroj zvedla do výšky 2m?</p>",
+                      "<html><p align=\"justify\">Kolik nul na konci má ve svém dekadickém zápise číslo, které dostaneme vynásobením všech čísel od 1 do 100?</p>",
+                      "<html><p align=\"justify\">Bronz je slitina cínu a mědi v hmotnostním poměru 1 : 3. Víme, že hustota cínu je přibližně ϱSn = 7 kg/dm3 a hustota mědi ϱCu = 9 kg/dm3. Jaký bude poměr objemů cínu a mědi VSn/VCu potřebných na výrobu m = 1 kg bronzu?</p>",
+                      "<html><p align=\"justify\">Znavený turista se zastavil v hospodě u cesty a koupil si chlazený nápoj. Nápoj má teplotu t0 = 7 ◦C a objem V = 250mℓ, jeho energetická hodnota je \" = 1 000 kJ/kg. Svými vlastnostmi se nápoj blíží vodě, má tedy hustotu ϱ = 1 kg/ℓ a měrnou tepelnou kapacitu c = 4 kJ/(kg·◦C). Kolik energie turista z nápoje získá, jestliže ho po vypití ve svém těle zahřeje na t1 = 37 ◦C?</p>",
+                      "<html><p align=\"justify\">Lenka si namalovala rovnoramenný trojúhelník ABC a s překvapením zjistila, že na jeho ramenech AB, resp. AC, lze najít body P, resp. Q, takové, že |BC| = |CP| = |PQ| = |QA|. Určete velikost úhlu ∡BAC.</p>",
+                      "<html><p align=\"justify\">V obývacím pokoji máme skříň o hmotnosti m = 50 kg a šířce 1,2m a chceme přestěhovat její střed o 4m dále. Mezi původní a novou polohou skříně jsou dva metry koberce a poté dva metry lina. Třecí koeficient mezi skříní a kobercem je f1 = 1,0 a mezi skříní a linem f2 = 0,5. Nakreslete graf, kde na vodorovné ose bude poloha středu skříně a na svislé ose síla, kterou musíme skříň tlačit. Osy správně popište a vyznačte na nich důležité body!</p>",
+                      "<html><p align=\"justify\">Najděte tři po sobě jdoucí přirozená čísla, která v součtu dávají pátou mocninu některého přirozeného čísla.</p>",
+                      "<html><p align=\"justify\">V lunaparku mají novou horskou dráhu. Na začátku jízdy je vozíček na vrcholu stoupání ve výšce h = 20m, ze kterého následně sjede dolů. Dole je rovinka dlouhá s = 200m, na které vozíček brzdí s konstantním zpomalením. S jakým zpomalením (záporným zrychlením) vozíček brzdí, jestliže zastaví přesně na konci rovinky? Odporové síly zanedbejte.</p>",
+                      "<html><p align=\"justify\">Kubo si chce doma zavěsit obraz. Má jeden hřebík a jeden provaz, který praskne, pokud je na něj působící síla větší než T = 100N. Jaký nejtěžší obdélníkový obraz si Kubo může pověsit na provaz a hřebík, když provaz a obraz svírají úhel \u000B = 30◦?</p>",
+                      "<html><p align=\"justify\">Ve válcovém poháru naplněném vodou, který má plochu podstavy 200 cm2, se vznáší kostka ledu. Vznáší se, neboť je v ledu zamrznutý kamínek o hmotnosti 100 g a hustotě 5 000 kg/m3. Časem se led rozpustí a kamínek klesne na dno. Co se stane s hladinou vody? Klesne, stoupne, nebo se nezmění? Pokud se změní, tak o kolik?</p>",
     };
     Object[][] dataRank;
     Font fontTitle, fontTotalPoints, fontTeam, fontTime;
@@ -230,6 +306,8 @@ public class GraphicalUserInterface extends JFrame {
         totalPoints = 0;
         taskPoints = 3;
         taskCoefficient = 5;
+
+        System.out.println(taskIndexes.length);
 
         buttonTask = new JButton("Úlohy");
         buttonTask.setBounds(20, 20, 100, 25);
@@ -304,7 +382,9 @@ public class GraphicalUserInterface extends JFrame {
                     labelTaskTitle.setText(taskTitles[listTasks.getSelectedIndex()]);
                     labelTaskContent.setText(tasks[listTasks.getSelectedIndex()]);
                 } else {
-                    labelTaskContent.setText("zámek");
+                    labelTaskTitle.setText(taskTitles[listTasks.getSelectedIndex()]);
+                    //labelTaskContent.setText("zámek");
+                    labelTaskContent.setText(tasks[listTasks.getSelectedIndex()]);
                 }
             }
         });
@@ -379,7 +459,7 @@ public class GraphicalUserInterface extends JFrame {
 
         fontTime = new Font("Serif", Font.BOLD, 23);
 
-        labelTime = new JLabel("2:40");
+        labelTime = new JLabel("2:40:30");
         labelTime.setBounds(850, 60, 200, 30);
         labelTime.setFont(fontTime);
         panelTask.add(labelTime);
