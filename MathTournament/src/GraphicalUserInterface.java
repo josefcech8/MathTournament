@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.RowSorterEvent;
@@ -10,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.geom.Line2D;
 
 public class GraphicalUserInterface extends JFrame {
 
@@ -209,7 +211,7 @@ public class GraphicalUserInterface extends JFrame {
 
     };
     Object[][] dataRank;
-    Font fontTitle, fontTotalPoints;
+    Font fontTitle, fontTotalPoints, fontTeam, fontTime;
     JLabel labelTaskTitle, labelTaskContent, labelTaskCoefficient, labelTaskPoints, labelTotalPoints, labelTime, labelTeamName;
     JTextField textResult, textUnits;
     JButton buttonTask, buttonRank, buttonRules, buttonSubmit;
@@ -241,6 +243,7 @@ public class GraphicalUserInterface extends JFrame {
 
                 setTaskVisibility(true);
                 scrollPaneTableRank.setVisible(false);
+                scrollPaneRulesContent.setVisible(false);
             }
         });
         panelTask.add(buttonTask);
@@ -253,9 +256,11 @@ public class GraphicalUserInterface extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 buttonTask.setBackground(Color.LIGHT_GRAY);
                 buttonRank.setBackground(Color.CYAN);
+                buttonRules.setBackground(Color.LIGHT_GRAY);
 
                 setTaskVisibility(false);
                 scrollPaneTableRank.setVisible(true);
+                scrollPaneRulesContent.setVisible(false);
             }
         });
         panelTask.add(buttonRank);
@@ -263,10 +268,27 @@ public class GraphicalUserInterface extends JFrame {
         buttonRules = new JButton("Pravidla");
         buttonRules.setBounds(220, 20, 100, 25);
         buttonRules.setBackground(Color.LIGHT_GRAY);
+        buttonRules.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                buttonTask.setBackground(Color.LIGHT_GRAY);
+                buttonRank.setBackground(Color.LIGHT_GRAY);
+                buttonRules.setBackground(Color.CYAN);
+
+                setTaskVisibility(false);
+                scrollPaneTableRank.setVisible(false);
+                scrollPaneRulesContent.setVisible(true);
+            }
+        });
         panelTask.add(buttonRules);
 
+        fontTeam = new Font("Serif", Font.PLAIN, 20);
+
         labelTeamName = new JLabel("Tým: CMYK");
-        labelTeamName.setBounds(445, 20, 100, 20);
+        labelTeamName.setBounds(390, 20, 200, 25);
+        labelTeamName.setHorizontalAlignment(SwingConstants.CENTER);
+        labelTeamName.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        labelTeamName.setFont(fontTeam);
         panelTask.add(labelTeamName);
 
         listTasks = new JList(taskTitles);
@@ -355,16 +377,33 @@ public class GraphicalUserInterface extends JFrame {
         labelTotalPoints.setFont(fontTotalPoints);
         panelTask.add(labelTotalPoints);
 
+        fontTime = new Font("Serif", Font.BOLD, 23);
+
         labelTime = new JLabel("2:40");
-        labelTime.setBounds(850, 60, 200, 20);
+        labelTime.setBounds(850, 60, 200, 30);
+        labelTime.setFont(fontTime);
         panelTask.add(labelTime);
 
-        labelMatfyz = new JLabel("logo MFF UK");
-        labelMatfyz.setBounds(850, 150, 200, 20);
+        labelMatfyz = new JLabel(new ImageIcon("mff.gif"));
+        labelMatfyz.setBounds(800, 120, 150, 150);
         panelTask.add(labelMatfyz);
 
-        labelBrezinky = new JLabel("logo Brezinky");
-        labelBrezinky.setBounds(850, 300, 200, 20);
+        /*devTool*/
+        /*cleancode*/
+        /*rename class*/
+        /*center pictures || layout*/
+        paintComponent paint1 = new paintComponent();
+        paint1.setBounds(770, 290, 230, 3);
+        paint1.setBackground(Color.LIGHT_GRAY);
+        panelTask.add(paint1);
+        paintComponent paint2 = new paintComponent();
+        paint2.setBounds(770, 0, 3, 600);
+        paint2.setBackground(Color.LIGHT_GRAY);
+        panelTask.add(paint2);
+        /*end*/
+
+        labelBrezinky = new JLabel(new ImageIcon("brezinky.gif"));
+        labelBrezinky.setBounds(800, 320, 150, 211);
         panelTask.add(labelBrezinky);
 
         dataRank = new Object[teamNames.length][teamNames.length];
@@ -396,6 +435,28 @@ public class GraphicalUserInterface extends JFrame {
         scrollPaneTableRank.setBounds(20, 100, 400, 300);
         scrollPaneTableRank.setVisible(false);
         panelTask.add(scrollPaneTableRank);
+
+
+        labelRulesContent = new JLabel("<html><h1 align=\"center\">1. HRACÍ PLOCHA</h1>" +
+                "<h2 align=\"center\">101  Rozměry hřiště</h2>" +
+                "<p align=\"center\">1. Hřiště má rozměry 40 m x 20 m a je ohraničeno mantinely se zaoblenými rohy.<br>" +
+                "Mantinely musí být schváleny IFF a příslušně označeny.<br>" +
+                "Hřiště je obdélníkové, rozměry udávají délku x šířku.<br>" +
+                "Nejmenší povolené rozměry jsou 36 m x 18 m, největší pak 44 m x 22 m.<br></p>" +
+                "<h2 align=\"center\">102  Značky na hřišti</h2>" +
+                "<p align=\"center\">1. Veškeré označení je provedeno čarami, 4 – 5 cm širokými, jasně viditelnou barvou.<br>" +
+                "2. Středová čára a středový bod jsou vyznačeny.<br>" +
+                "Středová čára je rovnoběžná s kratšími stranami hřiště a rozděluje hřiště na dvě stejné poloviny.<br>" +
+                "3. Velké brankoviště s rozměry 4 m x 5 m je vyznačeno 2,85 m od kratší strany hřiště.<br>" +
+                "Velké brankoviště je obdélníkové, rozměry udávají délku x šířku včetně čar.<br>" +
+                "Velké brankoviště je umístěno centrálně vzhledem k dlouhým stranám hřiště.<br>" +
+                "4. Malé brankoviště s rozměry 1 m x 2,5 m je vyznačeno 0,65 m před zadní čarou velkého brankoviště.</p></html>");
+
+        scrollPaneRulesContent = new JScrollPane();
+        scrollPaneRulesContent.setViewportView(labelRulesContent);
+        scrollPaneRulesContent.setBounds(20, 70, 600, 400);
+        scrollPaneRulesContent.setVisible(false);
+        panelTask.add(scrollPaneRulesContent);
 
         add(panelTask);
     }
@@ -451,6 +512,12 @@ public class GraphicalUserInterface extends JFrame {
                 c.setEnabled(false);
             }
             return c;
+        }
+    }
+
+    public class paintComponent extends JPanel {
+        public void paint(Graphics g) {
+            super.paint(g);
         }
     }
     //endregion
