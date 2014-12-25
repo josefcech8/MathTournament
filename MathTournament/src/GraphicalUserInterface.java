@@ -1,6 +1,10 @@
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.event.RowSorterEvent;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -32,8 +36,8 @@ public class GraphicalUserInterface extends JFrame {
         screenSizeY = screenSize.height;
         setBounds(screenSizeX / 2 - frameSizeX / 2, screenSizeY / 2 - frameSizeY / 2, frameSizeX, frameSizeY);
 
-/*
-        initLoginPanel();
+
+        /*initLoginPanel();
         initRulesPanel();
         initTestPanel();
         initStartCompetition();*/
@@ -143,35 +147,6 @@ public class GraphicalUserInterface extends JFrame {
     }
     //endregion
 
-    //region 3| test
-    JLabel labelTestTitle;
-    JButton buttonTestProceed;
-    JPanel panelTest;
-
-    private void initTestPanel() {
-        panelTest = new JPanel();
-        getContentPane().add(panelTest);
-        panelTest.setLayout(null);
-
-        labelTestTitle = new JLabel("Test");
-        labelTestTitle.setBounds(445, 20, 100, 20);
-        panelTest.add(labelTestTitle);
-
-        buttonTestProceed = new JButton("Pokračovat ...");
-        buttonTestProceed.setBounds(200, 200, 100, 20);
-        buttonTestProceed.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                panelTest.setVisible(false);
-                panelStartCompetition.setVisible(true);
-            }
-        });
-        panelTest.add(buttonTestProceed);
-
-        add(panelTest);
-    }
-    //endregion
-
     //region 4| startCompetition
     JLabel labelStartTitle, labelStartInfo;
     JButton buttonStartCompetition;
@@ -208,8 +183,14 @@ public class GraphicalUserInterface extends JFrame {
     //endregion
 
     //region 5| task
+    boolean pointArraysEqual;
     boolean[] taskIndexes = {true, true, true, true, true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
-    int totalPoints, taskCoefficient, taskPoints;
+    int totalPoints, taskCoefficient, taskPoints, i, pointsHolder = 0;
+    int[] points = {13, 5, 30}, pointsClone;
+    String teamNamesHolder;
+    String[] columnNames = {"POŘADÍ", "TEAM", "BODY"};
+    String[] teamNames = {"Cmyk", "Havíři", "Tutor"};
+
     String[] taskTitles = {"1. úloha: Meziprostorová",
                            "2. úloha",
                            "3. úloha", "4. úloha", "5. úloha", "6. úloha", "7. úloha"};
@@ -227,12 +208,15 @@ public class GraphicalUserInterface extends JFrame {
                       "<html><p align=\"justify\">Kuba s Honzou trénují na kolech na stejné trase. Kuba jezdí první kilometr, který je do kopce, obvykle rychlostí 10km/h, zatímco Honza ho zvládá rychlostí 12km/h. Druhý kilometr je už pro oba snazší, Kuba ho jezdí rychlostí 40km/h a Honza rychlostí 24km/h. Který z chlapců má vyšší průměrnou rychlost na celé trase?",
 
     };
+    Object[][] dataRank;
     Font fontTitle, fontTotalPoints;
     JLabel labelTaskTitle, labelTaskContent, labelTaskCoefficient, labelTaskPoints, labelTotalPoints, labelTime, labelTeamName;
     JTextField textResult, textUnits;
     JButton buttonTask, buttonRank, buttonRules, buttonSubmit;
-    JScrollPane scrollPaneTasks;
+    JScrollPane scrollPaneTasks, scrollPaneTableRank;
     JList listTasks;
+    JTable tableRank;
+    DefaultTableCellRenderer centerRenderer;
     JPanel panelTask;
 
     private void initTaskPanel() {
@@ -256,6 +240,7 @@ public class GraphicalUserInterface extends JFrame {
                 buttonRules.setBackground(Color.LIGHT_GRAY);
 
                 setTaskVisibility(true);
+                scrollPaneTableRank.setVisible(false);
             }
         });
         panelTask.add(buttonTask);
@@ -270,6 +255,7 @@ public class GraphicalUserInterface extends JFrame {
                 buttonRank.setBackground(Color.CYAN);
 
                 setTaskVisibility(false);
+                scrollPaneTableRank.setVisible(true);
             }
         });
         panelTask.add(buttonRank);
@@ -381,7 +367,69 @@ public class GraphicalUserInterface extends JFrame {
         labelBrezinky.setBounds(850, 300, 200, 20);
         panelTask.add(labelBrezinky);
 
+        dataRank = new Object[teamNames.length][teamNames.length];
+        for(int i = 0; i < teamNames.length; i++) {
+            dataRank[i][0] = i+1;
+            dataRank[i][1] = teamNames[i];
+            dataRank[i][2] = points[i];
+        }
+
+        centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+
+        tableRank = new JTable(dataRank, columnNames) {
+            public boolean isCellEditable(int data, int column) {
+                return false;
+            }
+        };
+        tableRank.setFillsViewportHeight(true);
+        tableRank.setRowHeight(30);
+        for(i = 0; i < teamNames.length; i++) {
+            tableRank.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
+        tableRank.getColumnModel().getColumn(0).setPreferredWidth(20);
+        tableRank.getColumnModel().getColumn(2).setPreferredWidth(20);
+
+        sortTableRank();
+
+        scrollPaneTableRank = new JScrollPane(tableRank);
+        scrollPaneTableRank.setBounds(20, 100, 400, 300);
+        scrollPaneTableRank.setVisible(false);
+        panelTask.add(scrollPaneTableRank);
+
         add(panelTask);
+    }
+
+    private void sortTableRank() {
+        pointArraysEqual = false;
+        pointsHolder = 0;
+        while(!pointArraysEqual) {
+            pointArraysEqual = true;
+            pointsClone = points.clone();
+
+            for (i = 0; i < teamNames.length; i++) {
+                if (i != 0 && points[i] > pointsHolder) {
+                    teamNamesHolder = teamNames[i];
+                    teamNames[i] = teamNames[i - 1];
+                    teamNames[i - 1] = teamNamesHolder;
+                    points[i - 1] = points[i];
+                    points[i] = pointsHolder;
+                }
+                pointsHolder = points[i];
+            }
+            for (i = 0; i < points.length; i++) {
+                if (pointsClone[i] != points[i]) {
+                    pointArraysEqual = false;
+                    break;
+                }
+            }
+
+            for(int i = 0; i < teamNames.length; i++) {
+                dataRank[i][0] = i+1;
+                dataRank[i][1] = teamNames[i];
+                dataRank[i][2] = points[i];
+            }
+        }
     }
 
     private void setTaskVisibility(boolean visibility) {
@@ -404,6 +452,144 @@ public class GraphicalUserInterface extends JFrame {
             }
             return c;
         }
+    }
+    //endregion
+
+    //region 3| test
+    JLabel labelTestTitle;
+    JPanel panelTest;
+
+    private void initTestPanel() {
+        panelTest = new JPanel();
+        getContentPane().add(panelTest);
+        panelTest.setLayout(null);
+
+        labelTestTitle = new JLabel("Test");
+        labelTestTitle.setBounds(445, 20, 100, 20);
+        panelTest.add(labelTestTitle);
+
+        totalPoints = 0;
+        taskPoints = 3;
+        taskCoefficient = 5;
+
+        buttonTask = new JButton("Úlohy");
+        buttonTask.setBounds(20, 20, 100, 25);
+        buttonTask.setBackground(Color.CYAN);
+        panelTest.add(buttonTask);
+
+        buttonRank = new JButton("Pořadí");
+        buttonRank.setBounds(120, 20, 100, 25);
+        buttonRank.setBackground(Color.LIGHT_GRAY);
+        panelTest.add(buttonRank);
+
+        buttonRules = new JButton("Pravidla");
+        buttonRules.setBounds(220, 20, 100, 25);
+        buttonRules.setBackground(Color.LIGHT_GRAY);
+        panelTest.add(buttonRules);
+
+        labelTeamName = new JLabel("Tým: CMYK");
+        labelTeamName.setBounds(445, 20, 100, 20);
+        panelTest.add(labelTeamName);
+
+        listTasks = new JList(taskTitles);
+        listTasks.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        listTasks.setLayoutOrientation(JList.VERTICAL);
+        listTasks.setVisibleRowCount(-1);
+        listTasks.setSelectedIndex(0);
+        listTasks.setCellRenderer(new SelectedListCellRenderer());
+        listTasks.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if(taskIndexes[listTasks.getSelectedIndex()]) {
+                    labelTaskTitle.setText(taskTitles[listTasks.getSelectedIndex()]);
+                    labelTaskContent.setText(tasks[listTasks.getSelectedIndex()]);
+                } else {
+                    labelTaskContent.setText("zámek");
+                }
+            }
+        });
+
+        scrollPaneTasks = new JScrollPane(listTasks);
+        scrollPaneTasks.setBounds(20, 70, 220, 350);
+        scrollPaneTasks.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        panelTest.add(scrollPaneTasks);
+
+        fontTitle = new Font("Serif", Font.BOLD, 20);
+
+        labelTaskTitle = new JLabel(taskTitles[listTasks.getSelectedIndex()]);
+        labelTaskTitle.setBounds(300, 70, 350, 30);
+        labelTaskTitle.setFont(fontTitle);
+        panelTest.add(labelTaskTitle);
+
+        labelTaskCoefficient = new JLabel("násobeno 5x");
+        labelTaskCoefficient.setBounds(200, 500, 80, 20);
+        panelTest.add(labelTaskCoefficient);
+
+        labelTaskPoints = new JLabel("3 body");
+        labelTaskPoints.setBounds(300, 500, 80, 20);
+        panelTest.add(labelTaskPoints);
+
+        labelTaskContent = new JLabel(tasks[listTasks.getSelectedIndex()]);
+        labelTaskContent.setBounds(300, 120, 370, 220);
+        labelTaskContent.setVerticalAlignment(JLabel.TOP);
+        panelTest.add(labelTaskContent);
+
+        textResult = new JTextField("Zadejte výsledek");
+        textResult.setBounds(300, 400, 200, 20);
+        textResult.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                JOptionPane.showMessageDialog(null, "Vzorové zadání odpovědi");
+                textResult.setText("");
+            }
+        });
+        panelTest.add(textResult);
+
+        textUnits = new JTextField("km");
+        textUnits.setBounds(500, 400, 50, 20);
+        textUnits.setEditable(false);
+        panelTest.add(textUnits);
+
+        buttonSubmit = new JButton("Potvrdit");
+        buttonSubmit.setBounds(570, 400, 100, 20);
+        buttonSubmit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(textResult.getText().equals("5184000")) {
+                    totalPoints += taskCoefficient * taskPoints;
+                    labelTotalPoints.setText(String.valueOf(totalPoints) + " bodů");
+                    textResult.setText("");
+                } else {
+                    if(taskCoefficient != 0) {
+                        taskCoefficient--;
+                        labelTaskCoefficient.setText("násobeno " + taskCoefficient + "x");
+                        textResult.setText("");
+                    }
+                }
+            }
+        });
+        panelTest.add(buttonSubmit);
+
+        fontTotalPoints = new Font("Serif", Font.BOLD, 30);
+
+        labelTotalPoints = new JLabel("0 bodů");
+        labelTotalPoints.setBounds(850, 20, 200, 30);
+        labelTotalPoints.setFont(fontTotalPoints);
+        panelTest.add(labelTotalPoints);
+
+        labelTime = new JLabel("2:40");
+        labelTime.setBounds(850, 60, 200, 20);
+        panelTest.add(labelTime);
+
+        labelMatfyz = new JLabel("logo MFF UK");
+        labelMatfyz.setBounds(850, 150, 200, 20);
+        panelTest.add(labelMatfyz);
+
+        labelBrezinky = new JLabel("logo Brezinky");
+        labelBrezinky.setBounds(850, 300, 200, 20);
+        panelTest.add(labelBrezinky);
+
+        add(panelTest);
     }
     //endregion
 }
