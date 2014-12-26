@@ -2,10 +2,7 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.event.RowSorterEvent;
 import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.TableModel;
-import javax.swing.table.TableRowSorter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,14 +16,15 @@ public class GraphicalUserInterface extends JFrame {
     /*end*/
 
 
-    private int screenSizeX, screenSizeY, frameSizeX, frameSizeY;
+    private int screenSizeX, screenSizeY, FRAME_SIZE_X, FRAME_SIZE_Y;
+    String BACKGROUND_COLOR = "#00A08A";
     private Dimension screenSize;
 
     public GraphicalUserInterface() {
         super("Matematický turnaj");
 
-        frameSizeX = 1000;
-        frameSizeY = 600;
+        FRAME_SIZE_X = 1000;
+        FRAME_SIZE_Y = 600;
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
@@ -35,12 +33,12 @@ public class GraphicalUserInterface extends JFrame {
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         screenSizeX = screenSize.width;
         screenSizeY = screenSize.height;
-        setBounds(screenSizeX / 2 - frameSizeX / 2, screenSizeY / 2 - frameSizeY / 2, frameSizeX, frameSizeY);
+        setBounds(screenSizeX / 2 - FRAME_SIZE_X / 2, screenSizeY / 2 - FRAME_SIZE_Y / 2, FRAME_SIZE_X, FRAME_SIZE_Y);
 
 
         /*initLoginPanel();
         initRulesPanel();
-        initTestPanel();
+        /*initTestPanel();
         initStartCompetition();*/
         initTaskPanel();
 
@@ -58,10 +56,10 @@ public class GraphicalUserInterface extends JFrame {
         panelLogin = new JPanel();
         getContentPane().add(panelLogin);
         panelLogin.setLayout(null);
-        panelLogin.setBackground(Color.decode("#00A08A"));
+        panelLogin.setBackground(Color.decode(BACKGROUND_COLOR));
 
         labelTitle = new JLabel("Matematický turnaj", SwingConstants.CENTER);
-        labelTitle.setBounds(0, 20, frameSizeX, 20);
+        labelTitle.setBounds(0, 20, FRAME_SIZE_X, 20);
         panelLogin.add(labelTitle);
 
         textUsername = new JTextField("username");
@@ -186,7 +184,7 @@ public class GraphicalUserInterface extends JFrame {
     //region 5| task
     boolean pointArraysEqual;
     boolean[] taskIndexes = {true, true, true, true, true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
-    int totalPoints, taskCoefficient, taskPoints, i, pointsHolder = 0;
+    int totalPoints, i, pointsHolder = 0;
     int[] points = {13, 5, 30}, pointsClone;
     String teamNamesHolder;
     String[] columnNames = {"POŘADÍ", "TEAM", "BODY"};
@@ -246,10 +244,10 @@ public class GraphicalUserInterface extends JFrame {
                               "5 . . . palec,<br>" +
                               "6 . . . světelný rok.<br>" +
                               "Určete největši společný dělitel čísel A a B.</p></html>",
-                      "<html><p align=\"justify\">Kuba s Honzou trénují na kolech na stejné trase. Kuba jezdí první kilometr, který je do kopce, obvykle rychlostí 10km/h, zatímco Honza ho zvládá rychlostí 12km/h. Druhý kilometr je už pro oba snazší, Kuba ho jezdí rychlostí 40km/h a Honza rychlostí 24km/h. Který z chlapců má vyšší průměrnou rychlost na celé trase?</p>",
-                      "<html><p align=\"justify\">Dorýsujte do obrázku (k dispozici máte 4 předlohy) třetí sílu takovou, že výslednice těchto tří sil bude nulová.</p>",
+                      "<html><p align=\"justify\">Kuba trénuje na kole. První kilometr, který je do kopce jezdí rychlostí 10 km/h. Druhý kilometr je už snazší. Kuba ho jezdí rychlostí 40 km/h. Jakou průmernou rychlostí jede Kuba na celé trase.</p>",
+                      "<html><p align=\"justify\">Vyberte obrázek, ve kterém je výslednice sil dvou černých a jedné modré nulová.</p>",
                       "<html><p align=\"justify\">Doplňte do vrcholů trojúhelníku a na středy jeho stran čísla 1 až 6 tak, že součet čísel na každé straně bude vždy 9. Každé číslo použijte jenom jednou.</p>",
-                      "<html><p align=\"justify\">Manželé Novákovi si na Nový rok řekli, že nejsou zrovna hubení a mohli by trochu shodit. Jejich cílem bylo zhubnout alespoň 10% své původní hmotnosti. Paní Zita Nováková měla na Nový rok hmotnost mZ = 80 kg a její manžel Jakub Novák mJ = 120 kg. Ke konci roku se opět zvážili a zjistili, že paní Nováková sice zhubla o 15%, ale její manžel jen o 5%. O kolik kilogramů více/méně zhubli oba dohromady oproti jejich novoročnímu slibu?</p>",
+                      "<html><p align=\"justify\">Manželé Novákovi si na Nový rok řekli, že nejsou zrovna hubení a mohli by trochu shodit. Jejich cílem bylo zhubnout alespoň 10% své původní společné hmotnosti. Paní Zita Nováková měla na Nový rok hmotnost mZ = 80 kg a její manžel Jakub Novák mJ = 120 kg. Ke konci roku se opět zvážili a zjistili, že paní Nováková sice zhubla o 15%, ale její manžel jen o 5%. O kolik kilogramů více/méně zhubli oba dohromady oproti jejich novoročnímu slibu?</p>",
                       "<html><p align=\"justify\">Lenka si šla jako každé ráno zaběhat, až se dostala do aleje rovnoměrně vysázených stromů. Od prvního stromu k devátému doběhla za osmnáct sekund. Za jak dlouho s takovou rychlostí doběhne od prvního stromu k šedesátému pátému?</p>",
                       "<html><p align=\"justify\">Petrova vana má dva kohoutky, jeden na studenou a jeden na úplně horkou vodou. Vana se napustí studenou vodou za 4 minuty, ale horkou vodou až za 12 minut. Petr odpozoroval, že nejlepší teplotu na horkou koupel má vana tehdy, když nechá oba kohoutky – s horkou i studenou vodou – úplně otevřené. Za jak dlouho se Petrova vana napustí v tomto případě?</p>",
                       "<html><p align=\"justify\">Najděte nejmenší číslo zapsané jen číslicemi 0 a 1, které je beze zbytku dělitelné součinem tří nejmenších prvočísel.</p>",
@@ -287,27 +285,27 @@ public class GraphicalUserInterface extends JFrame {
                       "<html><p align=\"justify\">Ve válcovém poháru naplněném vodou, který má plochu podstavy 200 cm2, se vznáší kostka ledu. Vznáší se, neboť je v ledu zamrznutý kamínek o hmotnosti 100 g a hustotě 5 000 kg/m3. Časem se led rozpustí a kamínek klesne na dno. Co se stane s hladinou vody? Klesne, stoupne, nebo se nezmění? Pokud se změní, tak o kolik?</p>",
     };
     Object[][] dataRank;
-    Font fontTitle, fontTotalPoints, fontTeam, fontTime;
-    JLabel labelTaskTitle, labelTaskContent, labelTaskCoefficient, labelTaskPoints, labelTotalPoints, labelTime, labelTeamName;
+    Font fontTitle, fontTotalPoints, fontTeam, fontTime, fontTaskPoints;
+    JLabel labelTaskTitle, labelTaskContent, labelTaskPoints, labelTotalPoints, labelTime, labelTeamName;
+    JLabel[] labelVector;
     JTextField textResult, textUnits;
     JButton buttonTask, buttonRank, buttonRules, buttonSubmit;
     JScrollPane scrollPaneTasks, scrollPaneTableRank;
     JList listTasks;
     JTable tableRank;
     DefaultTableCellRenderer centerRenderer;
+    ResultEvaluation resultEvaluation;
     JPanel panelTask;
 
     private void initTaskPanel() {
         panelTask = new JPanel();
         getContentPane().add(panelTask);
         panelTask.setLayout(null);
-        panelTask.setBackground(Color.decode("#00A08A"));
+        panelTask.setBackground(Color.decode(BACKGROUND_COLOR));
 
         totalPoints = 0;
-        taskPoints = 3;
-        taskCoefficient = 5;
-
-        System.out.println(taskIndexes.length);
+        //taskPoints = 3;
+        //taskCoefficient = 5;
 
         buttonTask = new JButton("Úlohy");
         buttonTask.setBounds(20, 20, 100, 25);
@@ -360,7 +358,7 @@ public class GraphicalUserInterface extends JFrame {
         });
         panelTask.add(buttonRules);
 
-        fontTeam = new Font("Serif", Font.PLAIN, 20);
+        fontTeam = new Font("Comic Sans", Font.PLAIN, 15);
 
         labelTeamName = new JLabel("Tým: CMYK");
         labelTeamName.setBounds(390, 20, 200, 25);
@@ -368,6 +366,8 @@ public class GraphicalUserInterface extends JFrame {
         labelTeamName.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         labelTeamName.setFont(fontTeam);
         panelTask.add(labelTeamName);
+
+        resultEvaluation = new ResultEvaluation();
 
         listTasks = new JList(taskTitles);
         listTasks.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
@@ -379,13 +379,15 @@ public class GraphicalUserInterface extends JFrame {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 if(taskIndexes[listTasks.getSelectedIndex()]) {
-                    labelTaskTitle.setText(taskTitles[listTasks.getSelectedIndex()]);
                     labelTaskContent.setText(tasks[listTasks.getSelectedIndex()]);
                 } else {
-                    labelTaskTitle.setText(taskTitles[listTasks.getSelectedIndex()]);
                     //labelTaskContent.setText("zámek");
                     labelTaskContent.setText(tasks[listTasks.getSelectedIndex()]);
                 }
+                labelTaskTitle.setText(taskTitles[listTasks.getSelectedIndex()]);
+                labelTaskPoints.setText(String.valueOf("[" + resultEvaluation.getTaskPoints(listTasks.getSelectedIndex())) + " bodů]");
+
+                setTaskMode(listTasks.getSelectedIndex());
             }
         });
 
@@ -401,12 +403,11 @@ public class GraphicalUserInterface extends JFrame {
         labelTaskTitle.setFont(fontTitle);
         panelTask.add(labelTaskTitle);
 
-        labelTaskCoefficient = new JLabel("násobeno 5x");
-        labelTaskCoefficient.setBounds(200, 500, 80, 20);
-        panelTask.add(labelTaskCoefficient);
+        fontTaskPoints = new Font("Serif", Font.BOLD, 20);
 
-        labelTaskPoints = new JLabel("3 body");
-        labelTaskPoints.setBounds(300, 500, 80, 20);
+        labelTaskPoints = new JLabel("[3 bodů]");
+        labelTaskPoints.setBounds(660, 70, 80, 30);
+        labelTaskPoints.setFont(fontTaskPoints);
         panelTask.add(labelTaskPoints);
 
         labelTaskContent = new JLabel(tasks[listTasks.getSelectedIndex()]);
@@ -430,22 +431,25 @@ public class GraphicalUserInterface extends JFrame {
         textUnits.setEditable(false);
         panelTask.add(textUnits);
 
+        /*devTool*/
+        resultEvaluation.setValues();
+        /*end*/
+
         buttonSubmit = new JButton("Potvrdit");
         buttonSubmit.setBounds(570, 400, 100, 20);
         buttonSubmit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(textResult.getText().equals("5184000")) {
-                    totalPoints += taskCoefficient * taskPoints;
+                if(resultEvaluation.getEvaluation(listTasks.getSelectedIndex(), textResult.getText())) {
+                    totalPoints += resultEvaluation.getTaskPoints(listTasks.getSelectedIndex());
                     labelTotalPoints.setText(String.valueOf(totalPoints) + " bodů");
-                    textResult.setText("");
                 } else {
-                    if(taskCoefficient != 0) {
-                        taskCoefficient--;
-                        labelTaskCoefficient.setText("násobeno " + taskCoefficient + "x");
-                        textResult.setText("");
+                    if(resultEvaluation.getTaskPoints(listTasks.getSelectedIndex()) != 1) {
+                        resultEvaluation.setTaskPoints(listTasks.getSelectedIndex());
+                        labelTaskPoints.setText(resultEvaluation.getTaskPoints(listTasks.getSelectedIndex()) + " bodů");
                     }
                 }
+                textResult.setText("");
             }
         });
         panelTask.add(buttonSubmit);
@@ -535,8 +539,52 @@ public class GraphicalUserInterface extends JFrame {
         scrollPaneRulesContent = new JScrollPane();
         scrollPaneRulesContent.setViewportView(labelRulesContent);
         scrollPaneRulesContent.setBounds(20, 70, 600, 400);
+        scrollPaneRulesContent.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 3));
         scrollPaneRulesContent.setVisible(false);
         panelTask.add(scrollPaneRulesContent);
+
+        labelVector = new JLabel[4];
+        for(i = 0; i < labelVector.length; i++) {
+            labelVector[i] = new JLabel();
+        }
+        labelVector[0].setIcon(new ImageIcon("vector_1.gif"));
+        labelVector[0].setBounds(300, 175, 80, 80);
+        labelVector[0].addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                textResult.setText("1");
+                labelVector[0].setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
+            }
+        });
+        labelVector[1].setIcon(new ImageIcon("vector_2.gif"));
+        labelVector[1].setBounds(400, 175, 80, 80);
+        labelVector[1].addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                textResult.setText("2");
+            }
+        });
+        labelVector[2].setIcon(new ImageIcon("vector_3.gif"));
+        labelVector[2].setBounds(300, 270, 80, 80);
+        labelVector[2].addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                textResult.setText("3");
+            }
+        });
+        labelVector[3].setText("<html><p align=\"center\">Žádná možnost nevyhovuje</p></html>");
+        labelVector[3].setBounds(400, 270, 80, 80);
+        labelVector[3].addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                textResult.setText("4");
+            }
+        });
+
+        for(i = 0; i < labelVector.length; i++) {
+            labelVector[i].setVisible(false);
+            panelTask.add(labelVector[i]);
+        }
 
         add(panelTask);
     }
@@ -576,12 +624,20 @@ public class GraphicalUserInterface extends JFrame {
     private void setTaskVisibility(boolean visibility) {
         scrollPaneTasks.setVisible(visibility);
         labelTaskTitle.setVisible(visibility);
-        labelTaskCoefficient.setVisible(visibility);
         labelTaskPoints.setVisible(visibility);
         labelTaskContent.setVisible(visibility);
         textResult.setVisible(visibility);
         textUnits.setVisible(visibility);
         buttonSubmit.setVisible(visibility);
+    }
+
+    private void setTaskMode(int index) {
+        switch(index) {
+            case 4:
+                for(i = 0; i < labelVector.length; i++) {
+                    labelVector[i].setVisible(true);
+                }
+        }
     }
 
     public class SelectedListCellRenderer extends DefaultListCellRenderer {
@@ -616,8 +672,6 @@ public class GraphicalUserInterface extends JFrame {
         panelTest.add(labelTestTitle);
 
         totalPoints = 0;
-        taskPoints = 3;
-        taskCoefficient = 5;
 
         buttonTask = new JButton("Úlohy");
         buttonTask.setBounds(20, 20, 100, 25);
@@ -668,10 +722,6 @@ public class GraphicalUserInterface extends JFrame {
         labelTaskTitle.setFont(fontTitle);
         panelTest.add(labelTaskTitle);
 
-        labelTaskCoefficient = new JLabel("násobeno 5x");
-        labelTaskCoefficient.setBounds(200, 500, 80, 20);
-        panelTest.add(labelTaskCoefficient);
-
         labelTaskPoints = new JLabel("3 body");
         labelTaskPoints.setBounds(300, 500, 80, 20);
         panelTest.add(labelTaskPoints);
@@ -697,24 +747,6 @@ public class GraphicalUserInterface extends JFrame {
         textUnits.setEditable(false);
         panelTest.add(textUnits);
 
-        buttonSubmit = new JButton("Potvrdit");
-        buttonSubmit.setBounds(570, 400, 100, 20);
-        buttonSubmit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(textResult.getText().equals("5184000")) {
-                    totalPoints += taskCoefficient * taskPoints;
-                    labelTotalPoints.setText(String.valueOf(totalPoints) + " bodů");
-                    textResult.setText("");
-                } else {
-                    if(taskCoefficient != 0) {
-                        taskCoefficient--;
-                        labelTaskCoefficient.setText("násobeno " + taskCoefficient + "x");
-                        textResult.setText("");
-                    }
-                }
-            }
-        });
         panelTest.add(buttonSubmit);
 
         fontTotalPoints = new Font("Serif", Font.BOLD, 30);

@@ -8,6 +8,10 @@
     (6) if there will be a lot of teams put rank table to JScrollPane
     (7) highlight your team in the table
     (8) put <sup> or <sub> and <sup>1</sup>&frasl;<sub>10</sub> tags in taskContent
+    (9) disable submit result with empty textResult
+    (10) type bod when 1
+              body when 2, 3, 4
+              bodů when more
  */
 
 public class MathTournament {
