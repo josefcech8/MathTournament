@@ -184,7 +184,7 @@ public class GraphicalUserInterface extends JFrame {
     //region 5| task
     boolean pointArraysEqual;
     boolean[] taskIndexes = {true, true, true, true, true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
-    int totalPoints, i, pointsHolder = 0;
+    int totalPoints, i, pointsHolder = 0, seconds, minutes, hours;
     int[] points = {13, 5, 30}, pointsClone;
     String teamNamesHolder;
     String[] columnNames = {"POŘADÍ", "TEAM", "BODY"};
@@ -285,6 +285,7 @@ public class GraphicalUserInterface extends JFrame {
                       "<html><p align=\"justify\">Ve válcovém poháru naplněném vodou, který má plochu podstavy 200 cm2, se vznáší kostka ledu. Vznáší se, neboť je v ledu zamrznutý kamínek o hmotnosti 100 g a hustotě 5 000 kg/m3. Časem se led rozpustí a kamínek klesne na dno. Co se stane s hladinou vody? Klesne, stoupne, nebo se nezmění? Pokud se změní, tak o kolik?</p>",
     };
     Object[][] dataRank;
+    Timer timer;
     Font fontTitle, fontTotalPoints, fontTeam, fontTime, fontTaskPoints;
     JLabel labelTaskTitle, labelTaskContent, labelTaskPoints, labelTotalPoints, labelTime, labelTeamName;
     JLabel[] labelVector;
@@ -304,8 +305,6 @@ public class GraphicalUserInterface extends JFrame {
         panelTask.setBackground(Color.decode(BACKGROUND_COLOR));
 
         totalPoints = 0;
-        //taskPoints = 3;
-        //taskCoefficient = 5;
 
         buttonTask = new JButton("Úlohy");
         buttonTask.setBounds(20, 20, 100, 25);
@@ -383,7 +382,7 @@ public class GraphicalUserInterface extends JFrame {
                 } else {
                     //labelTaskContent.setText("zámek");
                     labelTaskContent.setText(tasks[listTasks.getSelectedIndex()]);
-                }
+                } // else => v případě vyřešené úlohy fajfka
                 labelTaskTitle.setText(taskTitles[listTasks.getSelectedIndex()]);
                 labelTaskPoints.setText(String.valueOf("[" + resultEvaluation.getTaskPoints(listTasks.getSelectedIndex())) + " bodů]");
 
@@ -463,9 +462,10 @@ public class GraphicalUserInterface extends JFrame {
 
         fontTime = new Font("Serif", Font.BOLD, 23);
 
-        labelTime = new JLabel("2:40:30");
+        labelTime = new JLabel("time error");
         labelTime.setBounds(850, 60, 200, 30);
         labelTime.setFont(fontTime);
+        setCountdown();
         panelTask.add(labelTime);
 
         labelMatfyz = new JLabel(new ImageIcon("mff.gif"));
@@ -553,7 +553,11 @@ public class GraphicalUserInterface extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 textResult.setText("1");
-                labelVector[0].setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
+                for(i = 0; i < labelVector.length; i++) {
+                    labelVector[i].setBorder(null);
+                    if(i == 0)
+                        labelVector[i].setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
+                }
             }
         });
         labelVector[1].setIcon(new ImageIcon("vector_2.gif"));
@@ -562,6 +566,11 @@ public class GraphicalUserInterface extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 textResult.setText("2");
+                for(i = 0; i < labelVector.length; i++) {
+                    labelVector[i].setBorder(null);
+                    if(i == 1)
+                        labelVector[i].setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
+                }
             }
         });
         labelVector[2].setIcon(new ImageIcon("vector_3.gif"));
@@ -570,6 +579,11 @@ public class GraphicalUserInterface extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 textResult.setText("3");
+                for(i = 0; i < labelVector.length; i++) {
+                    labelVector[i].setBorder(null);
+                    if(i == 2)
+                        labelVector[i].setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
+                }
             }
         });
         labelVector[3].setText("<html><p align=\"center\">Žádná možnost nevyhovuje</p></html>");
@@ -578,6 +592,11 @@ public class GraphicalUserInterface extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 textResult.setText("4");
+                for(i = 0; i < labelVector.length; i++) {
+                    labelVector[i].setBorder(null);
+                    if(i == 3)
+                        labelVector[i].setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
+                }
             }
         });
 
@@ -631,11 +650,40 @@ public class GraphicalUserInterface extends JFrame {
         buttonSubmit.setVisible(visibility);
     }
 
+    private void setCountdown() {
+        seconds = 30;
+        minutes = 5;
+        hours = 3;
+        timer = new Timer(1000, new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                seconds--;
+                if(seconds == -1) {
+                    minutes--;
+                    if(minutes == -1) {
+                        hours--;
+                        if(hours == -1) {
+                            // konec
+                        }
+                        minutes = 59;
+                    }
+                    seconds = 59;
+                }
+                labelTime.setText(String.format("%02d:%02d:%02d", hours, minutes, seconds));
+            }
+        });
+        timer.start();
+    }
+
     private void setTaskMode(int index) {
         switch(index) {
             case 4:
                 for(i = 0; i < labelVector.length; i++) {
                     labelVector[i].setVisible(true);
+                }
+                break;
+            default:
+                for(i = 0; i < labelVector.length; i++) {
+                    labelVector[i].setVisible(false);
                 }
         }
     }
