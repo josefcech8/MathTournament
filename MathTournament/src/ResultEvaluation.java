@@ -33,7 +33,7 @@ public class ResultEvaluation {
             case 1: return taskResultInteger == 50;
             case 2: return taskResultInteger == 6;
             case 3: return taskResultInteger == 16;
-            case 4:
+            case 4: return taskResultInteger == 2;
             case 5:
             case 6: return taskResultInteger == 2;
             case 7: return taskResultInteger == 144;

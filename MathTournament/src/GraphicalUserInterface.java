@@ -4,10 +4,8 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
+import java.util.Vector;
 
 public class GraphicalUserInterface extends JFrame {
 
@@ -296,6 +294,7 @@ public class GraphicalUserInterface extends JFrame {
     JTable tableRank;
     DefaultTableCellRenderer centerRenderer;
     ResultEvaluation resultEvaluation;
+    VectorPressedAdapter vectorPressedAdapter;
     JPanel panelTask;
 
     private void initTaskPanel() {
@@ -380,9 +379,9 @@ public class GraphicalUserInterface extends JFrame {
                 if(taskIndexes[listTasks.getSelectedIndex()]) {
                     labelTaskContent.setText(tasks[listTasks.getSelectedIndex()]);
                 } else {
-                    //labelTaskContent.setText("zámek");
+                    /*labelTaskContent.setText("zámek");*/
                     labelTaskContent.setText(tasks[listTasks.getSelectedIndex()]);
-                } // else => v případě vyřešené úlohy fajfka
+                } /* else => v případě vyřešené úlohy fajfka */
                 labelTaskTitle.setText(taskTitles[listTasks.getSelectedIndex()]);
                 labelTaskPoints.setText(String.valueOf("[" + resultEvaluation.getTaskPoints(listTasks.getSelectedIndex())) + " bodů]");
 
@@ -416,13 +415,14 @@ public class GraphicalUserInterface extends JFrame {
 
         textResult = new JTextField("Zadejte výsledek");
         textResult.setBounds(300, 400, 200, 20);
+        /* Záleží na každém úkolu
         textResult.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 JOptionPane.showMessageDialog(null, "Vzorové zadání odpovědi");
                 textResult.setText("");
             }
-        });
+        });*/
         panelTask.add(textResult);
 
         textUnits = new JTextField("km");
@@ -445,7 +445,7 @@ public class GraphicalUserInterface extends JFrame {
                 } else {
                     if(resultEvaluation.getTaskPoints(listTasks.getSelectedIndex()) != 1) {
                         resultEvaluation.setTaskPoints(listTasks.getSelectedIndex());
-                        labelTaskPoints.setText(resultEvaluation.getTaskPoints(listTasks.getSelectedIndex()) + " bodů");
+                        labelTaskPoints.setText("[" + resultEvaluation.getTaskPoints(listTasks.getSelectedIndex()) + " bodů]");
                     }
                 }
                 textResult.setText("");
@@ -551,7 +551,7 @@ public class GraphicalUserInterface extends JFrame {
         labelVector[0].setBounds(300, 175, 80, 80);
         labelVector[0].addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
+            public void mousePressed(MouseEvent e) {
                 textResult.setText("1");
                 for(i = 0; i < labelVector.length; i++) {
                     labelVector[i].setBorder(null);
@@ -564,7 +564,7 @@ public class GraphicalUserInterface extends JFrame {
         labelVector[1].setBounds(400, 175, 80, 80);
         labelVector[1].addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
+            public void mousePressed(MouseEvent e) {
                 textResult.setText("2");
                 for(i = 0; i < labelVector.length; i++) {
                     labelVector[i].setBorder(null);
@@ -577,7 +577,7 @@ public class GraphicalUserInterface extends JFrame {
         labelVector[2].setBounds(300, 270, 80, 80);
         labelVector[2].addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
+            public void mousePressed(MouseEvent e) {
                 textResult.setText("3");
                 for(i = 0; i < labelVector.length; i++) {
                     labelVector[i].setBorder(null);
@@ -590,7 +590,7 @@ public class GraphicalUserInterface extends JFrame {
         labelVector[3].setBounds(400, 270, 80, 80);
         labelVector[3].addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
+            public void mousePressed(MouseEvent e) {
                 textResult.setText("4");
                 for(i = 0; i < labelVector.length; i++) {
                     labelVector[i].setBorder(null);
@@ -604,6 +604,16 @@ public class GraphicalUserInterface extends JFrame {
             labelVector[i].setVisible(false);
             panelTask.add(labelVector[i]);
         }
+
+        /*devTool*/
+        /*cleancode*/
+        /*rename class*/
+        /*center pictures || layout*/
+        paintComponent paint100 = new paintComponent();
+        paint100.setBounds(300, 200, 370, 170);
+        paint100.setBackground(Color.decode(BACKGROUND_COLOR));
+        panelTask.add(paint100);
+        /*end*/
 
         add(panelTask);
     }
@@ -680,11 +690,19 @@ public class GraphicalUserInterface extends JFrame {
                 for(i = 0; i < labelVector.length; i++) {
                     labelVector[i].setVisible(true);
                 }
+                textResult.setEditable(false);
+                textResult.setText("není vybrána žádná možnost");
+                vectorPressedAdapter = new VectorPressedAdapter();
+                textResult.addMouseListener(vectorPressedAdapter);
                 break;
             default:
                 for(i = 0; i < labelVector.length; i++) {
                     labelVector[i].setVisible(false);
+                    labelVector[i].setBorder(null);
                 }
+
+                textResult.setEditable(true);
+                textResult.setText("Zadejte výsledek");
         }
     }
 
@@ -699,9 +717,31 @@ public class GraphicalUserInterface extends JFrame {
         }
     }
 
+    public class VectorPressedAdapter extends MouseAdapter {
+        @Override
+        public void mousePressed(MouseEvent e) {
+            if(listTasks.getSelectedIndex() == 4)
+                textResult.setText("klikni na obrázek");
+        }
+    }
+
     public class paintComponent extends JPanel {
         public void paint(Graphics g) {
             super.paint(g);
+
+            if(listTasks.getSelectedIndex() == 5) {
+                int[] x = {185, 100, 270}, y = {20, 140, 140};
+                g.setColor(Color.DARK_GRAY);
+                g.fillPolygon(x, y, 3);
+            }
+        }
+    }
+
+    public class paintComponent2 extends JPanel {
+        public void paint(Graphics g) {
+            super.paint(g);
+
+
         }
     }
     //endregion
