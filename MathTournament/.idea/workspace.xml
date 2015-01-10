@@ -28,8 +28,8 @@
       <file leaf-file-name="MathTournament.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MathTournament.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
-              <caret line="10" column="53" selection-start-line="10" selection-start-column="53" selection-end-line="10" selection-end-column="53" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
+              <caret line="9" column="96" selection-start-line="9" selection-start-column="96" selection-end-line="9" selection-end-column="96" />
               <folding />
             </state>
           </provider>
@@ -38,28 +38,16 @@
       <file leaf-file-name="GraphicalUserInterface.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GraphicalUserInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.84379786" vertical-offset="8561" max-vertical-offset="9384">
-              <caret line="740" column="39" selection-start-line="740" selection-start-column="39" selection-end-line="740" selection-end-column="39" />
+            <state vertical-scroll-proportion="2.9004595" vertical-offset="7728" max-vertical-offset="11985">
+              <caret line="717" column="0" selection-start-line="717" selection-start-column="0" selection-end-line="717" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="n#!!doc;n#labelTitle#0;n#GraphicalUserInterface#0" expanded="false" />
+                <element signature="method#initLoginPanel#0;class#GraphicalUserInterface#0" expanded="false" />
                 <element signature="n#!!doc;n#labelRulesTitle#0;n#GraphicalUserInterface#0" expanded="false" />
                 <element signature="n#!!doc;n#labelStartTitle#0;n#GraphicalUserInterface#0" expanded="false" />
-                <element signature="method#initStartCompetition#0;class#GraphicalUserInterface#0" expanded="false" />
-                <element signature="e#27627#28419#0" expanded="true" />
-                <element signature="e#28418#28419#0" expanded="true" />
-                <element signature="e#35575#35992#0" expanded="true" />
-                <element signature="e#35991#35992#0" expanded="true" />
-                <element signature="e#36150#36567#0" expanded="true" />
-                <element signature="e#36566#36567#0" expanded="true" />
-                <element signature="e#36725#37142#0" expanded="true" />
-                <element signature="e#37141#37142#0" expanded="true" />
-                <element signature="e#37334#37751#0" expanded="true" />
-                <element signature="e#37750#37751#0" expanded="true" />
-                <element signature="method#sortTableRank#0;class#GraphicalUserInterface#0" expanded="false" />
-                <element signature="method#setTaskVisibility#0;class#GraphicalUserInterface#0" expanded="false" />
-                <element signature="method#setCountdown#0;class#GraphicalUserInterface#0" expanded="false" />
-                <element signature="n#!!doc;n#labelTestTitle#0;n#GraphicalUserInterface#0" expanded="false" />
+                <element signature="e#39547#40442#0" expanded="true" />
+                <element signature="e#40441#40442#0" expanded="true" />
+                <element signature="method#initTestPanel#0;class#GraphicalUserInterface#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -68,9 +56,17 @@
       <file leaf-file-name="ResultEvaluation.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ResultEvaluation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="155" max-vertical-offset="1360">
-              <caret line="35" column="50" selection-start-line="35" selection-start-column="50" selection-end-line="35" selection-end-column="50" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="e#658#659#0" expanded="true" />
+                <element signature="e#693#694#0" expanded="true" />
+                <element signature="e#736#737#0" expanded="true" />
+                <element signature="e#776#777#0" expanded="true" />
+                <element signature="e#817#818#0" expanded="true" />
+                <element signature="e#852#853#0" expanded="true" />
+                <element signature="method#getEvaluation#0;class#ResultEvaluation#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -85,8 +81,8 @@
         <option value="$PROJECT_DIR$/src/LoginFrame.java" />
         <option value="$PROJECT_DIR$/src/FormTest.form" />
         <option value="$PROJECT_DIR$/src/PaintComp.java" />
-        <option value="$PROJECT_DIR$/src/ResultEvaluation.java" />
         <option value="$PROJECT_DIR$/src/MathTournament.java" />
+        <option value="$PROJECT_DIR$/src/ResultEvaluation.java" />
         <option value="$PROJECT_DIR$/src/GraphicalUserInterface.java" />
       </list>
     </option>
@@ -108,7 +104,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
+    <navigator proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -119,44 +115,7 @@
       <autoscrollFromSource />
       <sortByType />
     </navigator>
-    <panes>
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MathTournament" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MathTournament" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MathTournament" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MathTournament" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MathTournament" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="GoToClass.includeLibraries" value="false" />
@@ -374,13 +333,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
+    <frame x="-8" y="-8" width="1696" height="1026" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32178771" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3208191" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -424,7 +383,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="10" />
+      <option name="time" value="14" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -433,6 +392,126 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/MathTournament.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="170">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GraphicalUserInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="12002" max-vertical-offset="15436">
+          <caret line="727" column="52" selection-start-line="727" selection-start-column="52" selection-end-line="727" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#initLoginPanel#0;class#GraphicalUserInterface#0" expanded="false" />
+            <element signature="n#!!doc;n#labelRulesTitle#0;n#GraphicalUserInterface#0" expanded="false" />
+            <element signature="n#!!doc;n#labelStartTitle#0;n#GraphicalUserInterface#0" expanded="false" />
+            <element signature="e#39547#40442#0" expanded="true" />
+            <element signature="e#40441#40442#0" expanded="true" />
+            <element signature="method#initTestPanel#0;class#GraphicalUserInterface#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ResultEvaluation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="155" max-vertical-offset="1360">
+          <caret line="35" column="50" selection-start-line="35" selection-start-column="50" selection-end-line="35" selection-end-column="50" />
+          <folding>
+            <element signature="e#658#659#0" expanded="true" />
+            <element signature="e#693#694#0" expanded="true" />
+            <element signature="e#736#737#0" expanded="true" />
+            <element signature="e#776#777#0" expanded="true" />
+            <element signature="e#817#818#0" expanded="true" />
+            <element signature="e#852#853#0" expanded="true" />
+            <element signature="method#getEvaluation#0;class#ResultEvaluation#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MathTournament.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="408">
+          <caret line="10" column="53" selection-start-line="10" selection-start-column="53" selection-end-line="10" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GraphicalUserInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="11220">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#initLoginPanel#0;class#GraphicalUserInterface#0" expanded="false" />
+            <element signature="n#!!doc;n#labelRulesTitle#0;n#GraphicalUserInterface#0" expanded="false" />
+            <element signature="n#!!doc;n#labelStartTitle#0;n#GraphicalUserInterface#0" expanded="false" />
+            <element signature="e#39547#40442#0" expanded="true" />
+            <element signature="e#40441#40442#0" expanded="true" />
+            <element signature="method#initTestPanel#0;class#GraphicalUserInterface#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ResultEvaluation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="155" max-vertical-offset="1360">
+          <caret line="35" column="50" selection-start-line="35" selection-start-column="50" selection-end-line="35" selection-end-column="50" />
+          <folding>
+            <element signature="e#658#659#0" expanded="true" />
+            <element signature="e#693#694#0" expanded="true" />
+            <element signature="e#736#737#0" expanded="true" />
+            <element signature="e#776#777#0" expanded="true" />
+            <element signature="e#817#818#0" expanded="true" />
+            <element signature="e#852#853#0" expanded="true" />
+            <element signature="method#getEvaluation#0;class#ResultEvaluation#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MathTournament.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="408">
+          <caret line="10" column="53" selection-start-line="10" selection-start-column="53" selection-end-line="10" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GraphicalUserInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="11220">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#initLoginPanel#0;class#GraphicalUserInterface#0" expanded="false" />
+            <element signature="n#!!doc;n#labelRulesTitle#0;n#GraphicalUserInterface#0" expanded="false" />
+            <element signature="n#!!doc;n#labelStartTitle#0;n#GraphicalUserInterface#0" expanded="false" />
+            <element signature="e#39547#40442#0" expanded="true" />
+            <element signature="e#40441#40442#0" expanded="true" />
+            <element signature="method#initTestPanel#0;class#GraphicalUserInterface#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ResultEvaluation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="155" max-vertical-offset="1360">
+          <caret line="35" column="50" selection-start-line="35" selection-start-column="50" selection-end-line="35" selection-end-column="50" />
+          <folding>
+            <element signature="e#658#659#0" expanded="true" />
+            <element signature="e#693#694#0" expanded="true" />
+            <element signature="e#736#737#0" expanded="true" />
+            <element signature="e#776#777#0" expanded="true" />
+            <element signature="e#817#818#0" expanded="true" />
+            <element signature="e#852#853#0" expanded="true" />
+            <element signature="method#getEvaluation#0;class#ResultEvaluation#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/MathTournament.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="408">
@@ -447,24 +526,12 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="n#!!doc;n#labelTitle#0;n#GraphicalUserInterface#0" expanded="false" />
+            <element signature="method#initLoginPanel#0;class#GraphicalUserInterface#0" expanded="false" />
             <element signature="n#!!doc;n#labelRulesTitle#0;n#GraphicalUserInterface#0" expanded="false" />
             <element signature="n#!!doc;n#labelStartTitle#0;n#GraphicalUserInterface#0" expanded="false" />
-            <element signature="method#initStartCompetition#0;class#GraphicalUserInterface#0" expanded="false" />
-            <element signature="e#27627#28419#0" expanded="true" />
-            <element signature="e#28418#28419#0" expanded="true" />
-            <element signature="e#35575#35992#0" expanded="true" />
-            <element signature="e#35991#35992#0" expanded="true" />
-            <element signature="e#36150#36567#0" expanded="true" />
-            <element signature="e#36566#36567#0" expanded="true" />
-            <element signature="e#36725#37142#0" expanded="true" />
-            <element signature="e#37141#37142#0" expanded="true" />
-            <element signature="e#37334#37751#0" expanded="true" />
-            <element signature="e#37750#37751#0" expanded="true" />
-            <element signature="method#sortTableRank#0;class#GraphicalUserInterface#0" expanded="false" />
-            <element signature="method#setTaskVisibility#0;class#GraphicalUserInterface#0" expanded="false" />
-            <element signature="method#setCountdown#0;class#GraphicalUserInterface#0" expanded="false" />
-            <element signature="n#!!doc;n#labelTestTitle#0;n#GraphicalUserInterface#0" expanded="false" />
+            <element signature="e#39547#40442#0" expanded="true" />
+            <element signature="e#40441#40442#0" expanded="true" />
+            <element signature="method#initTestPanel#0;class#GraphicalUserInterface#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -473,7 +540,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="1428">
           <caret line="35" column="19" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="19" />
-          <folding />
+          <folding>
+            <element signature="e#658#659#0" expanded="true" />
+            <element signature="e#693#694#0" expanded="true" />
+            <element signature="e#736#737#0" expanded="true" />
+            <element signature="e#776#777#0" expanded="true" />
+            <element signature="e#817#818#0" expanded="true" />
+            <element signature="e#852#853#0" expanded="true" />
+            <element signature="method#getEvaluation#0;class#ResultEvaluation#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -491,24 +566,12 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="n#!!doc;n#labelTitle#0;n#GraphicalUserInterface#0" expanded="false" />
+            <element signature="method#initLoginPanel#0;class#GraphicalUserInterface#0" expanded="false" />
             <element signature="n#!!doc;n#labelRulesTitle#0;n#GraphicalUserInterface#0" expanded="false" />
             <element signature="n#!!doc;n#labelStartTitle#0;n#GraphicalUserInterface#0" expanded="false" />
-            <element signature="method#initStartCompetition#0;class#GraphicalUserInterface#0" expanded="false" />
-            <element signature="e#27627#28419#0" expanded="true" />
-            <element signature="e#28418#28419#0" expanded="true" />
-            <element signature="e#35575#35992#0" expanded="true" />
-            <element signature="e#35991#35992#0" expanded="true" />
-            <element signature="e#36150#36567#0" expanded="true" />
-            <element signature="e#36566#36567#0" expanded="true" />
-            <element signature="e#36725#37142#0" expanded="true" />
-            <element signature="e#37141#37142#0" expanded="true" />
-            <element signature="e#37334#37751#0" expanded="true" />
-            <element signature="e#37750#37751#0" expanded="true" />
-            <element signature="method#sortTableRank#0;class#GraphicalUserInterface#0" expanded="false" />
-            <element signature="method#setTaskVisibility#0;class#GraphicalUserInterface#0" expanded="false" />
-            <element signature="method#setCountdown#0;class#GraphicalUserInterface#0" expanded="false" />
-            <element signature="n#!!doc;n#labelTestTitle#0;n#GraphicalUserInterface#0" expanded="false" />
+            <element signature="e#39547#40442#0" expanded="true" />
+            <element signature="e#40441#40442#0" expanded="true" />
+            <element signature="method#initTestPanel#0;class#GraphicalUserInterface#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -517,7 +580,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="272">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#658#659#0" expanded="true" />
+            <element signature="e#693#694#0" expanded="true" />
+            <element signature="e#736#737#0" expanded="true" />
+            <element signature="e#776#777#0" expanded="true" />
+            <element signature="e#817#818#0" expanded="true" />
+            <element signature="e#852#853#0" expanded="true" />
+            <element signature="method#getEvaluation#0;class#ResultEvaluation#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -535,24 +606,12 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="n#!!doc;n#labelTitle#0;n#GraphicalUserInterface#0" expanded="false" />
+            <element signature="method#initLoginPanel#0;class#GraphicalUserInterface#0" expanded="false" />
             <element signature="n#!!doc;n#labelRulesTitle#0;n#GraphicalUserInterface#0" expanded="false" />
             <element signature="n#!!doc;n#labelStartTitle#0;n#GraphicalUserInterface#0" expanded="false" />
-            <element signature="method#initStartCompetition#0;class#GraphicalUserInterface#0" expanded="false" />
-            <element signature="e#27627#28419#0" expanded="true" />
-            <element signature="e#28418#28419#0" expanded="true" />
-            <element signature="e#35575#35992#0" expanded="true" />
-            <element signature="e#35991#35992#0" expanded="true" />
-            <element signature="e#36150#36567#0" expanded="true" />
-            <element signature="e#36566#36567#0" expanded="true" />
-            <element signature="e#36725#37142#0" expanded="true" />
-            <element signature="e#37141#37142#0" expanded="true" />
-            <element signature="e#37334#37751#0" expanded="true" />
-            <element signature="e#37750#37751#0" expanded="true" />
-            <element signature="method#sortTableRank#0;class#GraphicalUserInterface#0" expanded="false" />
-            <element signature="method#setTaskVisibility#0;class#GraphicalUserInterface#0" expanded="false" />
-            <element signature="method#setCountdown#0;class#GraphicalUserInterface#0" expanded="false" />
-            <element signature="n#!!doc;n#labelTestTitle#0;n#GraphicalUserInterface#0" expanded="false" />
+            <element signature="e#39547#40442#0" expanded="true" />
+            <element signature="e#40441#40442#0" expanded="true" />
+            <element signature="method#initTestPanel#0;class#GraphicalUserInterface#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -571,24 +630,12 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="n#!!doc;n#labelTitle#0;n#GraphicalUserInterface#0" expanded="false" />
+            <element signature="method#initLoginPanel#0;class#GraphicalUserInterface#0" expanded="false" />
             <element signature="n#!!doc;n#labelRulesTitle#0;n#GraphicalUserInterface#0" expanded="false" />
             <element signature="n#!!doc;n#labelStartTitle#0;n#GraphicalUserInterface#0" expanded="false" />
-            <element signature="method#initStartCompetition#0;class#GraphicalUserInterface#0" expanded="false" />
-            <element signature="e#27627#28419#0" expanded="true" />
-            <element signature="e#28418#28419#0" expanded="true" />
-            <element signature="e#35575#35992#0" expanded="true" />
-            <element signature="e#35991#35992#0" expanded="true" />
-            <element signature="e#36150#36567#0" expanded="true" />
-            <element signature="e#36566#36567#0" expanded="true" />
-            <element signature="e#36725#37142#0" expanded="true" />
-            <element signature="e#37141#37142#0" expanded="true" />
-            <element signature="e#37334#37751#0" expanded="true" />
-            <element signature="e#37750#37751#0" expanded="true" />
-            <element signature="method#sortTableRank#0;class#GraphicalUserInterface#0" expanded="false" />
-            <element signature="method#setTaskVisibility#0;class#GraphicalUserInterface#0" expanded="false" />
-            <element signature="method#setCountdown#0;class#GraphicalUserInterface#0" expanded="false" />
-            <element signature="n#!!doc;n#labelTestTitle#0;n#GraphicalUserInterface#0" expanded="false" />
+            <element signature="e#39547#40442#0" expanded="true" />
+            <element signature="e#40441#40442#0" expanded="true" />
+            <element signature="method#initTestPanel#0;class#GraphicalUserInterface#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -607,24 +654,12 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="n#!!doc;n#labelTitle#0;n#GraphicalUserInterface#0" expanded="false" />
+            <element signature="method#initLoginPanel#0;class#GraphicalUserInterface#0" expanded="false" />
             <element signature="n#!!doc;n#labelRulesTitle#0;n#GraphicalUserInterface#0" expanded="false" />
             <element signature="n#!!doc;n#labelStartTitle#0;n#GraphicalUserInterface#0" expanded="false" />
-            <element signature="method#initStartCompetition#0;class#GraphicalUserInterface#0" expanded="false" />
-            <element signature="e#27627#28419#0" expanded="true" />
-            <element signature="e#28418#28419#0" expanded="true" />
-            <element signature="e#35575#35992#0" expanded="true" />
-            <element signature="e#35991#35992#0" expanded="true" />
-            <element signature="e#36150#36567#0" expanded="true" />
-            <element signature="e#36566#36567#0" expanded="true" />
-            <element signature="e#36725#37142#0" expanded="true" />
-            <element signature="e#37141#37142#0" expanded="true" />
-            <element signature="e#37334#37751#0" expanded="true" />
-            <element signature="e#37750#37751#0" expanded="true" />
-            <element signature="method#sortTableRank#0;class#GraphicalUserInterface#0" expanded="false" />
-            <element signature="method#setTaskVisibility#0;class#GraphicalUserInterface#0" expanded="false" />
-            <element signature="method#setCountdown#0;class#GraphicalUserInterface#0" expanded="false" />
-            <element signature="n#!!doc;n#labelTestTitle#0;n#GraphicalUserInterface#0" expanded="false" />
+            <element signature="e#39547#40442#0" expanded="true" />
+            <element signature="e#40441#40442#0" expanded="true" />
+            <element signature="method#initTestPanel#0;class#GraphicalUserInterface#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -637,46 +672,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ResultEvaluation.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_13/jre/lib/rt.jar!/java/lang/Integer.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1360">
-          <caret line="35" column="50" selection-start-line="35" selection-start-column="50" selection-end-line="35" selection-end-column="50" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="7412">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MathTournament.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
-          <caret line="10" column="53" selection-start-line="10" selection-start-column="53" selection-end-line="10" selection-end-column="53" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
+          <caret line="9" column="96" selection-start-line="9" selection-start-column="96" selection-end-line="9" selection-end-column="96" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ResultEvaluation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#658#659#0" expanded="true" />
+            <element signature="e#693#694#0" expanded="true" />
+            <element signature="e#736#737#0" expanded="true" />
+            <element signature="e#776#777#0" expanded="true" />
+            <element signature="e#817#818#0" expanded="true" />
+            <element signature="e#852#853#0" expanded="true" />
+            <element signature="method#getEvaluation#0;class#ResultEvaluation#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GraphicalUserInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.84379786" vertical-offset="8561" max-vertical-offset="9384">
-          <caret line="740" column="39" selection-start-line="740" selection-start-column="39" selection-end-line="740" selection-end-column="39" />
+        <state vertical-scroll-proportion="2.9004595" vertical-offset="7728" max-vertical-offset="11985">
+          <caret line="717" column="0" selection-start-line="717" selection-start-column="0" selection-end-line="717" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="n#!!doc;n#labelTitle#0;n#GraphicalUserInterface#0" expanded="false" />
+            <element signature="method#initLoginPanel#0;class#GraphicalUserInterface#0" expanded="false" />
             <element signature="n#!!doc;n#labelRulesTitle#0;n#GraphicalUserInterface#0" expanded="false" />
             <element signature="n#!!doc;n#labelStartTitle#0;n#GraphicalUserInterface#0" expanded="false" />
-            <element signature="method#initStartCompetition#0;class#GraphicalUserInterface#0" expanded="false" />
-            <element signature="e#27627#28419#0" expanded="true" />
-            <element signature="e#28418#28419#0" expanded="true" />
-            <element signature="e#35575#35992#0" expanded="true" />
-            <element signature="e#35991#35992#0" expanded="true" />
-            <element signature="e#36150#36567#0" expanded="true" />
-            <element signature="e#36566#36567#0" expanded="true" />
-            <element signature="e#36725#37142#0" expanded="true" />
-            <element signature="e#37141#37142#0" expanded="true" />
-            <element signature="e#37334#37751#0" expanded="true" />
-            <element signature="e#37750#37751#0" expanded="true" />
-            <element signature="method#sortTableRank#0;class#GraphicalUserInterface#0" expanded="false" />
-            <element signature="method#setTaskVisibility#0;class#GraphicalUserInterface#0" expanded="false" />
-            <element signature="method#setCountdown#0;class#GraphicalUserInterface#0" expanded="false" />
-            <element signature="n#!!doc;n#labelTestTitle#0;n#GraphicalUserInterface#0" expanded="false" />
+            <element signature="e#39547#40442#0" expanded="true" />
+            <element signature="e#40441#40442#0" expanded="true" />
+            <element signature="method#initTestPanel#0;class#GraphicalUserInterface#0" expanded="false" />
           </folding>
         </state>
       </provider>

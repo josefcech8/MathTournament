@@ -3,8 +3,13 @@ import javax.swing.border.Border;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.MaskFormatter;
+import javax.swing.text.NumberFormatter;
 import java.awt.*;
 import java.awt.event.*;
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.Vector;
 
 public class GraphicalUserInterface extends JFrame {
@@ -36,7 +41,7 @@ public class GraphicalUserInterface extends JFrame {
 
         /*initLoginPanel();
         initRulesPanel();
-        /*initTestPanel();
+        initTestPanel();
         initStartCompetition();*/
         initTaskPanel();
 
@@ -180,11 +185,15 @@ public class GraphicalUserInterface extends JFrame {
     //endregion
 
     //region 5| task
+    /*devTool*/
+    paintComponent paint100;
+    /*end*/
+
     boolean pointArraysEqual;
     boolean[] taskIndexes = {true, true, true, true, true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
-    int totalPoints, i, pointsHolder = 0, seconds, minutes, hours;
+    int totalPoints, i, pointsHolder = 0, seconds, minutes, hours, triangleMathTextSizeX, triangleMathTextSizeY;
     int[] points = {13, 5, 30}, pointsClone;
-    String teamNamesHolder;
+    String teamNamesHolder, triangleMathResult;
     String[] columnNames = {"POŘADÍ", "TEAM", "BODY"};
     String[] teamNames = {"Cmyk", "Havíři", "Tutor"};
 
@@ -263,7 +272,7 @@ public class GraphicalUserInterface extends JFrame {
                       "<html><p align=\"justify\">Bráškové Pepa a Pavel si chtějí postavit houpačku z lehkého prkna dlouhého 4,2m a polena. Když si vše připraví, snaží se ji dát do rovnováhy. V jaké vzdálenosti od Pepy musí poleno umístit, když Pepa váží 24 kg, Pavel 18 kg, a oba sedí na koncích prkna?</p>",
                       "<html><p align=\"justify\">Pro pravoúhlý rovnoběžník s celočíselnými délkami stran platí, že číselná hodnota jeho obsahu je stejná jako hodnota jeho obvodu. Nalezněte rozměry tohoto čtyřúhelníku, který vlastnost výše splňuje a jeho obsah je nejmenší.</p>",
                       "<html><p align=\"justify\">Máme chuť na hrnek teplého mléka, a tak si jeden připravíme. Mléko o objemu V = 0,25 ℓ má teplotu t0 = 20 ◦C, a chceme si ho ohřát na teplotu t1 = 42 ◦C. Po ruce máme pouze rychlovarnou konvici. Připojíme ji k elektrickému zdroji, který do konvice přivádí proud I = 3,9A při napětí U = 220V. Jak dlouho musíme čekat, než se nám mléko ohřeje? Hustota mléka je stejná jako hustota vody, měrná tepelná kapacita je c = 3 900 J/(kg·◦C). Tepelné ztráty zanedbejte.</p>",
-                      "<html><p align=\"justify\">Kuba jede na tábor a bere si svoji karimatku, která má tvar kvádru o rozměrech délky l, šířky d a výšky h. Kuba si karimatku natěsno sroluje podél delší strany l do tvaru válce. Jaký bude poloměr tohoto válce? Zanedbejte „zub“, který vznikne u konce karimatky.</p>",
+                      "<html><p align=\"justify\">Kuba jede na tábor a bere si svoji karimatku, která má tvar kvádru o rozměrech délky l = 180 cm, šířky d = 50 cm a výšky h = 0,7 cm. Kuba si karimatku natěsno sroluje podél delší strany l do tvaru válce. Jaký bude poloměr tohoto válce? Zanedbejte „zub“, který vznikne u konce karimatky. Za PI dosaďte 3,14.</p>",
                       "<html><p align=\"justify\">Ve vlakových kupé jsou dvě zrcadla umístěna proti sobě. To má za následek, že při pohledu do jednoho ze zrcadel mírně zboku vidíme spousty obrazů své tváře: první obraz v zrcadle, na který se díváme, druhý jako obraz obrazu obrazu, třetí jako obraz obrazu obrazu obrazu obrazu a tak dále. V jaké zdánlivé vzdálenosti vidíme druhý pozorovaný obraz, pokud je kupé široké 2m a my stojíme přesně v jeho středu?</p>",
                       "<html><p align=\"justify\">Ondra na noční obloze pozoruje dvojhvězdu, o které si myslí, že je od Země vzdálena 8,24 parseků (pc). Obě složky dvojhvězdy pozoruje pod úhlem 1′′. Jak daleko jsou od sebe vzdáleny složky dvojhvězdy ve skutečnosti? Vzdálenost vyjádřete v astronomických jednotkách (AU). Tip: jeden parsek je vzdálenost, ze které je jedna astronomická jednotka pozorovaná pod úhlem 1′′.</p>",
                       "<html><p align=\"justify\">Tři plechovky o poloměru podstavy r = 5 cm postavíme těsně k sobě tak, aby středy jejich podstav tvořily rovnostranný trojúhelník. Jak dlouhou potravinovou fólii budeme potřebovat, abychom plechovky obmotali jednou kolem dokola?</p>",
@@ -274,9 +283,9 @@ public class GraphicalUserInterface extends JFrame {
                       "<html><p align=\"justify\">Simča si nově pořídila hydraulické zařízení, které se skládá ze dvou propojených pístů s plochami 100 cm2 a 1 000 cm2. Na větší píst umístila měřicí přístroj o hmotnosti 250 kg a zjistila, že zvedat ho pomalu do výšky je brnkačka. Jakou práci Simča při zvedání vykonala, pokud přístroj zvedla do výšky 2m?</p>",
                       "<html><p align=\"justify\">Kolik nul na konci má ve svém dekadickém zápise číslo, které dostaneme vynásobením všech čísel od 1 do 100?</p>",
                       "<html><p align=\"justify\">Bronz je slitina cínu a mědi v hmotnostním poměru 1 : 3. Víme, že hustota cínu je přibližně ϱSn = 7 kg/dm3 a hustota mědi ϱCu = 9 kg/dm3. Jaký bude poměr objemů cínu a mědi VSn/VCu potřebných na výrobu m = 1 kg bronzu?</p>",
-                      "<html><p align=\"justify\">Znavený turista se zastavil v hospodě u cesty a koupil si chlazený nápoj. Nápoj má teplotu t0 = 7 ◦C a objem V = 250mℓ, jeho energetická hodnota je \" = 1 000 kJ/kg. Svými vlastnostmi se nápoj blíží vodě, má tedy hustotu ϱ = 1 kg/ℓ a měrnou tepelnou kapacitu c = 4 kJ/(kg·◦C). Kolik energie turista z nápoje získá, jestliže ho po vypití ve svém těle zahřeje na t1 = 37 ◦C?</p>",
+                      "<html><p align=\"justify\">Znavený turista se zastavil v hospodě u cesty a koupil si chlazený nápoj. Nápoj má teplotu t0 = 7 ◦C a objem V = 250mℓ, jeho energetická hodnota je \u03B5 = 1 000 kJ/kg. Svými vlastnostmi se nápoj blíží vodě, má tedy hustotu ϱ = 1 kg/ℓ a měrnou tepelnou kapacitu c = 4 kJ/(kg·◦C). Kolik energie turista z nápoje získá, jestliže ho po vypití ve svém těle zahřeje na t1 = 37 ◦C?</p>",
                       "<html><p align=\"justify\">Lenka si namalovala rovnoramenný trojúhelník ABC a s překvapením zjistila, že na jeho ramenech AB, resp. AC, lze najít body P, resp. Q, takové, že |BC| = |CP| = |PQ| = |QA|. Určete velikost úhlu ∡BAC.</p>",
-                      "<html><p align=\"justify\">V obývacím pokoji máme skříň o hmotnosti m = 50 kg a šířce 1,2m a chceme přestěhovat její střed o 4m dále. Mezi původní a novou polohou skříně jsou dva metry koberce a poté dva metry lina. Třecí koeficient mezi skříní a kobercem je f1 = 1,0 a mezi skříní a linem f2 = 0,5. Nakreslete graf, kde na vodorovné ose bude poloha středu skříně a na svislé ose síla, kterou musíme skříň tlačit. Osy správně popište a vyznačte na nich důležité body!</p>",
+                      "<html><p align=\"justify\">V obývacím pokoji máme skříň o hmotnosti m = 50 kg a šířce 1,2m a chceme přestěhovat její střed o 4m dále. Mezi původní a novou polohou skříně jsou dva metry koberce a poté dva metry lina. Třecí koeficient mezi skříní a kobercem je f1 = 1,0 a mezi skříní a linem f2 = 0,5. Vypočítejte jakou u toho vykonáme práci. Za gravitační zrychlení dosaďte 10 m/s^2.</p>",
                       "<html><p align=\"justify\">Najděte tři po sobě jdoucí přirozená čísla, která v součtu dávají pátou mocninu některého přirozeného čísla.</p>",
                       "<html><p align=\"justify\">V lunaparku mají novou horskou dráhu. Na začátku jízdy je vozíček na vrcholu stoupání ve výšce h = 20m, ze kterého následně sjede dolů. Dole je rovinka dlouhá s = 200m, na které vozíček brzdí s konstantním zpomalením. S jakým zpomalením (záporným zrychlením) vozíček brzdí, jestliže zastaví přesně na konci rovinky? Odporové síly zanedbejte.</p>",
                       "<html><p align=\"justify\">Kubo si chce doma zavěsit obraz. Má jeden hřebík a jeden provaz, který praskne, pokud je na něj působící síla větší než T = 100N. Jaký nejtěžší obdélníkový obraz si Kubo může pověsit na provaz a hřebík, když provaz a obraz svírají úhel \u000B = 30◦?</p>",
@@ -285,10 +294,12 @@ public class GraphicalUserInterface extends JFrame {
     Object[][] dataRank;
     Timer timer;
     Font fontTitle, fontTotalPoints, fontTeam, fontTime, fontTaskPoints;
-    JLabel labelTaskTitle, labelTaskContent, labelTaskPoints, labelTotalPoints, labelTime, labelTeamName;
+    JLabel labelTaskTitle, labelTaskContent, labelTaskPoints, labelTotalPoints, labelTime, labelTeamName, labelResultFormat;
     JLabel[] labelVector;
-    JTextField textResult, textUnits;
-    JButton buttonTask, buttonRank, buttonRules, buttonSubmit;
+    NumberFormatter numberFormatter;
+    JTextField textUnits, textResult;
+    JFormattedTextField[] textTriangleMath;
+    JButton buttonTask, buttonRank, buttonRules, buttonSubmit, buttonHelp;
     JScrollPane scrollPaneTasks, scrollPaneTableRank;
     JList listTasks;
     JTable tableRank;
@@ -378,12 +389,16 @@ public class GraphicalUserInterface extends JFrame {
             public void valueChanged(ListSelectionEvent e) {
                 if(taskIndexes[listTasks.getSelectedIndex()]) {
                     labelTaskContent.setText(tasks[listTasks.getSelectedIndex()]);
+                    textUnits.setText(resultEvaluation.getUnits(listTasks.getSelectedIndex()));
                 } else {
                     /*labelTaskContent.setText("zámek");*/
                     labelTaskContent.setText(tasks[listTasks.getSelectedIndex()]);
                 } /* else => v případě vyřešené úlohy fajfka */
                 labelTaskTitle.setText(taskTitles[listTasks.getSelectedIndex()]);
                 labelTaskPoints.setText(String.valueOf("[" + resultEvaluation.getTaskPoints(listTasks.getSelectedIndex())) + " bodů]");
+
+                /*smazat*/
+                textUnits.setText(resultEvaluation.getUnits(listTasks.getSelectedIndex()));
 
                 setTaskMode(listTasks.getSelectedIndex());
             }
@@ -413,8 +428,9 @@ public class GraphicalUserInterface extends JFrame {
         labelTaskContent.setVerticalAlignment(JLabel.TOP);
         panelTask.add(labelTaskContent);
 
-        textResult = new JTextField("Zadejte výsledek");
+        textResult = new JTextField();
         textResult.setBounds(300, 400, 200, 20);
+        textResult.setText("Zadejte výsledek");
         /* Záleží na každém úkolu
         textResult.addMouseListener(new MouseAdapter() {
             @Override
@@ -425,8 +441,10 @@ public class GraphicalUserInterface extends JFrame {
         });*/
         panelTask.add(textResult);
 
-        textUnits = new JTextField("km");
+        textUnits = new JTextField("null");
         textUnits.setBounds(500, 400, 50, 20);
+        textUnits.setHorizontalAlignment(JTextField.CENTER);
+        textUnits.setText(resultEvaluation.getUnits(listTasks.getSelectedIndex()));
         textUnits.setEditable(false);
         panelTask.add(textUnits);
 
@@ -449,6 +467,7 @@ public class GraphicalUserInterface extends JFrame {
                     }
                 }
                 textResult.setText("");
+                setTaskMode(listTasks.getSelectedIndex());
             }
         });
         panelTask.add(buttonSubmit);
@@ -467,6 +486,14 @@ public class GraphicalUserInterface extends JFrame {
         labelTime.setFont(fontTime);
         setCountdown();
         panelTask.add(labelTime);
+
+        buttonHelp = new JButton("Nápověda (-2 body)");
+        buttonHelp.setBounds(20, 470, 230, 60);
+        panelTask.add(buttonHelp);
+
+        labelResultFormat = new JLabel("zaokrouhlete na jedno desetinné místo");
+        labelResultFormat.setBounds(300, 410, 370, 60);
+        panelTask.add(labelResultFormat);
 
         labelMatfyz = new JLabel(new ImageIcon("mff.gif"));
         labelMatfyz.setBounds(800, 120, 150, 150);
@@ -548,7 +575,7 @@ public class GraphicalUserInterface extends JFrame {
             labelVector[i] = new JLabel();
         }
         labelVector[0].setIcon(new ImageIcon("vector_1.gif"));
-        labelVector[0].setBounds(300, 175, 80, 80);
+        labelVector[0].setBounds(400, 175, 80, 80);
         labelVector[0].addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
@@ -561,7 +588,7 @@ public class GraphicalUserInterface extends JFrame {
             }
         });
         labelVector[1].setIcon(new ImageIcon("vector_2.gif"));
-        labelVector[1].setBounds(400, 175, 80, 80);
+        labelVector[1].setBounds(500, 175, 80, 80);
         labelVector[1].addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
@@ -574,7 +601,7 @@ public class GraphicalUserInterface extends JFrame {
             }
         });
         labelVector[2].setIcon(new ImageIcon("vector_3.gif"));
-        labelVector[2].setBounds(300, 270, 80, 80);
+        labelVector[2].setBounds(400, 270, 80, 80);
         labelVector[2].addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
@@ -587,7 +614,7 @@ public class GraphicalUserInterface extends JFrame {
             }
         });
         labelVector[3].setText("<html><p align=\"center\">Žádná možnost nevyhovuje</p></html>");
-        labelVector[3].setBounds(400, 270, 80, 80);
+        labelVector[3].setBounds(500, 270, 80, 80);
         labelVector[3].addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
@@ -605,13 +632,52 @@ public class GraphicalUserInterface extends JFrame {
             panelTask.add(labelVector[i]);
         }
 
+        triangleMathTextSizeX = 30;
+        triangleMathTextSizeY = 25;
+        numberFormatter = new NumberFormatter();
+        numberFormatter.setAllowsInvalid(false);
+        textTriangleMath = new JFormattedTextField[6];
+        for(i = 0; i < textTriangleMath.length; i++) {
+            textTriangleMath[i] = new JFormattedTextField(numberFormatter);
+            textTriangleMath[i].setHorizontalAlignment(JTextField.CENTER);
+            textTriangleMath[i].addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyReleased(KeyEvent e) {
+                    triangleMathResult = "";
+                    for(i = 0; i < textTriangleMath.length; i++) {
+                        if(textTriangleMath[i].hasFocus()) {
+                            textTriangleMath[i].setText(String.valueOf(e.getKeyChar()));
+                            if(e.getKeyChar() == '0') {
+                                textTriangleMath[i].setText("1");
+                            } else if(Integer.parseInt(String.valueOf(e.getKeyChar())) > 6) {
+                                textTriangleMath[i].setText("6");
+                            }
+                        }
+                        triangleMathResult += textTriangleMath[i].getText() + "_";
+                    }
+                    textResult.setText(triangleMathResult);
+                }
+            });
+        }
+        textTriangleMath[0].setBounds(365, 345, triangleMathTextSizeX, triangleMathTextSizeY);
+        textTriangleMath[1].setBounds(470, 345, triangleMathTextSizeX, triangleMathTextSizeY);
+        textTriangleMath[2].setBounds(575, 345, triangleMathTextSizeX, triangleMathTextSizeY);
+        textTriangleMath[3].setBounds(535, 260, triangleMathTextSizeX, triangleMathTextSizeY);
+        textTriangleMath[4].setBounds(470, 190, triangleMathTextSizeX, triangleMathTextSizeY);
+        textTriangleMath[5].setBounds(405, 265, triangleMathTextSizeX, triangleMathTextSizeY);
+        for(i = 0; i < textTriangleMath.length; i++) {
+            textTriangleMath[i].setVisible(false);
+            panelTask.add(textTriangleMath[i]);
+        }
+
         /*devTool*/
         /*cleancode*/
         /*rename class*/
-        /*center pictures || layout*/
-        paintComponent paint100 = new paintComponent();
+        /*create TaskMode*/
+        paint100 = new paintComponent();
         paint100.setBounds(300, 200, 370, 170);
         paint100.setBackground(Color.decode(BACKGROUND_COLOR));
+        paint100.setVisible(true);
         panelTask.add(paint100);
         /*end*/
 
@@ -658,6 +724,8 @@ public class GraphicalUserInterface extends JFrame {
         textResult.setVisible(visibility);
         textUnits.setVisible(visibility);
         buttonSubmit.setVisible(visibility);
+        buttonHelp.setVisible(visibility);
+        labelResultFormat.setVisible(visibility);
     }
 
     private void setCountdown() {
@@ -688,19 +756,53 @@ public class GraphicalUserInterface extends JFrame {
         switch(index) {
             case 4:
                 for(i = 0; i < labelVector.length; i++) {
+                    labelVector[i].setBorder(null);
                     labelVector[i].setVisible(true);
                 }
                 textResult.setEditable(false);
                 textResult.setText("není vybrána žádná možnost");
                 vectorPressedAdapter = new VectorPressedAdapter();
                 textResult.addMouseListener(vectorPressedAdapter);
+                textUnits.setVisible(false);
+                textResult.setBounds(300, 400, 250, 20);
+
+                for(i = 0; i < textTriangleMath.length; i++) {
+                    textTriangleMath[i].setVisible(false);
+                }
+                textResult.setVisible(true);
+                buttonSubmit.setBounds(570, 400, 100, 20);
                 break;
-            default:
+            case 5:
+                triangleMathResult = "";
+                for(i = 0; i < textTriangleMath.length; i++) {
+                    triangleMathResult += textTriangleMath[i].getText() + "_";
+                    textTriangleMath[i].setVisible(true);
+                }
+                textResult.setText(triangleMathResult);
+                textResult.setVisible(false);
+                textUnits.setVisible(false);
+                buttonSubmit.setBounds(300, 400, 370, 20);
+
                 for(i = 0; i < labelVector.length; i++) {
                     labelVector[i].setVisible(false);
-                    labelVector[i].setBorder(null);
+                }
+                textResult.setBounds(300, 400, 200, 20);
+                break;
+            default:
+                /*case 4*/
+                for(i = 0; i < labelVector.length; i++) {
+                    labelVector[i].setVisible(false);
                 }
 
+                /*case 5*/
+                for(i = 0; i < textTriangleMath.length; i++) {
+                    textTriangleMath[i].setVisible(false);
+                }
+                textResult.setVisible(true);
+                textUnits.setVisible(true);
+                buttonSubmit.setBounds(570, 400, 100, 20);
+
+                textResult.setBounds(300, 400, 200, 20);
                 textResult.setEditable(true);
                 textResult.setText("Zadejte výsledek");
         }
@@ -729,19 +831,14 @@ public class GraphicalUserInterface extends JFrame {
         public void paint(Graphics g) {
             super.paint(g);
 
+            /*devTool*/
+            /*rename x & y*/
             if(listTasks.getSelectedIndex() == 5) {
                 int[] x = {185, 100, 270}, y = {20, 140, 140};
                 g.setColor(Color.DARK_GRAY);
                 g.fillPolygon(x, y, 3);
             }
-        }
-    }
-
-    public class paintComponent2 extends JPanel {
-        public void paint(Graphics g) {
-            super.paint(g);
-
-
+            /*end*/
         }
     }
     //endregion
@@ -819,7 +916,7 @@ public class GraphicalUserInterface extends JFrame {
         labelTaskContent.setVerticalAlignment(JLabel.TOP);
         panelTest.add(labelTaskContent);
 
-        textResult = new JTextField("Zadejte výsledek");
+        textResult = new JFormattedTextField("Zadejte výsledek");
         textResult.setBounds(300, 400, 200, 20);
         textResult.addMouseListener(new MouseAdapter() {
             @Override

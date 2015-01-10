@@ -7,11 +7,12 @@
     (5) When you pass the task you will get the check sign
     (6) if there will be a lot of teams put rank table to JScrollPane
     (7) highlight your team in the table
-    (8) put <sup> or <sub> and <sup>1</sup>&frasl;<sub>10</sub> tags in taskContent
+    (8) put <sup> or <sub> and <sup>1</sup>&frasl;<sub>10</sub> tags in taskContent and in units
     (9) disable submit result with empty or incorrect textResult
     (10) type bod when 1
               body when 2, 3, 4
               bodů when more
+    (11) Blbuvzodrnost u zadávání odpovědí
  */
 
 public class MathTournament {
