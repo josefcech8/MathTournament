@@ -416,6 +416,7 @@ public class GraphicalUserInterface extends JFrame {
 
                 /*smazat*/
                 textUnits.setText(resultEvaluation.getUnits(listTasks.getSelectedIndex()));
+                labelResultFormat.setText(resultEvaluation.getResultFormat(listTasks.getSelectedIndex()));
 
                 setTaskMode(listTasks.getSelectedIndex());
             }
@@ -512,7 +513,8 @@ public class GraphicalUserInterface extends JFrame {
         panelTask.add(buttonHelp);
 
         labelResultFormat = new JLabel("null");
-        labelResultFormat.setBounds(300, 410, 370, 60);
+        labelResultFormat.setBounds(300, 415, 370, 60);
+        labelResultFormat.setText(resultEvaluation.getResultFormat(listTasks.getSelectedIndex()));
         panelTask.add(labelResultFormat);
 
         labelMatfyz = new JLabel(new ImageIcon("mff.gif"));

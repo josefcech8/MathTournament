@@ -15,7 +15,7 @@ public class ResultEvaluation {
                                      "Výsledek zaokrouhlete na celé číslo.",
                                      "Výsledek zaokrouhlete na celé číslo.",
                                      "Výsledek zaokrouhlete na celé číslo.",
-                                     "Poměr zapište ve tvaru 1:2. Nezapomeňte zapsat menší číslici jako první. V případě více řešení jednotlivé poměry oddělte čárkou bez mezery např.: 1:2,2:3",
+                                     "<html><p align=\"justify\">Poměr zapište ve tvaru 1:2. Nezapomeňte zapsat menší číslici jako první. V případě více řešení jednotlivé poměry oddělte čárkou bez mezery např.: 1:2,2:3</p></html>",
                                      "Výsledek zaokrouhlete na celé číslo.",
                                      "Výsledek zaokrouhlete na celé číslo.",
                                      "Výsledek zaokrouhlete na celé číslo.",
@@ -39,7 +39,7 @@ public class ResultEvaluation {
                                      "Výsledek zaokrouhlete na celé číslo.",
                                      "Výsledek zaokrouhlete na celé číslo.",
                                      "Výsledek zaokrouhlete na celé číslo.",
-                                     "Poměr zapište ve tvaru 1:2. Nezapomeňte zapsat menší číslici jako první.",
+                                     "<html><p align=\"justify\">Poměr zapište ve tvaru 1:2. Nezapomeňte zapsat menší číslici jako první.</p></html>",
                                      "Výsledek zaokrouhlete na celé číslo.",
                                      "Výsledek zaokrouhlete na dvě desetinná místa.",
                                      "Výsledek zaokrouhlete na celé číslo.",
@@ -52,7 +52,6 @@ public class ResultEvaluation {
         for (int i = 0; i < 42; i++) {
             taskPoints[i] = 3;
         }
-        System.out.println(resultFormat.length);
     }
 
     public void setTaskPoints(int index) {
