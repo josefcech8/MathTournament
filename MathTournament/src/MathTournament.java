@@ -13,10 +13,16 @@
               body when 2, 3, 4
               bodů when more
     (11) Blbuvzodrnost u zadávání odpovědí
+    (12) Přidat zapisování do souboru na každé akci, která mění body
  */
 
 public class MathTournament {
     public static void main(String[] args) {
         new GraphicalUserInterface();
+
+        /*
+        FileHandler fileHandler = new FileHandler();
+        fileHandler.readFile();
+        */
     }
 }

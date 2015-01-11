@@ -1,16 +1,11 @@
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.text.DefaultFormatterFactory;
-import javax.swing.text.MaskFormatter;
 import javax.swing.text.NumberFormatter;
 import java.awt.*;
 import java.awt.event.*;
-import java.text.NumberFormat;
-import java.text.ParseException;
-import java.util.Vector;
+import java.util.TimerTask;
 
 public class GraphicalUserInterface extends JFrame {
 
@@ -49,6 +44,8 @@ public class GraphicalUserInterface extends JFrame {
     }
 
     //region 1| login
+    String teamName = "univerzal", teamPassword;
+    String[] registeredTeams = {"CMYK", "Kolodej", "Carodej"}, registeredTeamsPassword = {"student314", "student14", "student34"};
     JLabel labelTitle;
     JTextField textUsername;
     JPasswordField passwordPassword;
@@ -79,8 +76,21 @@ public class GraphicalUserInterface extends JFrame {
         buttonLogin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                panelLogin.setVisible(false);
-                panelRules.setVisible(true);
+                for(i = 0; i < registeredTeams.length; i++) {
+                    if(textUsername.getText().toLowerCase().equals(registeredTeams[i].toLowerCase())) {
+                        if(String.valueOf(passwordPassword.getPassword()).equals(registeredTeamsPassword[i])) {
+                            teamName = textUsername.getText().toLowerCase();
+                            /*
+                            panelLogin.setVisible(false);
+                            panelRules.setVisible(true);*/
+                        } else {
+                            passwordPassword.setText("");
+                            JOptionPane.showMessageDialog(null, "Chybné heslo!", "Přihlášení se nezdařilo", JOptionPane.ERROR_MESSAGE);
+                        }
+                        break;
+                    }
+                }
+
             }
         });
         panelLogin.add(buttonLogin);
@@ -191,11 +201,12 @@ public class GraphicalUserInterface extends JFrame {
 
     boolean pointArraysEqual;
     boolean[] taskIndexes = {true, true, true, true, true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
-    int totalPoints, i, pointsHolder = 0, seconds, minutes, hours, triangleMathTextSizeX, triangleMathTextSizeY;
-    int[] points = {13, 5, 30}, pointsClone;
-    String teamNamesHolder, triangleMathResult;
+    int totalPoints, i, pointsHolder = 0, seconds, minutes, hours, triangleMathTextSizeX, triangleMathTextSizeY, teamNumber = 4;
+    int[] points = new int[teamNumber], pointsClone;
+    String teamNamesHolder, triangleMathResult, fileOutputBase, fileMessage;
     String[] columnNames = {"POŘADÍ", "TEAM", "BODY"};
-    String[] teamNames = {"Cmyk", "Havíři", "Tutor"};
+    String[] teamNames = new String[teamNumber];
+    String[] fileTeam, fileOutput;
 
     String[] taskTitles = {"1. úloha: Meziprostorová",
                            "2. úloha: Jdeme na ping-pong!",
@@ -304,6 +315,7 @@ public class GraphicalUserInterface extends JFrame {
     JList listTasks;
     JTable tableRank;
     DefaultTableCellRenderer centerRenderer;
+    FileHandler fileHandler = new FileHandler();
     ResultEvaluation resultEvaluation;
     VectorPressedAdapter vectorPressedAdapter;
     JPanel panelTask;
@@ -327,6 +339,7 @@ public class GraphicalUserInterface extends JFrame {
                 buttonRules.setBackground(Color.LIGHT_GRAY);
 
                 setTaskVisibility(true);
+                setTaskMode(listTasks.getSelectedIndex());
                 scrollPaneTableRank.setVisible(false);
                 scrollPaneRulesContent.setVisible(false);
             }
@@ -342,6 +355,9 @@ public class GraphicalUserInterface extends JFrame {
                 buttonTask.setBackground(Color.LIGHT_GRAY);
                 buttonRank.setBackground(Color.CYAN);
                 buttonRules.setBackground(Color.LIGHT_GRAY);
+
+                getFileData();
+                sortTableRank();
 
                 setTaskVisibility(false);
                 scrollPaneTableRank.setVisible(true);
@@ -369,7 +385,7 @@ public class GraphicalUserInterface extends JFrame {
 
         fontTeam = new Font("Comic Sans", Font.PLAIN, 15);
 
-        labelTeamName = new JLabel("Tým: CMYK");
+        labelTeamName = new JLabel("Tým: " + teamName);
         labelTeamName.setBounds(390, 20, 200, 25);
         labelTeamName.setHorizontalAlignment(SwingConstants.CENTER);
         labelTeamName.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
@@ -390,6 +406,7 @@ public class GraphicalUserInterface extends JFrame {
                 if(taskIndexes[listTasks.getSelectedIndex()]) {
                     labelTaskContent.setText(tasks[listTasks.getSelectedIndex()]);
                     textUnits.setText(resultEvaluation.getUnits(listTasks.getSelectedIndex()));
+                    labelResultFormat.setText(resultEvaluation.getResultFormat(listTasks.getSelectedIndex()));
                 } else {
                     /*labelTaskContent.setText("zámek");*/
                     labelTaskContent.setText(tasks[listTasks.getSelectedIndex()]);
@@ -460,6 +477,7 @@ public class GraphicalUserInterface extends JFrame {
                 if(resultEvaluation.getEvaluation(listTasks.getSelectedIndex(), textResult.getText())) {
                     totalPoints += resultEvaluation.getTaskPoints(listTasks.getSelectedIndex());
                     labelTotalPoints.setText(String.valueOf(totalPoints) + " bodů");
+                    fileMessage = "(vyřešení příkladu " + listTasks.getSelectedIndex() + ")";
                 } else {
                     if(resultEvaluation.getTaskPoints(listTasks.getSelectedIndex()) != 1) {
                         resultEvaluation.setTaskPoints(listTasks.getSelectedIndex());
@@ -468,6 +486,8 @@ public class GraphicalUserInterface extends JFrame {
                 }
                 textResult.setText("");
                 setTaskMode(listTasks.getSelectedIndex());
+
+                fileHandler.addRecords(teamName, totalPoints, fileMessage);
             }
         });
         panelTask.add(buttonSubmit);
@@ -491,7 +511,7 @@ public class GraphicalUserInterface extends JFrame {
         buttonHelp.setBounds(20, 470, 230, 60);
         panelTask.add(buttonHelp);
 
-        labelResultFormat = new JLabel("zaokrouhlete na jedno desetinné místo");
+        labelResultFormat = new JLabel("null");
         labelResultFormat.setBounds(300, 410, 370, 60);
         panelTask.add(labelResultFormat);
 
@@ -517,6 +537,8 @@ public class GraphicalUserInterface extends JFrame {
         labelBrezinky.setBounds(800, 320, 150, 211);
         panelTask.add(labelBrezinky);
 
+        getFileData();
+
         dataRank = new Object[teamNames.length][teamNames.length];
         for(int i = 0; i < teamNames.length; i++) {
             dataRank[i][0] = i+1;
@@ -534,7 +556,7 @@ public class GraphicalUserInterface extends JFrame {
         };
         tableRank.setFillsViewportHeight(true);
         tableRank.setRowHeight(30);
-        for(i = 0; i < teamNames.length; i++) {
+        for(i = 0; i < columnNames.length; i++) {
             tableRank.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
         tableRank.getColumnModel().getColumn(0).setPreferredWidth(20);
@@ -546,7 +568,6 @@ public class GraphicalUserInterface extends JFrame {
         scrollPaneTableRank.setBounds(20, 100, 400, 300);
         scrollPaneTableRank.setVisible(false);
         panelTask.add(scrollPaneTableRank);
-
 
         labelRulesContent = new JLabel("<html><h1 align=\"center\">1. HRACÍ PLOCHA</h1>" +
                 "<h2 align=\"center\">101  Rozměry hřiště</h2>" +
@@ -684,6 +705,18 @@ public class GraphicalUserInterface extends JFrame {
         add(panelTask);
     }
 
+    private void getFileData() {
+        fileOutputBase = fileHandler.readFile();
+
+        fileOutput = fileOutputBase.split("_");
+
+        for(i = 0; i < fileOutput.length; i++) {
+            fileTeam = fileOutput[i].split(" ");
+            teamNames[i] = fileTeam[0];
+            points[i] = Integer.parseInt(fileTeam[1]);
+        }
+    }
+
     private void sortTableRank() {
         pointArraysEqual = false;
         pointsHolder = 0;
@@ -726,6 +759,16 @@ public class GraphicalUserInterface extends JFrame {
         buttonSubmit.setVisible(visibility);
         buttonHelp.setVisible(visibility);
         labelResultFormat.setVisible(visibility);
+        if(!visibility) {
+            for(i = 0; i < labelVector.length; i++) {
+                labelVector[i].setVisible(false);
+            }
+            paint100.setVisible(false);
+            for(i = 0; i < textTriangleMath.length; i++) {
+                textTriangleMath[i].setVisible(false);
+            }
+        }
+
     }
 
     private void setCountdown() {
@@ -771,6 +814,7 @@ public class GraphicalUserInterface extends JFrame {
                 }
                 textResult.setVisible(true);
                 buttonSubmit.setBounds(570, 400, 100, 20);
+                paint100.setVisible(false);
                 break;
             case 5:
                 triangleMathResult = "";
@@ -782,6 +826,7 @@ public class GraphicalUserInterface extends JFrame {
                 textResult.setVisible(false);
                 textUnits.setVisible(false);
                 buttonSubmit.setBounds(300, 400, 370, 20);
+                paint100.setVisible(true);
 
                 for(i = 0; i < labelVector.length; i++) {
                     labelVector[i].setVisible(false);
@@ -801,6 +846,7 @@ public class GraphicalUserInterface extends JFrame {
                 textResult.setVisible(true);
                 textUnits.setVisible(true);
                 buttonSubmit.setBounds(570, 400, 100, 20);
+                paint100.setVisible(false);
 
                 textResult.setBounds(300, 400, 200, 20);
                 textResult.setEditable(true);

@@ -5,15 +5,62 @@ public class ResultEvaluation {
     private int[] taskPoints = new int[42];
     private double taskResultDouble;
     private String[] triangleMath = new String[6], sofaL = new String[2], units = {"s", "Kč", "\\", "km/h", "\\", "\\", "kg", "s", "min", "\\", "\\", "km", "\\", "m/s", "%", "g", "A", "oběhů", "m^2", "s", "\\", "m", "\\", "s", "cm", "m", "AU", "cm", "\u2126", "\\", "km/h", "%", "kJ", "\\", "\\", "kJ", "◦", "J", "\\", "m/s^2", "kg", "cm"};
+    private String[] resultFormat = {"Výsledek zaokrouhlete na celé číslo.",
+                                     "Výsledek zaokrouhlete na celé číslo.",
+                                     "Výsledek zaokrouhlete na celé číslo.",
+                                     "Výsledek zaokrouhlete na celé číslo.",
+                                     "",
+                                     "",
+                                     "Výsledek zaokrouhlete na celé číslo.",
+                                     "Výsledek zaokrouhlete na celé číslo.",
+                                     "Výsledek zaokrouhlete na celé číslo.",
+                                     "Výsledek zaokrouhlete na celé číslo.",
+                                     "Poměr zapište ve tvaru 1:2. Nezapomeňte zapsat menší číslici jako první. V případě více řešení jednotlivé poměry oddělte čárkou bez mezery např.: 1:2,2:3",
+                                     "Výsledek zaokrouhlete na celé číslo.",
+                                     "Výsledek zaokrouhlete na celé číslo.",
+                                     "Výsledek zaokrouhlete na celé číslo.",
+                                     "Výsledek zaokrouhlete na jedno desetinné místo.",
+                                     "Výsledek zaokrouhlete na celé číslo.",
+                                     "Výsledek zaokrouhlete na jedno desetinné místo.",
+                                     "Výsledek zaokrouhlete na celé číslo.",
+                                     "Výsledek zaokrouhlete na celé číslo.",
+                                     "Výsledek zaokrouhlete na celé číslo.",
+                                     "Výsledek zaokrouhlete na celé číslo.",
+                                     "Výsledek zaokrouhlete na jedno desetinné místo.",
+                                     "Výsledné rozměry rovnoběžníku zapiště ve tvaru 1x1",
+                                     "Výsledek zaokrouhlete na celé číslo.",
+                                     "Výsledek zaokrouhlete na jedno desetinné místo.",
+                                     "Výsledek zaokrouhlete na celé číslo.",
+                                     "Výsledek zaokrouhlete na dvě desetinná místa.",
+                                     "Výsledek zaokrouhlete na dvě desetinná místa.",
+                                     "Výsledek zaokrouhlete na jedno desetinné místo.",
+                                     "Zadejte počet cifer výsledného čísla",
+                                     "Výsledek zaokrouhlete na celé číslo.",
+                                     "Výsledek zaokrouhlete na celé číslo.",
+                                     "Výsledek zaokrouhlete na celé číslo.",
+                                     "Výsledek zaokrouhlete na celé číslo.",
+                                     "Poměr zapište ve tvaru 1:2. Nezapomeňte zapsat menší číslici jako první.",
+                                     "Výsledek zaokrouhlete na celé číslo.",
+                                     "Výsledek zaokrouhlete na dvě desetinná místa.",
+                                     "Výsledek zaokrouhlete na celé číslo.",
+                                     "Výsledek zaokrouhlete na celé číslo.",
+                                     "Výsledek zaokrouhlete na celé číslo.",
+                                     "Výsledek zaokrouhlete na celé číslo.",
+                                     "Výsledek zaokrouhlete na jedno desetinné."};
 
     public void setValues() {
         for (int i = 0; i < 42; i++) {
             taskPoints[i] = 3;
         }
+        System.out.println(resultFormat.length);
     }
 
     public void setTaskPoints(int index) {
         taskPoints[index]--;
+    }
+
+    public String getResultFormat(int index) {
+        return resultFormat[index];
     }
 
     public int getTaskPoints(int index) {
@@ -86,7 +133,7 @@ public class ResultEvaluation {
             case 26: return taskResultDouble == 8.24;
             case 27: return taskResultDouble == 61.43;
             case 28: return taskResultDouble == 5.5;
-            case 29: return taskResultInteger == 15; /*zadejte počet cifer*/
+            case 29: return taskResultInteger == 15;
             case 30: return taskResultInteger == 80;
             case 31: return taskResultInteger == 36;
             case 32: return taskResultInteger == 5;
