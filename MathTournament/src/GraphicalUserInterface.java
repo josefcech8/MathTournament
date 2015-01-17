@@ -512,15 +512,17 @@ public class GraphicalUserInterface extends JFrame {
         fontTotalPoints = new Font("Serif", Font.BOLD, 30);
 
         labelTotalPoints = new JLabel(totalPoints + " " + resultEvaluation.getPointsTextFormat(totalPoints));
-        labelTotalPoints.setBounds(850, 20, 200, 30);
+        labelTotalPoints.setBounds(833, 20, 105, 35);
+        labelTotalPoints.setHorizontalAlignment(SwingConstants.CENTER);
         labelTotalPoints.setFont(fontTotalPoints);
         panelTask.add(labelTotalPoints);
 
         fontTime = new Font("Serif", Font.BOLD, 23);
 
         labelTime = new JLabel("time error");
-        labelTime.setBounds(850, 60, 200, 30);
+        labelTime.setBounds(840, 60, 90, 30);
         labelTime.setFont(fontTime);
+        labelTime.setHorizontalAlignment(SwingConstants.CENTER);
         setCountdown();
         panelTask.add(labelTime);
 
@@ -550,7 +552,7 @@ public class GraphicalUserInterface extends JFrame {
         panelTask.add(labelResultFormat);
 
         labelMatfyz = new JLabel(new ImageIcon("mff.gif"));
-        labelMatfyz.setBounds(800, 120, 150, 150);
+        labelMatfyz.setBounds(810, 130, 150, 150);
         panelTask.add(labelMatfyz);
 
         /*devTool*/
@@ -558,17 +560,21 @@ public class GraphicalUserInterface extends JFrame {
         /*rename class*/
         /*center pictures || layout*/
         paintComponent paint1 = new paintComponent();
-        paint1.setBounds(770, 290, 230, 3);
+        paint1.setBounds(770, 300, 230, 3);
         paint1.setBackground(Color.LIGHT_GRAY);
         panelTask.add(paint1);
         paintComponent paint2 = new paintComponent();
         paint2.setBounds(770, 0, 3, 600);
         paint2.setBackground(Color.LIGHT_GRAY);
         panelTask.add(paint2);
+        paintComponent paint3 = new paintComponent();
+        paint3.setBounds(770, 110, 230, 3);
+        paint3.setBackground(Color.LIGHT_GRAY);
+        panelTask.add(paint3);
         /*end*/
 
         labelBrezinky = new JLabel(new ImageIcon("brezinky.gif"));
-        labelBrezinky.setBounds(800, 320, 150, 211);
+        labelBrezinky.setBounds(810, 330, 150, 211);
         panelTask.add(labelBrezinky);
 
         getFileData();
