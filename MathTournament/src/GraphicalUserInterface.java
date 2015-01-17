@@ -409,27 +409,35 @@ public class GraphicalUserInterface extends JFrame {
                     labelResultFormat.setText(resultEvaluation.getResultFormat(listTasks.getSelectedIndex()));
                     if(resultEvaluation.getHelpPoints(listTasks.getSelectedIndex()) != 0) {
                         buttonHelp.setEnabled(true);
-                        buttonHelp.setText("Nápověda (" + resultEvaluation.getHelpPoints(listTasks.getSelectedIndex()) + " body)");
+                        if(!resultEvaluation.getHelpTextAvailable(listTasks.getSelectedIndex()))
+                            buttonHelp.setText("Nápověda (" + resultEvaluation.getHelpPoints(listTasks.getSelectedIndex()) + " " + resultEvaluation.getPointsTextFormat(Math.abs(resultEvaluation.getHelpPoints(listTasks.getSelectedIndex()))) + ")");
+                        else {
+                            buttonHelp.setText("Zobrazit nápovědu");
+                        }
                     } else {
                         buttonHelp.setEnabled(false);
-                        buttonHelp.setText("bez nápovědy");
+                        buttonHelp.setText("Bez nápovědy");
                     }
                 } else {
                     /*labelTaskContent.setText("zámek");*/
                     labelTaskContent.setText(tasks[listTasks.getSelectedIndex()]);
                 } /* else => v případě vyřešené úlohy fajfka */
                 labelTaskTitle.setText(taskTitles[listTasks.getSelectedIndex()]);
-                labelTaskPoints.setText(String.valueOf("[" + resultEvaluation.getTaskPoints(listTasks.getSelectedIndex())) + " bodů]");
+                labelTaskPoints.setText(String.valueOf("[" + resultEvaluation.getTaskPoints(listTasks.getSelectedIndex())) + " " + resultEvaluation.getPointsTextFormat(resultEvaluation.getTaskPoints(listTasks.getSelectedIndex())) + "]");
 
                 /*smazat po zamknutí úloh*/
                 textUnits.setText(resultEvaluation.getUnits(listTasks.getSelectedIndex()));
                 labelResultFormat.setText(resultEvaluation.getResultFormat(listTasks.getSelectedIndex()));
                 if(resultEvaluation.getHelpPoints(listTasks.getSelectedIndex()) != 0) {
                     buttonHelp.setEnabled(true);
-                    buttonHelp.setText("Nápověda (" + resultEvaluation.getHelpPoints(listTasks.getSelectedIndex()) + " body)");
+                    if(!resultEvaluation.getHelpTextAvailable(listTasks.getSelectedIndex()))
+                        buttonHelp.setText("Nápověda (" + resultEvaluation.getHelpPoints(listTasks.getSelectedIndex()) + " " + resultEvaluation.getPointsTextFormat(Math.abs(resultEvaluation.getHelpPoints(listTasks.getSelectedIndex()))) + ")");
+                    else {
+                        buttonHelp.setText("Zobrazit nápovědu");
+                    }
                 } else {
                     buttonHelp.setEnabled(false);
-                    buttonHelp.setText("bez nápovědy");
+                    buttonHelp.setText("Bez nápovědy");
                 }
                 /*konec mazaného úseku*/
 
@@ -451,7 +459,7 @@ public class GraphicalUserInterface extends JFrame {
 
         fontTaskPoints = new Font("Serif", Font.BOLD, 20);
 
-        labelTaskPoints = new JLabel("[3 bodů]");
+        labelTaskPoints = new JLabel("[" + resultEvaluation.getTaskPoints(listTasks.getSelectedIndex()) + " " + resultEvaluation.getPointsTextFormat(resultEvaluation.getTaskPoints(listTasks.getSelectedIndex())) + "]");
         labelTaskPoints.setBounds(660, 70, 80, 30);
         labelTaskPoints.setFont(fontTaskPoints);
         panelTask.add(labelTaskPoints);
@@ -485,12 +493,12 @@ public class GraphicalUserInterface extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 if(resultEvaluation.getEvaluation(listTasks.getSelectedIndex(), textResult.getText())) {
                     totalPoints += resultEvaluation.getTaskPoints(listTasks.getSelectedIndex());
-                    labelTotalPoints.setText(String.valueOf(totalPoints) + " bodů");
+                    labelTotalPoints.setText(String.valueOf(totalPoints) + " " + resultEvaluation.getPointsTextFormat(totalPoints));
                     fileMessage = "(vyřešení příkladu " + listTasks.getSelectedIndex() + ")";
                 } else {
                     if(resultEvaluation.getTaskPoints(listTasks.getSelectedIndex()) != 1) {
                         resultEvaluation.setTaskPoints(listTasks.getSelectedIndex());
-                        labelTaskPoints.setText("[" + resultEvaluation.getTaskPoints(listTasks.getSelectedIndex()) + " bodů]");
+                        labelTaskPoints.setText("[" + resultEvaluation.getTaskPoints(listTasks.getSelectedIndex()) + " " + resultEvaluation.getPointsTextFormat(resultEvaluation.getTaskPoints(listTasks.getSelectedIndex())) + "]");
                     }
                 }
                 textResult.setText("");
@@ -503,7 +511,7 @@ public class GraphicalUserInterface extends JFrame {
 
         fontTotalPoints = new Font("Serif", Font.BOLD, 30);
 
-        labelTotalPoints = new JLabel("0 bodů");
+        labelTotalPoints = new JLabel(totalPoints + " " + resultEvaluation.getPointsTextFormat(totalPoints));
         labelTotalPoints.setBounds(850, 20, 200, 30);
         labelTotalPoints.setFont(fontTotalPoints);
         panelTask.add(labelTotalPoints);
@@ -516,14 +524,22 @@ public class GraphicalUserInterface extends JFrame {
         setCountdown();
         panelTask.add(labelTime);
 
-        buttonHelp = new JButton("bez nápovědy");
+        buttonHelp = new JButton("Bez nápovědy");
         buttonHelp.setEnabled(false);
         buttonHelp.setBounds(20, 470, 230, 60);
         buttonHelp.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                if(resultEvaluation.getHelpPoints(listTasks.getSelectedIndex()) != 0)
-                    JOptionPane.showMessageDialog(null, new StringBuilder().append("<html><p align=\"justify\">").append(resultEvaluation.getHelpText(listTasks.getSelectedIndex())).append("</p></html>").toString(), "Nápověda", JOptionPane.INFORMATION_MESSAGE);
+                if(resultEvaluation.getHelpPoints(listTasks.getSelectedIndex()) != 0) {
+                    if(resultEvaluation.getHelpTextAvailable(listTasks.getSelectedIndex()))
+                        JOptionPane.showMessageDialog(null, "<html><p align=\"justify\">" + resultEvaluation.getHelpText(listTasks.getSelectedIndex()) + "</p></html>", "Nápověda", JOptionPane.INFORMATION_MESSAGE);
+                    else {
+                        totalPoints += resultEvaluation.getHelpPoints(listTasks.getSelectedIndex());
+                        resultEvaluation.setHelpTextAvailable(listTasks.getSelectedIndex());
+                        labelTotalPoints.setText(String.valueOf(totalPoints) + " " + resultEvaluation.getPointsTextFormat(totalPoints));
+                        buttonHelp.setText("Zobrazit nápovědu");
+                    }
+                }
 
             }
         });
@@ -839,7 +855,7 @@ public class GraphicalUserInterface extends JFrame {
                     labelVector[i].setVisible(true);
                 }
                 textResult.setEditable(false);
-                textResult.setText("není vybrána žádná možnost");
+                textResult.setText("Není vybrána žádná možnost");
                 vectorPressedAdapter = new VectorPressedAdapter();
                 textResult.addMouseListener(vectorPressedAdapter);
                 textUnits.setVisible(false);
@@ -968,7 +984,7 @@ public class GraphicalUserInterface extends JFrame {
         @Override
         public void mousePressed(MouseEvent e) {
             if(listTasks.getSelectedIndex() == 4)
-                textResult.setText("klikni na obrázek");
+                textResult.setText("Klikni na obrázek");
         }
     }
 

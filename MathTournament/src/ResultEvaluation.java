@@ -1,9 +1,11 @@
 
 public class ResultEvaluation {
 
+    private int i;
+    private boolean[] helpTextAvailable = new boolean[42];
     private int taskResultInteger, i1, i2;
     private int[] taskPoints = {3, 3, 3, 3, 2, 3, 3, 3, 4, 6, 2, 4, 4, 4, 4, 5, 5, 6, 5, 5, 5, 5, 5, 6, 5, 6, 7, 5, 6, 6, 6, 6, 6, 5, 5, 7, 7, 6, 7, 7, 7, 10};
-    private int[] helpPoints = {0, 1, 0, 1, 0, 0, 1, 1, 2, 2, 0, 0, 2, 0, 1, 2, 1, 2, 1, 0, 2, 2, 2, 0, 3, 0, 2, 1, 2, 1, 1, 2, 2, 0, 1, 0, 0, 0, 0, 2, 0, 0};
+    private int[] helpPoints = {0, -1, 0, -1, 0, 0, -1, -1, -2, -2, 0, 0, -2, 0, -1, -2, -1, -2, -1, 0, -2, -2, -2, 0, -3, 0, -2, -1, -2, -1, -1, -2, -2, 0, -1, 0, 0, 0, 0, -2, 0, 0};
     private double taskResultDouble;
     private String[] triangleMath = new String[6], sofaL = new String[2], units = {"s", "Kč", "\\", "km/h", "\\", "\\", "kg", "s", "min", "\\", "\\", "km", "\\", "m/s", "%", "g", "A", "oběhů", "m^2", "s", "\\", "m", "\\", "s", "cm", "m", "AU", "cm", "\u2126", "\\", "km/h", "%", "kJ", "\\", "\\", "kJ", "◦", "J", "\\", "m/s^2", "kg", "cm"};
     private String[] resultFormat = {"Výsledek zaokrouhlete na celé číslo.",
@@ -47,7 +49,7 @@ public class ResultEvaluation {
                                      "Výsledek zaokrouhlete na celé číslo.",
                                      "Výsledek zaokrouhlete na celé číslo.",
                                      "Výsledek zaokrouhlete na celé číslo.",
-                                     "Výsledek zaokrouhlete na jedno desetinné."};
+                                     "Výsledek zaokrouhlete na jedno desetinné místo."};
     private String[] helpText = {"",
             "Označme si cenu míčku jako x korun. Platí, že pálka stojí (x + 1000) korun.<br>Set pálky a míčku za 1100 korun tedy lze zapsat rovnicí.",
             "",
@@ -90,10 +92,35 @@ public class ResultEvaluation {
             "Na začátku má vozíček nulovou rychlost a je ve výšce h = 20m. Má tedy potenciální energii.<br>Při vjezdu na rovinku má rychlost v. Má tedy kinetickou energii. Při pohybu na rovince se jedná o<br>rovnoměrně zpomalený pohyb z rychlosti v na nulovou rychlost.",
             "",
             ""};
-    private String[] pointsTextFormat = {"bod", "body", "bodů"}; /* + getter*/
+    private String[] pointsTextFormat = {"bod", "body", "bodů"};
+
+    public ResultEvaluation() {
+        for(i = 0; i < helpTextAvailable.length; i++) {
+            helpTextAvailable[i] = false;
+        }
+    }
 
     public void setTaskPoints(int index) {
         taskPoints[index]--;
+    }
+
+    public void setHelpTextAvailable(int index) {
+        helpTextAvailable[index] = true;
+    }
+
+    public boolean getHelpTextAvailable(int index) {
+        return helpTextAvailable[index];
+    }
+
+    public String getPointsTextFormat(int points) {
+        switch(points) {
+            case 0: return pointsTextFormat[2];
+            case 1: return pointsTextFormat[0];
+            case 2:
+            case 3:
+            case 4: return pointsTextFormat[1];
+            default: return pointsTextFormat[2];
+        }
     }
 
     public int getHelpPoints(int index) {
@@ -120,8 +147,12 @@ public class ResultEvaluation {
 
         try {
             if(index != 5 && index != 10 && index != 22 && index != 34) {
-                taskResultDouble = Double.parseDouble(taskResult);
                 taskResultInteger = Integer.parseInt(taskResult);
+            }
+        } catch(Exception e) {}
+        try {
+            if(index != 5 && index != 10 && index != 22 && index != 34) {
+                taskResultDouble = Double.parseDouble(taskResult.replace(",", "."));
             }
         } catch(Exception e) {
             return false;

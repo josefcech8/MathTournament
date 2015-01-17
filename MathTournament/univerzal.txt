@@ -7,3 +7,70 @@
 3 (vyřešení příkladu 13)
 0 null
 2 (vyřešení příkladu 4)
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+7 (vyřešení příkladu 26)
+7 (vyřešení příkladu 26)
+17 (vyřešení příkladu 41)
+0 null
+0 null
+0 null
+1 (vyřešení příkladu 0)
+2 (vyřešení příkladu 0)
+3 (vyřešení příkladu 0)
+4 (vyřešení příkladu 0)
+5 (vyřešení příkladu 0)
+15 (vyřešení příkladu 41)
