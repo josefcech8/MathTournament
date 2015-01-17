@@ -5,7 +5,6 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.text.NumberFormatter;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.TimerTask;
 
 public class GraphicalUserInterface extends JFrame {
 
@@ -100,6 +99,20 @@ public class GraphicalUserInterface extends JFrame {
     //endregion
 
     //region 2| rules
+    String rulesContent = "<html><h1 align=\"center\">1. HRACÍ PLOCHA</h1>" +
+            "<h2 align=\"center\">101  Rozměry hřiště</h2>" +
+            "<p align=\"center\">1. Hřiště má rozměry 40 m x 20 m a je ohraničeno mantinely se zaoblenými rohy.<br>" +
+            "Mantinely musí být schváleny IFF a příslušně označeny.<br>" +
+            "Hřiště je obdélníkové, rozměry udávají délku x šířku.<br>" +
+            "Nejmenší povolené rozměry jsou 36 m x 18 m, největší pak 44 m x 22 m.<br></p>" +
+            "<h2 align=\"center\">102  Značky na hřišti</h2>" +
+            "<p align=\"center\">1. Veškeré označení je provedeno čarami, 4 – 5 cm širokými, jasně viditelnou barvou.<br>" +
+            "2. Středová čára a středový bod jsou vyznačeny.<br>" +
+            "Středová čára je rovnoběžná s kratšími stranami hřiště a rozděluje hřiště na dvě stejné poloviny.<br>" +
+            "3. Velké brankoviště s rozměry 4 m x 5 m je vyznačeno 2,85 m od kratší strany hřiště.<br>" +
+            "Velké brankoviště je obdélníkové, rozměry udávají délku x šířku včetně čar.<br>" +
+            "Velké brankoviště je umístěno centrálně vzhledem k dlouhým stranám hřiště.<br>" +
+            "4. Malé brankoviště s rozměry 1 m x 2,5 m je vyznačeno 0,65 m před zadní čarou velkého brankoviště.</p></html>";
     JLabel labelRulesTitle, labelRulesContent;
     JScrollPane scrollPaneRulesContent;
     JCheckBox checkBoxAgreement;
@@ -115,20 +128,7 @@ public class GraphicalUserInterface extends JFrame {
         labelRulesTitle.setBounds(445, 20, 50, 20);
         panelRules.add(labelRulesTitle);
 
-        labelRulesContent = new JLabel("<html><h1>1. HRACÍ PLOCHA</h1>" +
-                "<h2>101  Rozměry hřiště</h2>" +
-                "1. Hřiště má rozměry 40 m x 20 m a je ohraničeno mantinely se zaoblenými rohy.<br>" +
-                "Mantinely musí být schváleny IFF a příslušně označeny.<br>" +
-                "Hřiště je obdélníkové, rozměry udávají délku x šířku.<br>" +
-                "Nejmenší povolené rozměry jsou 36 m x 18 m, největší pak 44 m x 22 m.<br>" +
-                "<h2>102  Značky na hřišti</h2>" +
-                "1. Veškeré označení je provedeno čarami, 4 – 5 cm širokými, jasně viditelnou barvou.<br>" +
-                "2. Středová čára a středový bod jsou vyznačeny.<br>" +
-                "Středová čára je rovnoběžná s kratšími stranami hřiště a rozděluje hřiště na dvě stejné poloviny.<br>" +
-                "3. Velké brankoviště s rozměry 4 m x 5 m je vyznačeno 2,85 m od kratší strany hřiště.<br>" +
-                "Velké brankoviště je obdélníkové, rozměry udávají délku x šířku včetně čar.<br>" +
-                "Velké brankoviště je umístěno centrálně vzhledem k dlouhým stranám hřiště.<br>" +
-                "4. Malé brankoviště s rozměry 1 m x 2,5 m je vyznačeno 0,65 m před zadní čarou velkého brankoviště.</html>");
+        labelRulesContent = new JLabel(rulesContent);
 
         scrollPaneRulesContent = new JScrollPane();
         scrollPaneRulesContent.setViewportView(labelRulesContent);
@@ -200,14 +200,12 @@ public class GraphicalUserInterface extends JFrame {
     /*end*/
 
     boolean pointArraysEqual;
-    boolean[] taskIndexes = {true, true, true, true, true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
-    int totalPoints, i, pointsHolder = 0, seconds, minutes, hours, triangleMathTextSizeX, triangleMathTextSizeY, teamNumber = 4;
+    int totalPoints, i, pointsHolder = 0, seconds, minutes, hours, triangleMathTextSizeX, triangleMathTextSizeY, penaltyTime, teamNumber = 12;
     int[] points = new int[teamNumber], pointsClone;
     String teamNamesHolder, triangleMathResult, fileOutputBase, fileMessage;
     String[] columnNames = {"POŘADÍ", "TEAM", "BODY"};
     String[] teamNames = new String[teamNumber];
     String[] fileTeam, fileOutput;
-
     String[] taskTitles = {"1. úloha: Meziprostorová",
                            "2. úloha: Jdeme na ping-pong!",
                            "3. úloha: Velké D",
@@ -303,9 +301,9 @@ public class GraphicalUserInterface extends JFrame {
                       "<html><p align=\"justify\">Ve válcovém poháru naplněném vodou, který má plochu podstavy 200 cm2, se vznáší kostka ledu. Vznáší se, neboť je v ledu zamrznutý kamínek o hmotnosti 100 g a hustotě 5 000 kg/m3. Časem se led rozpustí a kamínek klesne na dno. Co se stane s hladinou vody? Klesne, stoupne, nebo se nezmění? Pokud se změní, tak o kolik?</p>",
     };
     Object[][] dataRank;
-    Timer timer;
+    Timer timer, penaltyTimer;
     Font fontTitle, fontTotalPoints, fontTeam, fontTime, fontTaskPoints;
-    JLabel labelTaskTitle, labelTaskContent, labelTaskPoints, labelTotalPoints, labelTime, labelTeamName, labelResultFormat, labelThunder, labelCircuit, labelMountaineer;
+    JLabel labelTaskTitle, labelTaskContent, labelTaskPoints, labelTotalPoints, labelTime, labelTeamName, labelResultFormat, labelThunder, labelCircuit, labelMountaineer, labelCheck;
     JLabel[] labelVector;
     NumberFormatter numberFormatter;
     JTextField textUnits, textResult;
@@ -403,7 +401,7 @@ public class GraphicalUserInterface extends JFrame {
         listTasks.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                if(taskIndexes[listTasks.getSelectedIndex()]) {
+                if(resultEvaluation.getTaskState(listTasks.getSelectedIndex()) == 2) {
                     labelTaskContent.setText(tasks[listTasks.getSelectedIndex()]);
                     textUnits.setText(resultEvaluation.getUnits(listTasks.getSelectedIndex()));
                     labelResultFormat.setText(resultEvaluation.getResultFormat(listTasks.getSelectedIndex()));
@@ -441,6 +439,7 @@ public class GraphicalUserInterface extends JFrame {
                 }
                 /*konec mazaného úseku*/
 
+                setTaskVisibility(true);
                 setTaskMode(listTasks.getSelectedIndex());
             }
         });
@@ -488,6 +487,8 @@ public class GraphicalUserInterface extends JFrame {
 
         buttonSubmit = new JButton("Potvrdit");
         buttonSubmit.setBounds(570, 400, 100, 20);
+        buttonSubmit.setBackground(Color.LIGHT_GRAY);
+        buttonSubmit.setForeground(Color.BLACK);
         buttonSubmit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -495,11 +496,31 @@ public class GraphicalUserInterface extends JFrame {
                     totalPoints += resultEvaluation.getTaskPoints(listTasks.getSelectedIndex());
                     labelTotalPoints.setText(String.valueOf(totalPoints) + " " + resultEvaluation.getPointsTextFormat(totalPoints));
                     fileMessage = "(vyřešení příkladu " + listTasks.getSelectedIndex() + ")";
+                    resultEvaluation.setTaskState(listTasks.getSelectedIndex(), 3);
+                    setTaskMode(listTasks.getSelectedIndex());
                 } else {
                     if(resultEvaluation.getTaskPoints(listTasks.getSelectedIndex()) != 1) {
                         resultEvaluation.setTaskPoints(listTasks.getSelectedIndex());
                         labelTaskPoints.setText("[" + resultEvaluation.getTaskPoints(listTasks.getSelectedIndex()) + " " + resultEvaluation.getPointsTextFormat(resultEvaluation.getTaskPoints(listTasks.getSelectedIndex())) + "]");
                     }
+                    penaltyTime = 6;
+                    penaltyTimer = new Timer(1000, new ActionListener() {
+                        public void actionPerformed(ActionEvent e) {
+                            buttonSubmit.setEnabled(false);
+                            buttonSubmit.setBackground(Color.decode("#800000"));
+                            buttonSubmit.setForeground(Color.WHITE);
+                            penaltyTime--;
+                            buttonSubmit.setText("čekejte " + String.valueOf(penaltyTime) + "'");
+                            if(penaltyTime == 0) {
+                                penaltyTimer.stop();
+                                buttonSubmit.setEnabled(true);
+                                buttonSubmit.setBackground(Color.LIGHT_GRAY);
+                                buttonSubmit.setForeground(Color.BLACK);
+                                buttonSubmit.setText("Potvrdit");
+                            }
+                        }
+                    });
+                    penaltyTimer.start();
                 }
                 textResult.setText("");
                 setTaskMode(listTasks.getSelectedIndex());
@@ -605,24 +626,11 @@ public class GraphicalUserInterface extends JFrame {
         sortTableRank();
 
         scrollPaneTableRank = new JScrollPane(tableRank);
-        scrollPaneTableRank.setBounds(20, 100, 400, 300);
+        scrollPaneTableRank.setBounds(20, 100, 500, 300);
         scrollPaneTableRank.setVisible(false);
         panelTask.add(scrollPaneTableRank);
 
-        labelRulesContent = new JLabel("<html><h1 align=\"center\">1. HRACÍ PLOCHA</h1>" +
-                "<h2 align=\"center\">101  Rozměry hřiště</h2>" +
-                "<p align=\"center\">1. Hřiště má rozměry 40 m x 20 m a je ohraničeno mantinely se zaoblenými rohy.<br>" +
-                "Mantinely musí být schváleny IFF a příslušně označeny.<br>" +
-                "Hřiště je obdélníkové, rozměry udávají délku x šířku.<br>" +
-                "Nejmenší povolené rozměry jsou 36 m x 18 m, největší pak 44 m x 22 m.<br></p>" +
-                "<h2 align=\"center\">102  Značky na hřišti</h2>" +
-                "<p align=\"center\">1. Veškeré označení je provedeno čarami, 4 – 5 cm širokými, jasně viditelnou barvou.<br>" +
-                "2. Středová čára a středový bod jsou vyznačeny.<br>" +
-                "Středová čára je rovnoběžná s kratšími stranami hřiště a rozděluje hřiště na dvě stejné poloviny.<br>" +
-                "3. Velké brankoviště s rozměry 4 m x 5 m je vyznačeno 2,85 m od kratší strany hřiště.<br>" +
-                "Velké brankoviště je obdélníkové, rozměry udávají délku x šířku včetně čar.<br>" +
-                "Velké brankoviště je umístěno centrálně vzhledem k dlouhým stranám hřiště.<br>" +
-                "4. Malé brankoviště s rozměry 1 m x 2,5 m je vyznačeno 0,65 m před zadní čarou velkého brankoviště.</p></html>");
+        labelRulesContent = new JLabel(rulesContent);
 
         scrollPaneRulesContent = new JScrollPane();
         scrollPaneRulesContent.setViewportView(labelRulesContent);
@@ -757,6 +765,11 @@ public class GraphicalUserInterface extends JFrame {
         labelMountaineer.setVisible(false);
         panelTask.add(labelMountaineer);
 
+        labelCheck = new JLabel(new ImageIcon("check.png"));
+        labelCheck.setBounds(400, 210, 200, 190);
+        labelCheck.setVisible(false);
+        panelTask.add(labelCheck);
+
         add(panelTask);
     }
 
@@ -825,6 +838,7 @@ public class GraphicalUserInterface extends JFrame {
             labelThunder.setVisible(false);
             labelCircuit.setVisible(false);
             labelMountaineer.setVisible(false);
+            labelCheck.setVisible(false);
         }
 
     }
@@ -854,6 +868,16 @@ public class GraphicalUserInterface extends JFrame {
     }
 
     private void setTaskMode(int index) {
+        if(resultEvaluation.getTaskState(index) == 3) {
+            setTaskVisibility(false);
+            scrollPaneTasks.setVisible(true);
+            labelTaskTitle.setVisible(true);
+            labelCheck.setVisible(true);
+            return;
+        } else {
+            labelCheck.setVisible(false);
+        }
+
         switch(index) {
             case 4:
                 for(i = 0; i < labelVector.length; i++) {
@@ -979,8 +1003,14 @@ public class GraphicalUserInterface extends JFrame {
         @Override
         public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
             Component c = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-            if(!taskIndexes[index]) {
-                c.setEnabled(false);
+            switch(resultEvaluation.getTaskState(index)) {
+                case 1:
+                    c.setEnabled(false);
+                    break;
+                case 3:
+                    c.setForeground(Color.decode("#65a954"));
+                    break;
+                default:
             }
             return c;
         }
@@ -990,7 +1020,7 @@ public class GraphicalUserInterface extends JFrame {
         @Override
         public void mousePressed(MouseEvent e) {
             if(listTasks.getSelectedIndex() == 4)
-                textResult.setText("Klikni na obrázek");
+                textResult.setText("Klikněte na obrázek");
         }
     }
 
@@ -1053,12 +1083,7 @@ public class GraphicalUserInterface extends JFrame {
         listTasks.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                if(taskIndexes[listTasks.getSelectedIndex()]) {
-                    labelTaskTitle.setText(taskTitles[listTasks.getSelectedIndex()]);
-                    labelTaskContent.setText(tasks[listTasks.getSelectedIndex()]);
-                } else {
-                    labelTaskContent.setText("zámek");
-                }
+                /*tady stejně bude něco jiného už*/
             }
         });
 

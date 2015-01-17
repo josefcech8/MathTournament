@@ -105,3 +105,71 @@
 85 (vyřešení příkladu 41)
 95 (vyřešení příkladu 41)
 105 (vyřešení příkladu 41)
+3 (vyřešení příkladu 0)
+10 (vyřešení příkladu 41)
+0 null
+9 (vyřešení příkladu 41)
+3 (vyřešení příkladu 0)
+3 (vyřešení příkladu 0)
+3 (vyřešení příkladu 0)
+3 (vyřešení příkladu 0)
+3 (vyřešení příkladu 0)
+3 (vyřešení příkladu 0)
+13 (vyřešení příkladu 41)
+3 (vyřešení příkladu 0)
+5 (vyřešení příkladu 4)
+8 (vyřešení příkladu 5)
+18 (vyřešení příkladu 41)
+3 (vyřešení příkladu 0)
+3 (vyřešení příkladu 0)
+13 (vyřešení příkladu 41)
+18 (vyřešení příkladu 22)
+25 (vyřešení příkladu 35)
+25 (vyřešení příkladu 35)
+25 (vyřešení příkladu 35)
+31 (vyřešení příkladu 31)
+31 (vyřešení příkladu 31)
+31 (vyřešení příkladu 31)
+35 (vyřešení příkladu 30)
+35 (vyřešení příkladu 30)
+35 (vyřešení příkladu 30)
+35 (vyřešení příkladu 30)
+35 (vyřešení příkladu 30)
+35 (vyřešení příkladu 30)
+36 (vyřešení příkladu 29)
+43 (vyřešení příkladu 26)
+48 (vyřešení příkladu 21)
+50 (vyřešení příkladu 4)
+53 (vyřešení příkladu 5)
+56 (vyřešení příkladu 6)
+56 (vyřešení příkladu 6)
+56 (vyřešení příkladu 6)
+60 (vyřešení příkladu 8)
+66 (vyřešení příkladu 9)
+68 (vyřešení příkladu 10)
+68 (vyřešení příkladu 10)
+71 (vyřešení příkladu 11)
+75 (vyřešení příkladu 13)
+75 (vyřešení příkladu 13)
+81 (vyřešení příkladu 17)
+86 (vyřešení příkladu 19)
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+0 null
+2 (vyřešení příkladu 0)
+2 (vyřešení příkladu 0)
+2 (vyřešení příkladu 0)
+1 (vyřešení příkladu 0)
+0 null
+0 null
+1 (vyřešení příkladu 0)
