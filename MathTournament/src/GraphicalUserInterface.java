@@ -305,7 +305,7 @@ public class GraphicalUserInterface extends JFrame {
     Object[][] dataRank;
     Timer timer;
     Font fontTitle, fontTotalPoints, fontTeam, fontTime, fontTaskPoints;
-    JLabel labelTaskTitle, labelTaskContent, labelTaskPoints, labelTotalPoints, labelTime, labelTeamName, labelResultFormat;
+    JLabel labelTaskTitle, labelTaskContent, labelTaskPoints, labelTotalPoints, labelTime, labelTeamName, labelResultFormat, labelThunder, labelCircuit, labelMountaineer;
     JLabel[] labelVector;
     NumberFormatter numberFormatter;
     JTextField textUnits, textResult;
@@ -407,6 +407,13 @@ public class GraphicalUserInterface extends JFrame {
                     labelTaskContent.setText(tasks[listTasks.getSelectedIndex()]);
                     textUnits.setText(resultEvaluation.getUnits(listTasks.getSelectedIndex()));
                     labelResultFormat.setText(resultEvaluation.getResultFormat(listTasks.getSelectedIndex()));
+                    if(resultEvaluation.getHelpPoints(listTasks.getSelectedIndex()) != 0) {
+                        buttonHelp.setEnabled(true);
+                        buttonHelp.setText("Nápověda (" + resultEvaluation.getHelpPoints(listTasks.getSelectedIndex()) + " body)");
+                    } else {
+                        buttonHelp.setEnabled(false);
+                        buttonHelp.setText("bez nápovědy");
+                    }
                 } else {
                     /*labelTaskContent.setText("zámek");*/
                     labelTaskContent.setText(tasks[listTasks.getSelectedIndex()]);
@@ -414,9 +421,17 @@ public class GraphicalUserInterface extends JFrame {
                 labelTaskTitle.setText(taskTitles[listTasks.getSelectedIndex()]);
                 labelTaskPoints.setText(String.valueOf("[" + resultEvaluation.getTaskPoints(listTasks.getSelectedIndex())) + " bodů]");
 
-                /*smazat*/
+                /*smazat po zamknutí úloh*/
                 textUnits.setText(resultEvaluation.getUnits(listTasks.getSelectedIndex()));
                 labelResultFormat.setText(resultEvaluation.getResultFormat(listTasks.getSelectedIndex()));
+                if(resultEvaluation.getHelpPoints(listTasks.getSelectedIndex()) != 0) {
+                    buttonHelp.setEnabled(true);
+                    buttonHelp.setText("Nápověda (" + resultEvaluation.getHelpPoints(listTasks.getSelectedIndex()) + " body)");
+                } else {
+                    buttonHelp.setEnabled(false);
+                    buttonHelp.setText("bez nápovědy");
+                }
+                /*konec mazaného úseku*/
 
                 setTaskMode(listTasks.getSelectedIndex());
             }
@@ -449,26 +464,19 @@ public class GraphicalUserInterface extends JFrame {
         textResult = new JTextField();
         textResult.setBounds(300, 400, 200, 20);
         textResult.setText("Zadejte výsledek");
-        /* Záleží na každém úkolu
         textResult.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                JOptionPane.showMessageDialog(null, "Vzorové zadání odpovědi");
+            public void mousePressed(MouseEvent e) {
                 textResult.setText("");
             }
-        });*/
+        });
         panelTask.add(textResult);
 
-        textUnits = new JTextField("null");
+        textUnits = new JTextField(resultEvaluation.getUnits(listTasks.getSelectedIndex()));
         textUnits.setBounds(500, 400, 50, 20);
         textUnits.setHorizontalAlignment(JTextField.CENTER);
-        textUnits.setText(resultEvaluation.getUnits(listTasks.getSelectedIndex()));
         textUnits.setEditable(false);
         panelTask.add(textUnits);
-
-        /*devTool*/
-        resultEvaluation.setValues();
-        /*end*/
 
         buttonSubmit = new JButton("Potvrdit");
         buttonSubmit.setBounds(570, 400, 100, 20);
@@ -508,13 +516,21 @@ public class GraphicalUserInterface extends JFrame {
         setCountdown();
         panelTask.add(labelTime);
 
-        buttonHelp = new JButton("Nápověda (-2 body)");
+        buttonHelp = new JButton("bez nápovědy");
+        buttonHelp.setEnabled(false);
         buttonHelp.setBounds(20, 470, 230, 60);
+        buttonHelp.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if(resultEvaluation.getHelpPoints(listTasks.getSelectedIndex()) != 0)
+                    JOptionPane.showMessageDialog(null, new StringBuilder().append("<html><p align=\"justify\">").append(resultEvaluation.getHelpText(listTasks.getSelectedIndex())).append("</p></html>").toString(), "Nápověda", JOptionPane.INFORMATION_MESSAGE);
+
+            }
+        });
         panelTask.add(buttonHelp);
 
-        labelResultFormat = new JLabel("null");
+        labelResultFormat = new JLabel(resultEvaluation.getResultFormat(listTasks.getSelectedIndex()));
         labelResultFormat.setBounds(300, 415, 370, 60);
-        labelResultFormat.setText(resultEvaluation.getResultFormat(listTasks.getSelectedIndex()));
         panelTask.add(labelResultFormat);
 
         labelMatfyz = new JLabel(new ImageIcon("mff.gif"));
@@ -704,6 +720,21 @@ public class GraphicalUserInterface extends JFrame {
         panelTask.add(paint100);
         /*end*/
 
+        labelThunder = new JLabel(new ImageIcon("thunder.png"));
+        labelThunder.setBounds(425, 180, 150, 150);
+        labelThunder.setVisible(false);
+        panelTask.add(labelThunder);
+
+        labelCircuit = new JLabel(new ImageIcon("circuit.png"));
+        labelCircuit.setBounds(425, 180, 150, 150);
+        labelCircuit.setVisible(false);
+        panelTask.add(labelCircuit);
+
+        labelMountaineer = new JLabel(new ImageIcon("mountaineer.png"));
+        labelMountaineer.setBounds(425, 210, 200, 160);
+        labelMountaineer.setVisible(false);
+        panelTask.add(labelMountaineer);
+
         add(panelTask);
     }
 
@@ -769,6 +800,9 @@ public class GraphicalUserInterface extends JFrame {
             for(i = 0; i < textTriangleMath.length; i++) {
                 textTriangleMath[i].setVisible(false);
             }
+            labelThunder.setVisible(false);
+            labelCircuit.setVisible(false);
+            labelMountaineer.setVisible(false);
         }
 
     }
@@ -817,6 +851,9 @@ public class GraphicalUserInterface extends JFrame {
                 textResult.setVisible(true);
                 buttonSubmit.setBounds(570, 400, 100, 20);
                 paint100.setVisible(false);
+                labelThunder.setVisible(false);
+                labelCircuit.setVisible(false);
+                labelMountaineer.setVisible(false);
                 break;
             case 5:
                 triangleMathResult = "";
@@ -834,6 +871,57 @@ public class GraphicalUserInterface extends JFrame {
                     labelVector[i].setVisible(false);
                 }
                 textResult.setBounds(300, 400, 200, 20);
+                labelThunder.setVisible(false);
+                labelCircuit.setVisible(false);
+                labelMountaineer.setVisible(false);
+                break;
+            case 13:
+                labelThunder.setVisible(true);
+
+                for(i = 0; i < labelVector.length; i++) {
+                    labelVector[i].setVisible(false);
+                }
+                textResult.setBounds(300, 400, 200, 20);
+                for(i = 0; i < textTriangleMath.length; i++) {
+                    textTriangleMath[i].setVisible(false);
+                }
+                textResult.setVisible(true);
+                buttonSubmit.setBounds(570, 400, 100, 20);
+                paint100.setVisible(false);
+                labelCircuit.setVisible(false);
+                labelMountaineer.setVisible(false);
+                break;
+            case 16:
+                labelCircuit.setVisible(true);
+
+                for(i = 0; i < labelVector.length; i++) {
+                    labelVector[i].setVisible(false);
+                }
+                textResult.setBounds(300, 400, 200, 20);
+                for(i = 0; i < textTriangleMath.length; i++) {
+                    textTriangleMath[i].setVisible(false);
+                }
+                textResult.setVisible(true);
+                buttonSubmit.setBounds(570, 400, 100, 20);
+                paint100.setVisible(false);
+                labelThunder.setVisible(false);
+                labelMountaineer.setVisible(false);
+                break;
+            case 18:
+                labelMountaineer.setVisible(true);
+
+                for(i = 0; i < labelVector.length; i++) {
+                    labelVector[i].setVisible(false);
+                }
+                textResult.setBounds(300, 400, 200, 20);
+                for(i = 0; i < textTriangleMath.length; i++) {
+                    textTriangleMath[i].setVisible(false);
+                }
+                textResult.setVisible(true);
+                buttonSubmit.setBounds(570, 400, 100, 20);
+                paint100.setVisible(false);
+                labelThunder.setVisible(false);
+                labelCircuit.setVisible(false);
                 break;
             default:
                 /*case 4*/
@@ -849,6 +937,15 @@ public class GraphicalUserInterface extends JFrame {
                 textUnits.setVisible(true);
                 buttonSubmit.setBounds(570, 400, 100, 20);
                 paint100.setVisible(false);
+
+                /*case 13*/
+                labelThunder.setVisible(false);
+
+                /*case 16*/
+                labelCircuit.setVisible(false);
+
+                /*case 18*/
+                labelMountaineer.setVisible(false);
 
                 textResult.setBounds(300, 400, 200, 20);
                 textResult.setEditable(true);

@@ -2,3 +2,8 @@
 6 (vyřešení příkladu 4)
 3 (vyřešení příkladu 5)
 3 (vyřešení příkladu 22)
+0 null
+2 (vyřešení příkladu 0)
+3 (vyřešení příkladu 13)
+0 null
+2 (vyřešení příkladu 4)

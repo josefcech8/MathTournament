@@ -28,7 +28,7 @@
       <file leaf-file-name="MathTournament.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MathTournament.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
+            <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="561">
               <caret line="15" column="68" selection-start-line="15" selection-start-column="68" selection-end-line="15" selection-end-column="68" />
               <folding />
             </state>
@@ -38,27 +38,18 @@
       <file leaf-file-name="GraphicalUserInterface.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GraphicalUserInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.724138" vertical-offset="5724" max-vertical-offset="14280">
-              <caret line="515" column="17" selection-start-line="515" selection-start-column="17" selection-end-line="515" selection-end-column="17" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="5846" max-vertical-offset="13923">
+              <caret line="526" column="0" selection-start-line="526" selection-start-column="0" selection-end-line="526" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="n#!!doc;n#teamName#0;n#GraphicalUserInterface#0" expanded="false" />
-                <element signature="e#2486#3439#0" expanded="true" />
-                <element signature="e#3438#3439#0" expanded="true" />
                 <element signature="n#!!doc;n#labelRulesTitle#0;n#GraphicalUserInterface#0" expanded="false" />
-                <element signature="e#5850#6310#0" expanded="true" />
-                <element signature="e#6309#6310#0" expanded="true" />
                 <element signature="n#!!doc;n#labelStartTitle#0;n#GraphicalUserInterface#0" expanded="false" />
-                <element signature="e#7422#7648#0" expanded="true" />
-                <element signature="e#7647#7648#0" expanded="true" />
-                <element signature="e#38216#38633#0" expanded="true" />
-                <element signature="e#38632#38633#0" expanded="true" />
-                <element signature="e#38791#39208#0" expanded="true" />
-                <element signature="e#39207#39208#0" expanded="true" />
-                <element signature="e#39366#39783#0" expanded="true" />
-                <element signature="e#39782#39783#0" expanded="true" />
-                <element signature="e#39975#40392#0" expanded="true" />
-                <element signature="e#40391#40392#0" expanded="true" />
+                <element signature="e#32371#32530#0" expanded="true" />
+                <element signature="e#32529#32530#0" expanded="true" />
+                <element signature="e#34747#35214#0" expanded="true" />
+                <element signature="e#35213#35214#0" expanded="true" />
+                <element signature="n#!!doc;n#labelTestTitle#0;n#GraphicalUserInterface#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -67,11 +58,21 @@
       <file leaf-file-name="ResultEvaluation.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ResultEvaluation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.36225265" vertical-offset="714" max-vertical-offset="2584">
-              <caret line="58" column="5" selection-start-line="58" selection-start-column="5" selection-end-line="58" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.43987823" vertical-offset="1275" max-vertical-offset="3468">
+              <caret line="92" column="37" selection-start-line="92" selection-start-column="37" selection-end-line="92" selection-end-column="37" />
               <folding>
-                <element signature="e#4234#4235#0" expanded="true" />
-                <element signature="e#4276#4277#0" expanded="true" />
+                <element signature="e#9785#9786#0" expanded="true" />
+                <element signature="e#9820#9821#0" expanded="true" />
+                <element signature="e#9863#9864#0" expanded="true" />
+                <element signature="e#9903#9904#0" expanded="true" />
+                <element signature="e#9947#9948#0" expanded="true" />
+                <element signature="e#9985#9986#0" expanded="true" />
+                <element signature="e#10033#10034#0" expanded="true" />
+                <element signature="e#10075#10076#0" expanded="true" />
+                <element signature="e#10118#10119#0" expanded="true" />
+                <element signature="e#10158#10159#0" expanded="true" />
+                <element signature="e#10199#10200#0" expanded="true" />
+                <element signature="e#10234#10235#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -80,7 +81,7 @@
       <file leaf-file-name="FileHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/FileHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="680">
+            <state vertical-scroll-proportion="0.0" vertical-offset="10" max-vertical-offset="680">
               <caret line="25" column="77" selection-start-line="25" selection-start-column="77" selection-end-line="25" selection-end-column="77" />
               <folding />
             </state>
@@ -121,7 +122,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
+    <navigator proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -132,44 +133,7 @@
       <autoscrollFromSource />
       <sortByType />
     </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MathTournament" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MathTournament" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MathTournament" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MathTournament" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MathTournament" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="GoToClass.includeLibraries" value="false" />
@@ -400,7 +364,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22011173" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22011173" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.089242056" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -415,6 +379,32 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3206704" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22011173" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22011173" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.089242056" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -448,6 +438,116 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/MathTournament.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="561">
+          <caret line="15" column="68" selection-start-line="15" selection-start-column="68" selection-end-line="15" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GraphicalUserInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="14076">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="n#!!doc;n#teamName#0;n#GraphicalUserInterface#0" expanded="false" />
+            <element signature="n#!!doc;n#labelRulesTitle#0;n#GraphicalUserInterface#0" expanded="false" />
+            <element signature="n#!!doc;n#labelStartTitle#0;n#GraphicalUserInterface#0" expanded="false" />
+            <element signature="e#32371#32530#0" expanded="true" />
+            <element signature="e#32529#32530#0" expanded="true" />
+            <element signature="e#34747#35214#0" expanded="true" />
+            <element signature="e#35213#35214#0" expanded="true" />
+            <element signature="n#!!doc;n#labelTestTitle#0;n#GraphicalUserInterface#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ResultEvaluation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1139" max-vertical-offset="2584">
+          <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+          <folding>
+            <element signature="e#9785#9786#0" expanded="true" />
+            <element signature="e#9820#9821#0" expanded="true" />
+            <element signature="e#9863#9864#0" expanded="true" />
+            <element signature="e#9903#9904#0" expanded="true" />
+            <element signature="e#9947#9948#0" expanded="true" />
+            <element signature="e#9985#9986#0" expanded="true" />
+            <element signature="e#10033#10034#0" expanded="true" />
+            <element signature="e#10075#10076#0" expanded="true" />
+            <element signature="e#10118#10119#0" expanded="true" />
+            <element signature="e#10158#10159#0" expanded="true" />
+            <element signature="e#10199#10200#0" expanded="true" />
+            <element signature="e#10234#10235#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FileHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="425" max-vertical-offset="680">
+          <caret line="25" column="77" selection-start-line="25" selection-start-column="77" selection-end-line="25" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MathTournament.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="561">
+          <caret line="15" column="68" selection-start-line="15" selection-start-column="68" selection-end-line="15" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GraphicalUserInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="14280">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="n#!!doc;n#teamName#0;n#GraphicalUserInterface#0" expanded="false" />
+            <element signature="n#!!doc;n#labelRulesTitle#0;n#GraphicalUserInterface#0" expanded="false" />
+            <element signature="n#!!doc;n#labelStartTitle#0;n#GraphicalUserInterface#0" expanded="false" />
+            <element signature="e#32371#32530#0" expanded="true" />
+            <element signature="e#32529#32530#0" expanded="true" />
+            <element signature="e#34747#35214#0" expanded="true" />
+            <element signature="e#35213#35214#0" expanded="true" />
+            <element signature="n#!!doc;n#labelTestTitle#0;n#GraphicalUserInterface#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ResultEvaluation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1139" max-vertical-offset="2584">
+          <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+          <folding>
+            <element signature="e#9785#9786#0" expanded="true" />
+            <element signature="e#9820#9821#0" expanded="true" />
+            <element signature="e#9863#9864#0" expanded="true" />
+            <element signature="e#9903#9904#0" expanded="true" />
+            <element signature="e#9947#9948#0" expanded="true" />
+            <element signature="e#9985#9986#0" expanded="true" />
+            <element signature="e#10033#10034#0" expanded="true" />
+            <element signature="e#10075#10076#0" expanded="true" />
+            <element signature="e#10118#10119#0" expanded="true" />
+            <element signature="e#10158#10159#0" expanded="true" />
+            <element signature="e#10199#10200#0" expanded="true" />
+            <element signature="e#10234#10235#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FileHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="425" max-vertical-offset="680">
+          <caret line="25" column="77" selection-start-line="25" selection-start-column="77" selection-end-line="25" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MathTournament.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="425">
           <caret line="9" column="96" selection-start-line="9" selection-start-column="96" selection-end-line="9" selection-end-column="96" />
           <folding />
@@ -461,22 +561,13 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="n#!!doc;n#teamName#0;n#GraphicalUserInterface#0" expanded="false" />
-            <element signature="e#2486#3439#0" expanded="true" />
-            <element signature="e#3438#3439#0" expanded="true" />
             <element signature="n#!!doc;n#labelRulesTitle#0;n#GraphicalUserInterface#0" expanded="false" />
-            <element signature="e#5850#6310#0" expanded="true" />
-            <element signature="e#6309#6310#0" expanded="true" />
             <element signature="n#!!doc;n#labelStartTitle#0;n#GraphicalUserInterface#0" expanded="false" />
-            <element signature="e#7422#7648#0" expanded="true" />
-            <element signature="e#7647#7648#0" expanded="true" />
-            <element signature="e#38216#38633#0" expanded="true" />
-            <element signature="e#38632#38633#0" expanded="true" />
-            <element signature="e#38791#39208#0" expanded="true" />
-            <element signature="e#39207#39208#0" expanded="true" />
-            <element signature="e#39366#39783#0" expanded="true" />
-            <element signature="e#39782#39783#0" expanded="true" />
-            <element signature="e#39975#40392#0" expanded="true" />
-            <element signature="e#40391#40392#0" expanded="true" />
+            <element signature="e#32371#32530#0" expanded="true" />
+            <element signature="e#32529#32530#0" expanded="true" />
+            <element signature="e#34747#35214#0" expanded="true" />
+            <element signature="e#35213#35214#0" expanded="true" />
+            <element signature="n#!!doc;n#labelTestTitle#0;n#GraphicalUserInterface#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -486,8 +577,18 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#4234#4235#0" expanded="true" />
-            <element signature="e#4276#4277#0" expanded="true" />
+            <element signature="e#9785#9786#0" expanded="true" />
+            <element signature="e#9820#9821#0" expanded="true" />
+            <element signature="e#9863#9864#0" expanded="true" />
+            <element signature="e#9903#9904#0" expanded="true" />
+            <element signature="e#9947#9948#0" expanded="true" />
+            <element signature="e#9985#9986#0" expanded="true" />
+            <element signature="e#10033#10034#0" expanded="true" />
+            <element signature="e#10075#10076#0" expanded="true" />
+            <element signature="e#10118#10119#0" expanded="true" />
+            <element signature="e#10158#10159#0" expanded="true" />
+            <element signature="e#10199#10200#0" expanded="true" />
+            <element signature="e#10234#10235#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -507,22 +608,13 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="n#!!doc;n#teamName#0;n#GraphicalUserInterface#0" expanded="false" />
-            <element signature="e#2486#3439#0" expanded="true" />
-            <element signature="e#3438#3439#0" expanded="true" />
             <element signature="n#!!doc;n#labelRulesTitle#0;n#GraphicalUserInterface#0" expanded="false" />
-            <element signature="e#5850#6310#0" expanded="true" />
-            <element signature="e#6309#6310#0" expanded="true" />
             <element signature="n#!!doc;n#labelStartTitle#0;n#GraphicalUserInterface#0" expanded="false" />
-            <element signature="e#7422#7648#0" expanded="true" />
-            <element signature="e#7647#7648#0" expanded="true" />
-            <element signature="e#38216#38633#0" expanded="true" />
-            <element signature="e#38632#38633#0" expanded="true" />
-            <element signature="e#38791#39208#0" expanded="true" />
-            <element signature="e#39207#39208#0" expanded="true" />
-            <element signature="e#39366#39783#0" expanded="true" />
-            <element signature="e#39782#39783#0" expanded="true" />
-            <element signature="e#39975#40392#0" expanded="true" />
-            <element signature="e#40391#40392#0" expanded="true" />
+            <element signature="e#32371#32530#0" expanded="true" />
+            <element signature="e#32529#32530#0" expanded="true" />
+            <element signature="e#34747#35214#0" expanded="true" />
+            <element signature="e#35213#35214#0" expanded="true" />
+            <element signature="n#!!doc;n#labelTestTitle#0;n#GraphicalUserInterface#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -532,8 +624,18 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#4234#4235#0" expanded="true" />
-            <element signature="e#4276#4277#0" expanded="true" />
+            <element signature="e#9785#9786#0" expanded="true" />
+            <element signature="e#9820#9821#0" expanded="true" />
+            <element signature="e#9863#9864#0" expanded="true" />
+            <element signature="e#9903#9904#0" expanded="true" />
+            <element signature="e#9947#9948#0" expanded="true" />
+            <element signature="e#9985#9986#0" expanded="true" />
+            <element signature="e#10033#10034#0" expanded="true" />
+            <element signature="e#10075#10076#0" expanded="true" />
+            <element signature="e#10118#10119#0" expanded="true" />
+            <element signature="e#10158#10159#0" expanded="true" />
+            <element signature="e#10199#10200#0" expanded="true" />
+            <element signature="e#10234#10235#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -553,22 +655,13 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="n#!!doc;n#teamName#0;n#GraphicalUserInterface#0" expanded="false" />
-            <element signature="e#2486#3439#0" expanded="true" />
-            <element signature="e#3438#3439#0" expanded="true" />
             <element signature="n#!!doc;n#labelRulesTitle#0;n#GraphicalUserInterface#0" expanded="false" />
-            <element signature="e#5850#6310#0" expanded="true" />
-            <element signature="e#6309#6310#0" expanded="true" />
             <element signature="n#!!doc;n#labelStartTitle#0;n#GraphicalUserInterface#0" expanded="false" />
-            <element signature="e#7422#7648#0" expanded="true" />
-            <element signature="e#7647#7648#0" expanded="true" />
-            <element signature="e#38216#38633#0" expanded="true" />
-            <element signature="e#38632#38633#0" expanded="true" />
-            <element signature="e#38791#39208#0" expanded="true" />
-            <element signature="e#39207#39208#0" expanded="true" />
-            <element signature="e#39366#39783#0" expanded="true" />
-            <element signature="e#39782#39783#0" expanded="true" />
-            <element signature="e#39975#40392#0" expanded="true" />
-            <element signature="e#40391#40392#0" expanded="true" />
+            <element signature="e#32371#32530#0" expanded="true" />
+            <element signature="e#32529#32530#0" expanded="true" />
+            <element signature="e#34747#35214#0" expanded="true" />
+            <element signature="e#35213#35214#0" expanded="true" />
+            <element signature="n#!!doc;n#labelTestTitle#0;n#GraphicalUserInterface#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -578,8 +671,18 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="155" max-vertical-offset="1360">
           <caret line="35" column="50" selection-start-line="35" selection-start-column="50" selection-end-line="35" selection-end-column="50" />
           <folding>
-            <element signature="e#4234#4235#0" expanded="true" />
-            <element signature="e#4276#4277#0" expanded="true" />
+            <element signature="e#9785#9786#0" expanded="true" />
+            <element signature="e#9820#9821#0" expanded="true" />
+            <element signature="e#9863#9864#0" expanded="true" />
+            <element signature="e#9903#9904#0" expanded="true" />
+            <element signature="e#9947#9948#0" expanded="true" />
+            <element signature="e#9985#9986#0" expanded="true" />
+            <element signature="e#10033#10034#0" expanded="true" />
+            <element signature="e#10075#10076#0" expanded="true" />
+            <element signature="e#10118#10119#0" expanded="true" />
+            <element signature="e#10158#10159#0" expanded="true" />
+            <element signature="e#10199#10200#0" expanded="true" />
+            <element signature="e#10234#10235#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -599,22 +702,13 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="n#!!doc;n#teamName#0;n#GraphicalUserInterface#0" expanded="false" />
-            <element signature="e#2486#3439#0" expanded="true" />
-            <element signature="e#3438#3439#0" expanded="true" />
             <element signature="n#!!doc;n#labelRulesTitle#0;n#GraphicalUserInterface#0" expanded="false" />
-            <element signature="e#5850#6310#0" expanded="true" />
-            <element signature="e#6309#6310#0" expanded="true" />
             <element signature="n#!!doc;n#labelStartTitle#0;n#GraphicalUserInterface#0" expanded="false" />
-            <element signature="e#7422#7648#0" expanded="true" />
-            <element signature="e#7647#7648#0" expanded="true" />
-            <element signature="e#38216#38633#0" expanded="true" />
-            <element signature="e#38632#38633#0" expanded="true" />
-            <element signature="e#38791#39208#0" expanded="true" />
-            <element signature="e#39207#39208#0" expanded="true" />
-            <element signature="e#39366#39783#0" expanded="true" />
-            <element signature="e#39782#39783#0" expanded="true" />
-            <element signature="e#39975#40392#0" expanded="true" />
-            <element signature="e#40391#40392#0" expanded="true" />
+            <element signature="e#32371#32530#0" expanded="true" />
+            <element signature="e#32529#32530#0" expanded="true" />
+            <element signature="e#34747#35214#0" expanded="true" />
+            <element signature="e#35213#35214#0" expanded="true" />
+            <element signature="n#!!doc;n#labelTestTitle#0;n#GraphicalUserInterface#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -624,8 +718,18 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="155" max-vertical-offset="1360">
           <caret line="35" column="50" selection-start-line="35" selection-start-column="50" selection-end-line="35" selection-end-column="50" />
           <folding>
-            <element signature="e#4234#4235#0" expanded="true" />
-            <element signature="e#4276#4277#0" expanded="true" />
+            <element signature="e#9785#9786#0" expanded="true" />
+            <element signature="e#9820#9821#0" expanded="true" />
+            <element signature="e#9863#9864#0" expanded="true" />
+            <element signature="e#9903#9904#0" expanded="true" />
+            <element signature="e#9947#9948#0" expanded="true" />
+            <element signature="e#9985#9986#0" expanded="true" />
+            <element signature="e#10033#10034#0" expanded="true" />
+            <element signature="e#10075#10076#0" expanded="true" />
+            <element signature="e#10118#10119#0" expanded="true" />
+            <element signature="e#10158#10159#0" expanded="true" />
+            <element signature="e#10199#10200#0" expanded="true" />
+            <element signature="e#10234#10235#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -645,22 +749,13 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="n#!!doc;n#teamName#0;n#GraphicalUserInterface#0" expanded="false" />
-            <element signature="e#2486#3439#0" expanded="true" />
-            <element signature="e#3438#3439#0" expanded="true" />
             <element signature="n#!!doc;n#labelRulesTitle#0;n#GraphicalUserInterface#0" expanded="false" />
-            <element signature="e#5850#6310#0" expanded="true" />
-            <element signature="e#6309#6310#0" expanded="true" />
             <element signature="n#!!doc;n#labelStartTitle#0;n#GraphicalUserInterface#0" expanded="false" />
-            <element signature="e#7422#7648#0" expanded="true" />
-            <element signature="e#7647#7648#0" expanded="true" />
-            <element signature="e#38216#38633#0" expanded="true" />
-            <element signature="e#38632#38633#0" expanded="true" />
-            <element signature="e#38791#39208#0" expanded="true" />
-            <element signature="e#39207#39208#0" expanded="true" />
-            <element signature="e#39366#39783#0" expanded="true" />
-            <element signature="e#39782#39783#0" expanded="true" />
-            <element signature="e#39975#40392#0" expanded="true" />
-            <element signature="e#40391#40392#0" expanded="true" />
+            <element signature="e#32371#32530#0" expanded="true" />
+            <element signature="e#32529#32530#0" expanded="true" />
+            <element signature="e#34747#35214#0" expanded="true" />
+            <element signature="e#35213#35214#0" expanded="true" />
+            <element signature="n#!!doc;n#labelTestTitle#0;n#GraphicalUserInterface#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -670,8 +765,18 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="155" max-vertical-offset="1360">
           <caret line="35" column="50" selection-start-line="35" selection-start-column="50" selection-end-line="35" selection-end-column="50" />
           <folding>
-            <element signature="e#4234#4235#0" expanded="true" />
-            <element signature="e#4276#4277#0" expanded="true" />
+            <element signature="e#9785#9786#0" expanded="true" />
+            <element signature="e#9820#9821#0" expanded="true" />
+            <element signature="e#9863#9864#0" expanded="true" />
+            <element signature="e#9903#9904#0" expanded="true" />
+            <element signature="e#9947#9948#0" expanded="true" />
+            <element signature="e#9985#9986#0" expanded="true" />
+            <element signature="e#10033#10034#0" expanded="true" />
+            <element signature="e#10075#10076#0" expanded="true" />
+            <element signature="e#10118#10119#0" expanded="true" />
+            <element signature="e#10158#10159#0" expanded="true" />
+            <element signature="e#10199#10200#0" expanded="true" />
+            <element signature="e#10234#10235#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -691,22 +796,13 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="n#!!doc;n#teamName#0;n#GraphicalUserInterface#0" expanded="false" />
-            <element signature="e#2486#3439#0" expanded="true" />
-            <element signature="e#3438#3439#0" expanded="true" />
             <element signature="n#!!doc;n#labelRulesTitle#0;n#GraphicalUserInterface#0" expanded="false" />
-            <element signature="e#5850#6310#0" expanded="true" />
-            <element signature="e#6309#6310#0" expanded="true" />
             <element signature="n#!!doc;n#labelStartTitle#0;n#GraphicalUserInterface#0" expanded="false" />
-            <element signature="e#7422#7648#0" expanded="true" />
-            <element signature="e#7647#7648#0" expanded="true" />
-            <element signature="e#38216#38633#0" expanded="true" />
-            <element signature="e#38632#38633#0" expanded="true" />
-            <element signature="e#38791#39208#0" expanded="true" />
-            <element signature="e#39207#39208#0" expanded="true" />
-            <element signature="e#39366#39783#0" expanded="true" />
-            <element signature="e#39782#39783#0" expanded="true" />
-            <element signature="e#39975#40392#0" expanded="true" />
-            <element signature="e#40391#40392#0" expanded="true" />
+            <element signature="e#32371#32530#0" expanded="true" />
+            <element signature="e#32529#32530#0" expanded="true" />
+            <element signature="e#34747#35214#0" expanded="true" />
+            <element signature="e#35213#35214#0" expanded="true" />
+            <element signature="n#!!doc;n#labelTestTitle#0;n#GraphicalUserInterface#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -716,8 +812,18 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="1428">
           <caret line="35" column="19" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="19" />
           <folding>
-            <element signature="e#4234#4235#0" expanded="true" />
-            <element signature="e#4276#4277#0" expanded="true" />
+            <element signature="e#9785#9786#0" expanded="true" />
+            <element signature="e#9820#9821#0" expanded="true" />
+            <element signature="e#9863#9864#0" expanded="true" />
+            <element signature="e#9903#9904#0" expanded="true" />
+            <element signature="e#9947#9948#0" expanded="true" />
+            <element signature="e#9985#9986#0" expanded="true" />
+            <element signature="e#10033#10034#0" expanded="true" />
+            <element signature="e#10075#10076#0" expanded="true" />
+            <element signature="e#10118#10119#0" expanded="true" />
+            <element signature="e#10158#10159#0" expanded="true" />
+            <element signature="e#10199#10200#0" expanded="true" />
+            <element signature="e#10234#10235#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -737,22 +843,13 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="n#!!doc;n#teamName#0;n#GraphicalUserInterface#0" expanded="false" />
-            <element signature="e#2486#3439#0" expanded="true" />
-            <element signature="e#3438#3439#0" expanded="true" />
             <element signature="n#!!doc;n#labelRulesTitle#0;n#GraphicalUserInterface#0" expanded="false" />
-            <element signature="e#5850#6310#0" expanded="true" />
-            <element signature="e#6309#6310#0" expanded="true" />
             <element signature="n#!!doc;n#labelStartTitle#0;n#GraphicalUserInterface#0" expanded="false" />
-            <element signature="e#7422#7648#0" expanded="true" />
-            <element signature="e#7647#7648#0" expanded="true" />
-            <element signature="e#38216#38633#0" expanded="true" />
-            <element signature="e#38632#38633#0" expanded="true" />
-            <element signature="e#38791#39208#0" expanded="true" />
-            <element signature="e#39207#39208#0" expanded="true" />
-            <element signature="e#39366#39783#0" expanded="true" />
-            <element signature="e#39782#39783#0" expanded="true" />
-            <element signature="e#39975#40392#0" expanded="true" />
-            <element signature="e#40391#40392#0" expanded="true" />
+            <element signature="e#32371#32530#0" expanded="true" />
+            <element signature="e#32529#32530#0" expanded="true" />
+            <element signature="e#34747#35214#0" expanded="true" />
+            <element signature="e#35213#35214#0" expanded="true" />
+            <element signature="n#!!doc;n#labelTestTitle#0;n#GraphicalUserInterface#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -762,8 +859,18 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="272">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding>
-            <element signature="e#4234#4235#0" expanded="true" />
-            <element signature="e#4276#4277#0" expanded="true" />
+            <element signature="e#9785#9786#0" expanded="true" />
+            <element signature="e#9820#9821#0" expanded="true" />
+            <element signature="e#9863#9864#0" expanded="true" />
+            <element signature="e#9903#9904#0" expanded="true" />
+            <element signature="e#9947#9948#0" expanded="true" />
+            <element signature="e#9985#9986#0" expanded="true" />
+            <element signature="e#10033#10034#0" expanded="true" />
+            <element signature="e#10075#10076#0" expanded="true" />
+            <element signature="e#10118#10119#0" expanded="true" />
+            <element signature="e#10158#10159#0" expanded="true" />
+            <element signature="e#10199#10200#0" expanded="true" />
+            <element signature="e#10234#10235#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -783,22 +890,13 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="n#!!doc;n#teamName#0;n#GraphicalUserInterface#0" expanded="false" />
-            <element signature="e#2486#3439#0" expanded="true" />
-            <element signature="e#3438#3439#0" expanded="true" />
             <element signature="n#!!doc;n#labelRulesTitle#0;n#GraphicalUserInterface#0" expanded="false" />
-            <element signature="e#5850#6310#0" expanded="true" />
-            <element signature="e#6309#6310#0" expanded="true" />
             <element signature="n#!!doc;n#labelStartTitle#0;n#GraphicalUserInterface#0" expanded="false" />
-            <element signature="e#7422#7648#0" expanded="true" />
-            <element signature="e#7647#7648#0" expanded="true" />
-            <element signature="e#38216#38633#0" expanded="true" />
-            <element signature="e#38632#38633#0" expanded="true" />
-            <element signature="e#38791#39208#0" expanded="true" />
-            <element signature="e#39207#39208#0" expanded="true" />
-            <element signature="e#39366#39783#0" expanded="true" />
-            <element signature="e#39782#39783#0" expanded="true" />
-            <element signature="e#39975#40392#0" expanded="true" />
-            <element signature="e#40391#40392#0" expanded="true" />
+            <element signature="e#32371#32530#0" expanded="true" />
+            <element signature="e#32529#32530#0" expanded="true" />
+            <element signature="e#34747#35214#0" expanded="true" />
+            <element signature="e#35213#35214#0" expanded="true" />
+            <element signature="n#!!doc;n#labelTestTitle#0;n#GraphicalUserInterface#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -818,22 +916,13 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="n#!!doc;n#teamName#0;n#GraphicalUserInterface#0" expanded="false" />
-            <element signature="e#2486#3439#0" expanded="true" />
-            <element signature="e#3438#3439#0" expanded="true" />
             <element signature="n#!!doc;n#labelRulesTitle#0;n#GraphicalUserInterface#0" expanded="false" />
-            <element signature="e#5850#6310#0" expanded="true" />
-            <element signature="e#6309#6310#0" expanded="true" />
             <element signature="n#!!doc;n#labelStartTitle#0;n#GraphicalUserInterface#0" expanded="false" />
-            <element signature="e#7422#7648#0" expanded="true" />
-            <element signature="e#7647#7648#0" expanded="true" />
-            <element signature="e#38216#38633#0" expanded="true" />
-            <element signature="e#38632#38633#0" expanded="true" />
-            <element signature="e#38791#39208#0" expanded="true" />
-            <element signature="e#39207#39208#0" expanded="true" />
-            <element signature="e#39366#39783#0" expanded="true" />
-            <element signature="e#39782#39783#0" expanded="true" />
-            <element signature="e#39975#40392#0" expanded="true" />
-            <element signature="e#40391#40392#0" expanded="true" />
+            <element signature="e#32371#32530#0" expanded="true" />
+            <element signature="e#32529#32530#0" expanded="true" />
+            <element signature="e#34747#35214#0" expanded="true" />
+            <element signature="e#35213#35214#0" expanded="true" />
+            <element signature="n#!!doc;n#labelTestTitle#0;n#GraphicalUserInterface#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -853,22 +942,13 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="n#!!doc;n#teamName#0;n#GraphicalUserInterface#0" expanded="false" />
-            <element signature="e#2486#3439#0" expanded="true" />
-            <element signature="e#3438#3439#0" expanded="true" />
             <element signature="n#!!doc;n#labelRulesTitle#0;n#GraphicalUserInterface#0" expanded="false" />
-            <element signature="e#5850#6310#0" expanded="true" />
-            <element signature="e#6309#6310#0" expanded="true" />
             <element signature="n#!!doc;n#labelStartTitle#0;n#GraphicalUserInterface#0" expanded="false" />
-            <element signature="e#7422#7648#0" expanded="true" />
-            <element signature="e#7647#7648#0" expanded="true" />
-            <element signature="e#38216#38633#0" expanded="true" />
-            <element signature="e#38632#38633#0" expanded="true" />
-            <element signature="e#38791#39208#0" expanded="true" />
-            <element signature="e#39207#39208#0" expanded="true" />
-            <element signature="e#39366#39783#0" expanded="true" />
-            <element signature="e#39782#39783#0" expanded="true" />
-            <element signature="e#39975#40392#0" expanded="true" />
-            <element signature="e#40391#40392#0" expanded="true" />
+            <element signature="e#32371#32530#0" expanded="true" />
+            <element signature="e#32529#32530#0" expanded="true" />
+            <element signature="e#34747#35214#0" expanded="true" />
+            <element signature="e#35213#35214#0" expanded="true" />
+            <element signature="n#!!doc;n#labelTestTitle#0;n#GraphicalUserInterface#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -888,14 +968,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/FileHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="680">
-          <caret line="25" column="77" selection-start-line="25" selection-start-column="77" selection-end-line="25" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MathTournament.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
@@ -904,40 +976,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/FileHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="680">
+          <caret line="25" column="77" selection-start-line="25" selection-start-column="77" selection-end-line="25" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/GraphicalUserInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.724138" vertical-offset="5724" max-vertical-offset="14280">
-          <caret line="515" column="17" selection-start-line="515" selection-start-column="17" selection-end-line="515" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="5846" max-vertical-offset="13923">
+          <caret line="526" column="0" selection-start-line="526" selection-start-column="0" selection-end-line="526" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="n#!!doc;n#teamName#0;n#GraphicalUserInterface#0" expanded="false" />
-            <element signature="e#2486#3439#0" expanded="true" />
-            <element signature="e#3438#3439#0" expanded="true" />
             <element signature="n#!!doc;n#labelRulesTitle#0;n#GraphicalUserInterface#0" expanded="false" />
-            <element signature="e#5850#6310#0" expanded="true" />
-            <element signature="e#6309#6310#0" expanded="true" />
             <element signature="n#!!doc;n#labelStartTitle#0;n#GraphicalUserInterface#0" expanded="false" />
-            <element signature="e#7422#7648#0" expanded="true" />
-            <element signature="e#7647#7648#0" expanded="true" />
-            <element signature="e#38216#38633#0" expanded="true" />
-            <element signature="e#38632#38633#0" expanded="true" />
-            <element signature="e#38791#39208#0" expanded="true" />
-            <element signature="e#39207#39208#0" expanded="true" />
-            <element signature="e#39366#39783#0" expanded="true" />
-            <element signature="e#39782#39783#0" expanded="true" />
-            <element signature="e#39975#40392#0" expanded="true" />
-            <element signature="e#40391#40392#0" expanded="true" />
+            <element signature="e#32371#32530#0" expanded="true" />
+            <element signature="e#32529#32530#0" expanded="true" />
+            <element signature="e#34747#35214#0" expanded="true" />
+            <element signature="e#35213#35214#0" expanded="true" />
+            <element signature="n#!!doc;n#labelTestTitle#0;n#GraphicalUserInterface#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ResultEvaluation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36225265" vertical-offset="714" max-vertical-offset="2584">
-          <caret line="58" column="5" selection-start-line="58" selection-start-column="5" selection-end-line="58" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.43987823" vertical-offset="1275" max-vertical-offset="3468">
+          <caret line="92" column="37" selection-start-line="92" selection-start-column="37" selection-end-line="92" selection-end-column="37" />
           <folding>
-            <element signature="e#4234#4235#0" expanded="true" />
-            <element signature="e#4276#4277#0" expanded="true" />
+            <element signature="e#9785#9786#0" expanded="true" />
+            <element signature="e#9820#9821#0" expanded="true" />
+            <element signature="e#9863#9864#0" expanded="true" />
+            <element signature="e#9903#9904#0" expanded="true" />
+            <element signature="e#9947#9948#0" expanded="true" />
+            <element signature="e#9985#9986#0" expanded="true" />
+            <element signature="e#10033#10034#0" expanded="true" />
+            <element signature="e#10075#10076#0" expanded="true" />
+            <element signature="e#10118#10119#0" expanded="true" />
+            <element signature="e#10158#10159#0" expanded="true" />
+            <element signature="e#10199#10200#0" expanded="true" />
+            <element signature="e#10234#10235#0" expanded="true" />
           </folding>
         </state>
       </provider>
