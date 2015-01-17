@@ -492,40 +492,42 @@ public class GraphicalUserInterface extends JFrame {
         buttonSubmit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(resultEvaluation.getEvaluation(listTasks.getSelectedIndex(), textResult.getText())) {
-                    totalPoints += resultEvaluation.getTaskPoints(listTasks.getSelectedIndex());
-                    labelTotalPoints.setText(String.valueOf(totalPoints) + " " + resultEvaluation.getPointsTextFormat(totalPoints));
-                    fileMessage = "(vyřešení příkladu " + listTasks.getSelectedIndex() + ")";
-                    resultEvaluation.setTaskState(listTasks.getSelectedIndex(), 3);
-                    setTaskMode(listTasks.getSelectedIndex());
-                } else {
-                    if(resultEvaluation.getTaskPoints(listTasks.getSelectedIndex()) != 1) {
-                        resultEvaluation.setTaskPoints(listTasks.getSelectedIndex());
-                        labelTaskPoints.setText("[" + resultEvaluation.getTaskPoints(listTasks.getSelectedIndex()) + " " + resultEvaluation.getPointsTextFormat(resultEvaluation.getTaskPoints(listTasks.getSelectedIndex())) + "]");
-                    }
-                    penaltyTime = 6;
-                    penaltyTimer = new Timer(1000, new ActionListener() {
-                        public void actionPerformed(ActionEvent e) {
-                            buttonSubmit.setEnabled(false);
-                            buttonSubmit.setBackground(Color.decode("#800000"));
-                            buttonSubmit.setForeground(Color.WHITE);
-                            penaltyTime--;
-                            buttonSubmit.setText("čekejte " + String.valueOf(penaltyTime) + "'");
-                            if(penaltyTime == 0) {
-                                penaltyTimer.stop();
-                                buttonSubmit.setEnabled(true);
-                                buttonSubmit.setBackground(Color.LIGHT_GRAY);
-                                buttonSubmit.setForeground(Color.BLACK);
-                                buttonSubmit.setText("Potvrdit");
-                            }
+                try {
+                    if (resultEvaluation.getEvaluation(listTasks.getSelectedIndex(), textResult.getText())) {
+                        totalPoints += resultEvaluation.getTaskPoints(listTasks.getSelectedIndex());
+                        labelTotalPoints.setText(String.valueOf(totalPoints) + " " + resultEvaluation.getPointsTextFormat(totalPoints));
+                        fileMessage = "(vyřešení příkladu " + listTasks.getSelectedIndex() + ")";
+                        resultEvaluation.setTaskState(listTasks.getSelectedIndex(), 3);
+                        setTaskMode(listTasks.getSelectedIndex());
+                    } else {
+                        if (resultEvaluation.getTaskPoints(listTasks.getSelectedIndex()) != 1) {
+                            resultEvaluation.setTaskPoints(listTasks.getSelectedIndex());
+                            labelTaskPoints.setText("[" + resultEvaluation.getTaskPoints(listTasks.getSelectedIndex()) + " " + resultEvaluation.getPointsTextFormat(resultEvaluation.getTaskPoints(listTasks.getSelectedIndex())) + "]");
                         }
-                    });
-                    penaltyTimer.start();
-                }
-                textResult.setText("");
-                setTaskMode(listTasks.getSelectedIndex());
+                        penaltyTime = 6;
+                        penaltyTimer = new Timer(1000, new ActionListener() {
+                            public void actionPerformed(ActionEvent e) {
+                                buttonSubmit.setEnabled(false);
+                                buttonSubmit.setBackground(Color.decode("#800000"));
+                                buttonSubmit.setForeground(Color.WHITE);
+                                penaltyTime--;
+                                buttonSubmit.setText("čekejte " + String.valueOf(penaltyTime) + "'");
+                                if (penaltyTime == 0) {
+                                    penaltyTimer.stop();
+                                    buttonSubmit.setEnabled(true);
+                                    buttonSubmit.setBackground(Color.LIGHT_GRAY);
+                                    buttonSubmit.setForeground(Color.BLACK);
+                                    buttonSubmit.setText("Potvrdit");
+                                }
+                            }
+                        });
+                        penaltyTimer.start();
+                    }
+                    textResult.setText("");
+                    setTaskMode(listTasks.getSelectedIndex());
 
-                fileHandler.addRecords(teamName, totalPoints, fileMessage);
+                    fileHandler.addRecords(teamName, totalPoints, fileMessage);
+                } catch(Exception e1) {}
             }
         });
         panelTask.add(buttonSubmit);
@@ -712,19 +714,21 @@ public class GraphicalUserInterface extends JFrame {
             textTriangleMath[i].addKeyListener(new KeyAdapter() {
                 @Override
                 public void keyReleased(KeyEvent e) {
-                    triangleMathResult = "";
-                    for(i = 0; i < textTriangleMath.length; i++) {
-                        if(textTriangleMath[i].hasFocus()) {
-                            textTriangleMath[i].setText(String.valueOf(e.getKeyChar()));
-                            if(e.getKeyChar() == '0') {
-                                textTriangleMath[i].setText("1");
-                            } else if(Integer.parseInt(String.valueOf(e.getKeyChar())) > 6) {
-                                textTriangleMath[i].setText("6");
+                    try {
+                        triangleMathResult = "";
+                        for (i = 0; i < textTriangleMath.length; i++) {
+                            if (textTriangleMath[i].hasFocus()) {
+                                textTriangleMath[i].setText(String.valueOf(e.getKeyChar()));
+                                if (e.getKeyChar() == '0') {
+                                    textTriangleMath[i].setText("1");
+                                } else if (Integer.parseInt(String.valueOf(e.getKeyChar())) > 6) {
+                                    textTriangleMath[i].setText("6");
+                                }
                             }
+                            triangleMathResult += textTriangleMath[i].getText() + "_";
                         }
-                        triangleMathResult += textTriangleMath[i].getText() + "_";
-                    }
-                    textResult.setText(triangleMathResult);
+                        textResult.setText(triangleMathResult);
+                    } catch(Exception e1) {}
                 }
             });
         }

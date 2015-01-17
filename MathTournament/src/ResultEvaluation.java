@@ -14,7 +14,7 @@ public class ResultEvaluation {
                                      "Výsledek zaokrouhlete na celé číslo.",
                                      "Výsledek zaokrouhlete na celé číslo.",
                                      "",
-                                     "",
+                                     "Napsaná čísla můžete pouze přepsat.",
                                      "Výsledek zaokrouhlete na celé číslo.",
                                      "Výsledek zaokrouhlete na celé číslo.",
                                      "Výsledek zaokrouhlete na celé číslo.",
