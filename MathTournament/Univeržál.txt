@@ -1,0 +1,3 @@
+﻿_start
+_stop
+3 (vyřešení příkladu 0)

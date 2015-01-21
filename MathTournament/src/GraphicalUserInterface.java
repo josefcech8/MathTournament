@@ -43,8 +43,8 @@ public class GraphicalUserInterface extends JFrame {
     }
 
     //region 1| login
-    String teamName = "univerzal", teamPassword;
-    String[] registeredTeams = {"CMYK", "Kolodej", "Carodej"}, registeredTeamsPassword = {"student314", "student14", "student34"};
+    String teamName = "Univeržál", teamPassword;
+    String[] registeredTeams = {"CMYK", "Kolodej", "Carodej", "Univeržál"}, registeredTeamsPassword = {"student314", "student14", "student34", "student3396"};
     JLabel labelTitle;
     JTextField textUsername;
     JPasswordField passwordPassword;
@@ -79,6 +79,7 @@ public class GraphicalUserInterface extends JFrame {
                     if(textUsername.getText().toLowerCase().equals(registeredTeams[i].toLowerCase())) {
                         if(String.valueOf(passwordPassword.getPassword()).equals(registeredTeamsPassword[i])) {
                             teamName = textUsername.getText().toLowerCase();
+                            System.out.println("Login OK");
                             /*
                             panelLogin.setVisible(false);
                             panelRules.setVisible(true);*/
@@ -492,45 +493,70 @@ public class GraphicalUserInterface extends JFrame {
         buttonSubmit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    if (resultEvaluation.getEvaluation(listTasks.getSelectedIndex(), textResult.getText())) {
-                        totalPoints += resultEvaluation.getTaskPoints(listTasks.getSelectedIndex());
-                        labelTotalPoints.setText(String.valueOf(totalPoints) + " " + resultEvaluation.getPointsTextFormat(totalPoints));
-                        fileMessage = "(vyřešení příkladu " + listTasks.getSelectedIndex() + ")";
-                        resultEvaluation.setTaskState(listTasks.getSelectedIndex(), 3);
-                        setTaskMode(listTasks.getSelectedIndex());
-                    } else {
-                        if (resultEvaluation.getTaskPoints(listTasks.getSelectedIndex()) != 1) {
-                            resultEvaluation.setTaskPoints(listTasks.getSelectedIndex());
-                            labelTaskPoints.setText("[" + resultEvaluation.getTaskPoints(listTasks.getSelectedIndex()) + " " + resultEvaluation.getPointsTextFormat(resultEvaluation.getTaskPoints(listTasks.getSelectedIndex())) + "]");
-                        }
-                        penaltyTime = 6;
-                        penaltyTimer = new Timer(1000, new ActionListener() {
-                            public void actionPerformed(ActionEvent e) {
-                                buttonSubmit.setEnabled(false);
-                                buttonSubmit.setBackground(Color.decode("#800000"));
-                                buttonSubmit.setForeground(Color.WHITE);
-                                penaltyTime--;
-                                buttonSubmit.setText("čekejte " + String.valueOf(penaltyTime) + "'");
-                                if (penaltyTime == 0) {
-                                    penaltyTimer.stop();
-                                    buttonSubmit.setEnabled(true);
-                                    buttonSubmit.setBackground(Color.LIGHT_GRAY);
-                                    buttonSubmit.setForeground(Color.BLACK);
-                                    buttonSubmit.setText("Potvrdit");
-                                }
+                if(fileHandler.confirmTimeLimit(teamName)) {
+                    penaltyTime = 3;
+                    penaltyTimer = new Timer(1000, new ActionListener() {
+                        public void actionPerformed(ActionEvent e) {
+                            buttonSubmit.setEnabled(false);
+                            buttonSubmit.setBackground(Color.decode("#800000"));
+                            buttonSubmit.setForeground(Color.WHITE);
+                            penaltyTime--;
+                            buttonSubmit.setText("čekejte");
+                            if (penaltyTime == 0) {
+                                penaltyTimer.stop();
+                                buttonSubmit.setEnabled(true);
+                                buttonSubmit.setBackground(Color.LIGHT_GRAY);
+                                buttonSubmit.setForeground(Color.BLACK);
+                                buttonSubmit.setText("Potvrdit");
                             }
-                        });
-                        penaltyTimer.start();
+                        }
+                    });
+                    penaltyTimer.start();
+                }
+                else {
+                    try {
+                        if (resultEvaluation.getEvaluation(listTasks.getSelectedIndex(), textResult.getText())) {
+                            totalPoints += resultEvaluation.getTaskPoints(listTasks.getSelectedIndex());
+                            labelTotalPoints.setText(String.valueOf(totalPoints) + " " + resultEvaluation.getPointsTextFormat(totalPoints));
+                            fileMessage = "(vyřešení příkladu " + listTasks.getSelectedIndex() + ")";
+                            fileHandler.addRecords(teamName, totalPoints, fileMessage);
+                            resultEvaluation.setTaskState(listTasks.getSelectedIndex(), 3);
+                            setTaskMode(listTasks.getSelectedIndex());
+                        } else {
+                            if (resultEvaluation.getTaskPoints(listTasks.getSelectedIndex()) != 1) {
+                                resultEvaluation.setTaskPoints(listTasks.getSelectedIndex());
+                                labelTaskPoints.setText("[" + resultEvaluation.getTaskPoints(listTasks.getSelectedIndex()) + " " + resultEvaluation.getPointsTextFormat(resultEvaluation.getTaskPoints(listTasks.getSelectedIndex())) + "]");
+                            }
+                            penaltyTime = 60;
+                            fileHandler.addTimeLimit(teamName, true);
+                            penaltyTimer = new Timer(1000, new ActionListener() {
+                                public void actionPerformed(ActionEvent e) {
+                                    buttonSubmit.setEnabled(false);
+                                    buttonSubmit.setBackground(Color.decode("#800000"));
+                                    buttonSubmit.setForeground(Color.WHITE);
+                                    penaltyTime--;
+                                    buttonSubmit.setText("čekejte " + String.valueOf(penaltyTime) + "'");
+                                    if (penaltyTime == 0) {
+                                        penaltyTimer.stop();
+                                        fileHandler.addTimeLimit(teamName, false);
+                                        buttonSubmit.setEnabled(true);
+                                        buttonSubmit.setBackground(Color.LIGHT_GRAY);
+                                        buttonSubmit.setForeground(Color.BLACK);
+                                        buttonSubmit.setText("Potvrdit");
+                                    }
+                                }
+                            });
+                            penaltyTimer.start();
+                        }
+                        textResult.setText("");
+                        setTaskMode(listTasks.getSelectedIndex());
+                    } catch (Exception e1) {
                     }
-                    textResult.setText("");
-                    setTaskMode(listTasks.getSelectedIndex());
-
-                    fileHandler.addRecords(teamName, totalPoints, fileMessage);
-                } catch(Exception e1) {}
+                }
             }
         });
         panelTask.add(buttonSubmit);
+
 
         fontTotalPoints = new Font("Serif", Font.BOLD, 30);
 
@@ -560,13 +586,15 @@ public class GraphicalUserInterface extends JFrame {
                         JOptionPane.showMessageDialog(null, "<html><p align=\"justify\">" + resultEvaluation.getHelpText(listTasks.getSelectedIndex()) + "</p></html>", "Nápověda", JOptionPane.INFORMATION_MESSAGE);
                     else {
                         totalPoints += resultEvaluation.getHelpPoints(listTasks.getSelectedIndex());
-                        resultEvaluation.setHelpTextAvailable(listTasks.getSelectedIndex());
-                        labelTotalPoints.setText(String.valueOf(totalPoints) + " " + resultEvaluation.getPointsTextFormat(totalPoints));
-                        buttonHelp.setText("Zobrazit nápovědu");
-                    }
-                }
+                        fileMessage = "(použití nápovědy " + listTasks.getSelectedIndex() + ")";
+        fileHandler.addRecords(teamName, totalPoints, fileMessage);
+        resultEvaluation.setHelpTextAvailable(listTasks.getSelectedIndex());
+        labelTotalPoints.setText(String.valueOf(totalPoints) + " " + resultEvaluation.getPointsTextFormat(totalPoints));
+        buttonHelp.setText("Zobrazit nápovědu");
+    }
+}
 
-            }
+}
         });
         panelTask.add(buttonHelp);
 

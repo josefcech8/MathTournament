@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="MathTournament:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/MathTournament_jar</output-path>
+    <root id="archive" name="MathTournament.jar">
+      <element id="module-output" name="MathTournament" />
+    </root>
+  </artifact>
+</component>
