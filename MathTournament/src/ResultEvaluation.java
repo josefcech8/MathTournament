@@ -8,6 +8,7 @@ public class ResultEvaluation {
     private int[] helpPoints = {0, -1, 0, -1, 0, 0, -1, -1, -2, -2, 0, 0, -2, 0, -1, -2, -1, -2, -1, 0, -2, -2, -2, 0, -3, 0, -2, -1, -2, -1, -1, -2, -2, 0, -1, 0, 0, 0, 0, -2, 0, 0};
     private int[] taskState = new int[42];
     private double taskResultDouble;
+    private String teamName;
     private String[] triangleMath = new String[6], sofaL = new String[2], units = {"s", "Kč", "", "km/h", "", "", "kg", "s", "min", "", "", "km", "", "m/s", "%", "g", "A", "oběhů", "m^2", "s", "", "m", "", "s", "cm", "m", "AU", "cm", "\u2126", "", "km/h", "%", "kJ", "", "", "kJ", "◦", "J", "", "m/s^2", "kg", "cm"};
     private String[] resultFormat = {"Výsledek zaokrouhlete na celé číslo.",
                                      "Výsledek zaokrouhlete na celé číslo.",
@@ -125,6 +126,14 @@ public class ResultEvaluation {
 
     public void setHelpTextAvailable(int index) {
         helpTextAvailable[index] = true;
+    }
+
+    public void setTeamName(String team) {
+        teamName = team;
+    }
+
+    public String getTeamName() {
+        return teamName;
     }
 
     public int getTaskState(int index) {
