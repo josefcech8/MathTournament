@@ -10,7 +10,7 @@
     (1) Make components in initTestPanel private
     (2)
     (3)
-    (4) add path to rank and other places in program
+    (4)
     (5) update cleancode in FileHandler.java
     (6)
     (7) highlight your team in the table
@@ -19,8 +19,7 @@
         disable submit result with empty or incorrect textResult
     (10)
     (11) sjednotit barvy tlačítek
-    (12) Create my admin account
-    (13) create table for winners
+    (12) create table for winners
  */
 
 public class MathTournament {

@@ -23,7 +23,7 @@ public class GraphicalUserInterface extends JFrame {
     P:\\
     */
 
-    String pathPics = "C:\\sources\\pics\\";
+    String pathPics = "C:\\Users\\Ronald.Pavel-PC\\IdeaProjects\\MathTournament.git\\MathTournament\\sources\\pics\\";
 
     private int screenSizeX, screenSizeY, FRAME_SIZE_X, FRAME_SIZE_Y;
     private String BACKGROUND_COLOR = "#00A08A";
@@ -72,11 +72,10 @@ public class GraphicalUserInterface extends JFrame {
     }
 
     //region 1| login
-    /*private String teamName;*/
-    private String[] registeredTeams = {"CMYK", "Kolodej", "Carodej", "Univeržál jšou"}, registeredTeamsPassword = {"student314", "student14", "student34", "0"};
-    private Font fontLoginTitle;
+    private String[] registeredTeams = {"C.M.Y.K.", "Kolodej", "Carodej", "Univeržál jšou"}, registeredTeamsPassword = {"student314", "student14", "student34", "0"};
+    private Font fontLoginTitle, fontGreetings;
     private paintComponent horizontalLineDownforLogin, verticalLineforLogin, horizontalLineUpforLogin;
-    private JLabel labelTitle, labelMatfyzforLogin, labelBrezinkyforLogin;
+    private JLabel labelTitle, labelMatfyzforLogin, labelBrezinkyforLogin, labelGreetings;
     private JTextField textUsername;
     private JPasswordField passwordPassword;
     private JButton buttonLogin;
@@ -88,6 +87,13 @@ public class GraphicalUserInterface extends JFrame {
         getContentPane().add(panelLogin);
         panelLogin.setLayout(null);
         panelLogin.setBackground(Color.decode(BACKGROUND_COLOR));
+
+        fontGreetings = new Font("Serif", Font.PLAIN, 30);
+
+        labelGreetings = new JLabel("Vítejte", SwingConstants.CENTER);
+        labelGreetings.setBounds(770, 35, 230, 40);
+        labelGreetings.setFont(fontGreetings);
+        panelLogin.add(labelGreetings);
 
         fontLoginTitle = new Font("Serif", Font.BOLD, 40);
 
@@ -104,6 +110,7 @@ public class GraphicalUserInterface extends JFrame {
             @Override
             public void focusGained(FocusEvent e) {
                 textUsername.setBackground(Color.WHITE);
+                textUsername.setForeground(Color.BLACK);
                 textUsername.setText("");
             }
         });
@@ -116,9 +123,11 @@ public class GraphicalUserInterface extends JFrame {
             @Override
             public void focusGained(FocusEvent e) {
                 textUsername.setBackground(Color.decode("#800000"));
+                textUsername.setForeground(Color.WHITE);
                 for (i = 0; i < registeredTeams.length; i++) {
-                    if (textUsername.getText().toLowerCase().equals(registeredTeams[i].toLowerCase())) {
+                    if (textUsername.getText().toLowerCase().equals(registeredTeams[i].toLowerCase()) || textUsername.getText().equals("universal") || textUsername.getText().equals("admin")) {
                         textUsername.setBackground(Color.GREEN);
+                        textUsername.setForeground(Color.BLACK);
                         break;
                     }
                 }
@@ -153,15 +162,20 @@ public class GraphicalUserInterface extends JFrame {
         buttonLogin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(textUsername.getText().toLowerCase().equals("universal") && String.valueOf(passwordPassword.getPassword()).equals("1234")) {
+                if(textUsername.getText().toLowerCase().equals("universal")) {
                     resultEvaluation.setTeamName(textUsername.getText());
 
                     panelLogin.setVisible(false);
                     panelTest.setVisible(true);
                     labelTeamNameforTest.setText("Tým: " + resultEvaluation.getTeamName());
                     return;
-                } else {
-                    System.out.println("Nesplněno: " + textUsername.getText() + " " + passwordPassword.getPassword());
+                } else if(textUsername.getText().equals("admin") && String.valueOf(passwordPassword.getPassword()).equals("11.11.2009")) {
+                    resultEvaluation.setTeamName(textUsername.getText());
+
+                    panelLogin.setVisible(false);
+                    panelTask.setVisible(true);
+                    labelTeamName.setText(resultEvaluation.getTeamName());
+                    return;
                 }
                 for(i = 0; i < registeredTeams.length; i++) {
                     if(textUsername.getText().toLowerCase().equals(registeredTeams[i].toLowerCase())) {
@@ -218,7 +232,6 @@ public class GraphicalUserInterface extends JFrame {
     //endregion
 
     //region 3| rules
-    private String teamNameforTest;
     private String dashSeparation = "<p align=\"center\">------------------------------------------------------------------------------------------------------------------------------------------------</p>";
     private String rulesContent = "<html>" +
             dashSeparation +
@@ -321,12 +334,12 @@ public class GraphicalUserInterface extends JFrame {
         panelRules.setLayout(null);
         panelRules.setBackground(Color.decode(BACKGROUND_COLOR));
 
-        teamNameforTest = resultEvaluation.getTeamName();
+        /*teamNameforTest = resultEvaluation.getTeamName();*/
 
         fontRulesTitle = new Font("Serif", Font.PLAIN, 30);
 
         labelRulesTitle = new JLabel("Pravidla", SwingConstants.CENTER);
-        labelRulesTitle.setBounds(0, 20, FRAME_SIZE_X - 245, 30);
+        labelRulesTitle.setBounds(770, 40, 230, 30);
         labelRulesTitle.setFont(fontRulesTitle);
         panelRules.add(labelRulesTitle);
 
@@ -334,7 +347,7 @@ public class GraphicalUserInterface extends JFrame {
 
         scrollPaneRulesContent = new JScrollPane();
         scrollPaneRulesContent.setViewportView(labelRulesContent);
-        scrollPaneRulesContent.setBounds(85, 85, 600, 350);
+        scrollPaneRulesContent.setBounds(85, 50, 600, 385);
         scrollPaneRulesContent.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 3));
         scrollPaneRulesContent.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         panelRules.add(scrollPaneRulesContent);
@@ -387,7 +400,7 @@ public class GraphicalUserInterface extends JFrame {
     //region 4| startCompetition
     private Font fontStartCompetitionTitle;
     private paintComponent horizontalLineDownforStartCompetition, verticalLineforStartCompetition, horizontalLineUpforStartCompetition;
-    private JLabel labelStartTitle, labelStartInfo, labelMatfyzforStartCompetition, labelBrezinkyforStartCompetition;
+    private JLabel labelStartTitle, labelStartInfo, labelMatfyzforStartCompetition, labelBrezinkyforStartCompetition, labelPrice;
     private JButton buttonStartCompetition;
     private JPanel panelStartCompetition;
 
@@ -400,28 +413,33 @@ public class GraphicalUserInterface extends JFrame {
         fontStartCompetitionTitle = new Font("Serif", Font.PLAIN, 30);
 
         labelStartTitle = new JLabel("Zahájení", SwingConstants.CENTER);
-        labelStartTitle.setBounds(0, 20, FRAME_SIZE_X - 245, 40);
+        labelStartTitle.setBounds(770, 35, 230, 40);
         labelStartTitle.setFont(fontStartCompetitionTitle);
         panelStartCompetition.add(labelStartTitle);
 
         labelStartInfo = new JLabel("<html>Po stisknutí tlačítka zahájíte<br>" +
                                     "soutěž a spustíte časomíru</html>", SwingConstants.CENTER);
         labelStartInfo.setVerticalAlignment(SwingConstants.TOP);
-        labelStartInfo.setBounds(100, 200, 200, 200);
+        labelStartInfo.setBounds(495, 100, 200, 200);
         panelStartCompetition.add(labelStartInfo);
 
         buttonStartCompetition = new JButton("Zahájit soutěž");
-        buttonStartCompetition.setBounds(400, 200, 150, 20);
+        buttonStartCompetition.setBounds(495, 200, 200, 30);
+        buttonStartCompetition.setBackground(Color.LIGHT_GRAY);
         buttonStartCompetition.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 timer.start();
                 panelStartCompetition.setVisible(false);
                 panelTask.setVisible(true);
-                labelTeamName.setText(resultEvaluation.getTeamName());
+                labelTeamName.setText("Tým: " + resultEvaluation.getTeamName());
             }
         });
         panelStartCompetition.add(buttonStartCompetition);
+
+        labelPrice = new JLabel(new ImageIcon(pathPics + "price.png"));
+        labelPrice.setBounds(20, 50, 400, 459);
+        panelStartCompetition.add(labelPrice);
 
         labelMatfyzforStartCompetition = new JLabel(new ImageIcon(pathPics + "mff.gif"));
         labelMatfyzforStartCompetition.setBounds(810, 130, 150, 150);
@@ -501,15 +519,15 @@ public class GraphicalUserInterface extends JFrame {
     private String[] tasks = {"<html><p align=\"justify\">Paťo se náhodou dostal do paralelního vesmíru. Kolik sekund tam trvá jeden rok, pokud má 6 měsíců, měsíc má 8 týdnů, týden má 5 dnů, den má 30 hodin, hodina má 16 minut a minuta 45 sekund?</p></html>",
                       "<html><p align=\"justify\">Při zuřivém zápase jsme zničili pingpongový míček, a proto jsme šli koupit nový. V obchodě nám prodavačka řekla, že pálka je o 1000 korun dražší než míček, a navíc, že míček a pálka stojí celkem 1100 korun. Poněvadž chceme jen míček, kolik musíme zaplatit?</p></html>",
                       "<html><p align=\"justify\">Mějme dvě čísla: A a B. Čislo A získáme tak, že seřadíme následující stavy vody o stejné hmotnosti podle objemu (za normálního tlaku) od největšího po nejmenší:<br>" +
-                              "1 . . . vodní pára,<br>" +
-                              "2 . . . voda při teplotě 80 °C,<br>" +
-                              "3 . . . led.<br>" +
+                              "> . . . vodní pára,<br>" +
+                              "> . . . voda při teplotě 80 °C,<br>" +
+                              "> . . . led.<br>" +
                               "Čislo B dostaneme seřazením těchto délkových jednotek od nejmenši po největší:<br>" +
-                              "4 . . . míle,<br>" +
-                              "5 . . . palec,<br>" +
-                              "6 . . . světelný rok.<br>" +
+                              "> . . . míle,<br>" +
+                              "> . . . palec,<br>" +
+                              "> . . . světelný rok.<br>" +
                               "Určete největši společný dělitel čísel A a B.</p></html>",
-                      "<html><p align=\"justify\">Kuba trénuje na kole. První kilometr, který je do kopce jezdí rychlostí 10 km/h. Druhý kilometr je už snazší. Kuba ho jezdí rychlostí 40 km/h. Jakou průmernou rychlostí jede Kuba na celé trase.</p>",
+                      "<html><p align=\"justify\">Kuba trénuje na kole. První kilometr, který je do kopce, jezdí rychlostí 10 km/h. Druhý kilometr je už snazší. Kuba ho jezdí rychlostí 40 km/h. Jakou průmernou rychlostí jede Kuba na celé trase.</p>",
                       "<html><p align=\"justify\">Vyberte obrázek, ve kterém je výslednice sil dvou černých a jedné modré nulová.</p>",
                       "<html><p align=\"justify\">Doplňte do vrcholů trojúhelníku a na středy jeho stran čísla 1 až 6 tak, že součet čísel na každé straně bude vždy 9. Každé číslo použijte jenom jednou.</p>",
                       "<html><p align=\"justify\">Manželé Novákovi si na Nový rok řekli, že nejsou zrovna hubení a mohli by trochu shodit. Jejich cílem bylo zhubnout alespoň 10% své původní společné hmotnosti. Paní Zita Nováková měla na Nový rok hmotnost mZ = 80 kg a její manžel Jakub Novák mJ = 120 kg. Ke konci roku se opět zvážili a zjistili, že paní Nováková sice zhubla o 15%, ale její manžel jen o 5%. O kolik kilogramů více/méně zhubli oba dohromady oproti jejich novoročnímu slibu?</p>",
@@ -552,7 +570,7 @@ public class GraphicalUserInterface extends JFrame {
     private Object[][] dataRank;
     private Timer timer, penaltyTimer;
     private Font fontTitle, fontTotalPoints, fontTeam, fontTime, fontTaskPoints, fontFinish;
-    private JLabel labelTaskTitle, labelTaskContent, labelTaskPoints, labelTotalPoints, labelTime, labelTeamName, labelResultFormat, labelThunder, labelCircuit, labelMountaineer, labelCheck, labelLock, labelEndOfCompetition, labelFinish, labelMatfyz, labelBrezinky;
+    private JLabel labelTaskTitle, labelTaskContent, labelTaskPoints, labelTotalPoints, labelTime, labelTeamName, labelResultFormat, labelThunder, labelCircuit, labelMountaineer, labelCheck, labelLock, labelEndOfCompetition, labelFinish, labelMatfyz, labelBrezinky, labelCutlery;
     private JLabel[] labelVector;
     private NumberFormatter numberFormatter;
     private JTextField textUnits, textResult;
@@ -563,7 +581,6 @@ public class GraphicalUserInterface extends JFrame {
     private JTable tableRank;
     private paintComponent triangle, horizontalLineDown, horizontalLineUp, verticalLine;
     private DefaultTableCellRenderer centerRenderer;
-    /*private ResultEvaluation resultEvaluation;*/
     private VectorPressedAdapter vectorPressedAdapter;
     private JPanel panelTask;
 
@@ -639,8 +656,6 @@ public class GraphicalUserInterface extends JFrame {
         labelTeamName.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         labelTeamName.setFont(fontTeam);
         panelTask.add(labelTeamName);
-
-        /*resultEvaluation = new ResultEvaluation();*/
 
         listTasks = new JList(taskTitles);
         listTasks.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
@@ -999,6 +1014,11 @@ public class GraphicalUserInterface extends JFrame {
         labelMountaineer.setVisible(false);
         panelTask.add(labelMountaineer);
 
+        labelCutlery = new JLabel(new ImageIcon(pathPics + "cutlery.png"));
+        labelCutlery.setBounds(300, 180, 370, 160);
+        labelCutlery.setVisible(false);
+        panelTask.add(labelCutlery);
+
         labelCheck = new JLabel(new ImageIcon(pathPics + "check.png"));
         labelCheck.setBounds(400, 180, 200, 190);
         labelCheck.setVisible(false);
@@ -1109,6 +1129,7 @@ public class GraphicalUserInterface extends JFrame {
                 labelThunder.setVisible(false);
                 labelCircuit.setVisible(false);
                 labelMountaineer.setVisible(false);
+                labelCutlery.setVisible(false);
                 labelCheck.setVisible(false);
                 labelLock.setVisible(false);
                 buttonTaskBuy.setVisible(false);
@@ -1192,6 +1213,7 @@ public class GraphicalUserInterface extends JFrame {
                 labelThunder.setVisible(false);
                 labelCircuit.setVisible(false);
                 labelMountaineer.setVisible(false);
+                labelCutlery.setVisible(false);
                 break;
             case 5:
                 triangleMathResult = "";
@@ -1212,6 +1234,7 @@ public class GraphicalUserInterface extends JFrame {
                 labelThunder.setVisible(false);
                 labelCircuit.setVisible(false);
                 labelMountaineer.setVisible(false);
+                labelCutlery.setVisible(false);
                 break;
             case 13:
                 labelThunder.setVisible(true);
@@ -1226,6 +1249,24 @@ public class GraphicalUserInterface extends JFrame {
                 textResult.setVisible(true);
                 buttonSubmit.setBounds(570, 400, 100, 20);
                 triangle.setVisible(false);
+                labelCircuit.setVisible(false);
+                labelMountaineer.setVisible(false);
+                labelCutlery.setVisible(false);
+                break;
+            case 15:
+                labelCutlery.setVisible(true);
+
+                for(i = 0; i < labelVector.length; i++) {
+                    labelVector[i].setVisible(false);
+                }
+                textResult.setBounds(300, 400, 200, 20);
+                for(i = 0; i < textTriangleMath.length; i++) {
+                    textTriangleMath[i].setVisible(false);
+                }
+                textResult.setVisible(true);
+                buttonSubmit.setBounds(570, 400, 100, 20);
+                triangle.setVisible(false);
+                labelThunder.setVisible(false);
                 labelCircuit.setVisible(false);
                 labelMountaineer.setVisible(false);
                 break;
@@ -1244,6 +1285,7 @@ public class GraphicalUserInterface extends JFrame {
                 triangle.setVisible(false);
                 labelThunder.setVisible(false);
                 labelMountaineer.setVisible(false);
+                labelCutlery.setVisible(false);
                 break;
             case 18:
                 labelMountaineer.setVisible(true);
@@ -1260,6 +1302,7 @@ public class GraphicalUserInterface extends JFrame {
                 triangle.setVisible(false);
                 labelThunder.setVisible(false);
                 labelCircuit.setVisible(false);
+                labelCutlery.setVisible(false);
                 break;
             default:
                 /*case 4*/
@@ -1278,6 +1321,9 @@ public class GraphicalUserInterface extends JFrame {
 
                 /*case 13*/
                 labelThunder.setVisible(false);
+
+                /*case 15*/
+                labelCutlery.setVisible(false);
 
                 /*case 16*/
                 labelCircuit.setVisible(false);
@@ -1333,13 +1379,99 @@ public class GraphicalUserInterface extends JFrame {
     //endregion
 
     //region 2| test
-    /*devTool*/
-    JButton button;
-    /*end*/
-
-    Font fontTestTitle, fontTeamforTest;
-    JLabel labelTestTitle, labelMatfyzforTest, labelBrezinkyforTest, labelTeamNameforTest;
-    JButton buttonRankforTest, buttonTaskforTest, buttonRulesforTest;
+    boolean done;
+    private String dashSeparationforTest = "<p align=\"center\">------------------------------------------------------------------------------------------------------------------------------------------------</p>";
+    private String rulesContentforTest = "<html>" +
+            dashSeparationforTest +
+            "<h2 align=\"center\">Pravidla<br>" +
+            "Matematický turnaj 2015<br>" +
+            "ZŠ O. Březiny</h2>" +
+            dashSeparationforTest +
+            "<h3 align=\"center\">1. ÚČAST V SOUTĚŽI</h3>" +
+            "<p align=\"center\">Matematický turnaj je týmová soutěž žáků druhého stupně základních škol.<br>" +
+            "Obtížnost soutěže je přizpůsobená žákům 8. a 9. tříd základní školy.<br>" +
+            "<br>" +
+            "Žáci soutěží v až tříčlenných týmech.<br>" +
+            "<br>" +
+            "Soutěž bude rozdělena na dvě kategorie B (8. třída, nebo nižší) a A (9. třída).<br>" +
+            "V případě smíšených týmů kategorii určuje člen z nejvyššího ročníku." +
+            "<br></p>" +
+            dashSeparationforTest +
+            "<h3 align=\"center\">2. PŘIHLÁŠENÍ</h3>" +
+            "<p align=\"center\">Do soutěže se týmy přihlašují zasláním emailu na adresu matematickyturnaj@gmail.com<br>" +
+            "[název týmu, jména všech soutěžících, ročník] do ukončení přihlašování nebo do naplnění kapacity." +
+            "<br></p>" +
+            dashSeparationforTest +
+            "<h3 align=\"center\">3. ZAHÁJENÍ SOUTĚŽE</h3>" +
+            "<p align=\"center\">Soutěžící jsou povinni dostavit se na místo konání soutěže včas a dbát pokynů organizátorů.<br>" +
+            "<br>" +
+            "Před vlastním zahájením soutěže dostane každý tým přihlašovací údaje k aplikaci<br>" +
+            "s úlohami a bude mít 15 minut na dotazy<br>" +
+            "a seznámení se s fungováním aplikace pomocí přiloženého tutoriálu." +
+            "<br></p>" +
+            dashSeparationforTest +
+            "<h3 align=\"center\">4. ŘEŠENÍ ÚLOH</h3>" +
+            "<p align=\"center\">Soutěžící v týmu řeší libovolnou ze sedmi úloh, které mají na začátku k dispozici,<br>" +
+            "výsledkem je většinou nějaké číslo.<br>" +
+            "<br>" +
+            "Jakmile tým dojde k závěru, že jejich výsledek je správný,<br>" +
+            "zapíše ho do textového pole ve správném formátu a odešle ke kontrole.<br>" +
+            "Je-li předložené řešení správné, týmu se přičítají body uvedené u hlavičky příkladu.<br>" +
+            "<br>" +
+            "Počet předložení každé úlohy není nikterak omezen, s každým špatným odevzdáním<br>" +
+            "se však snižuje počet bodů za příklad až do jedničky<br>" +
+            "a po každé špatné odpovědi není možné po dobu jedné minuty odevzdávat řešení.<br>" +
+            "<br>" +
+            "U vybraných úloh je možné si za určitý bodový obnos koupit cennou nápovědu." +
+            "<br></p>" +
+            dashSeparationforTest +
+            "<h3 align=\"center\">5. ODEMKNUTÍ DALŠÍCH PŘÍKLADŮ</h3>" +
+            "<p align=\"center\">Za správně vyřešenou úlohu obdrží tým úlohu novou,<br>" +
+            "a to až do vyčerpání všech připravených úloh.<br>" +
+            "Celkový počet úloh je 42.<br>" +
+            "<br>" +
+            "Za 2 body je možné si odemknout libovolnou úlohu ze seznamu.<br>" +
+            "<br>" +
+            "Kupováním nápověd a odemykáním dalších příkladů se můžete s body dostat i do záporných čísel." +
+            "<br></p>" +
+            dashSeparationforTest +
+            "<h3 align=\"center\">6. UKONČENÍ SOUTĚŽE</h3>" +
+            "<p align=\"center\">Soutěž končí uplynutím časového limitu tří hodin.<br>" +
+            "Od této chvíle již není možné odevzdávat úlohy.</p>" +
+            dashSeparationforTest +
+            "<h3 align=\"center\">7. VÍTĚZ</h3>" +
+            "<p align=\"center\">Během soutěže budou v aplikaci dostupné průběžné výsledky všech týmů.<br>" +
+            "<br>" +
+            "Ve své kategorii vítězí ten tým, který dosáhl nejvyššího počtu bodů.<br>" +
+            "Při stejném počtu záleží na nejvyšším čísle vyřešené úlohy,<br>" +
+            "při rovnosti se posuzuje druhé nejvyšší číslo atd. Pokud některé týmy vyřeší úplně stejné úlohy,<br>" +
+            "určí se vítěz losováním. Stejným postupem se určí pořadí zbývajících týmů." +
+            "<br></p>" +
+            dashSeparationforTest +
+            "<h3 align=\"center\">8. POMŮCKY</h3>" +
+            "<p align=\"center\">Povoleny jsou běžné psací a rýsovací potřeby, vlastní zápisky, literatura,<br>" +
+            "kalkulačky, mobilní telefony, vybavení počítačové učebny a internet.<br>" +
+            "<br>" +
+            "Spolupracovat je povoleno výhradně se členy vlastního týmu.<br>" +
+            "Jakákoli jiná komunikace povede k okamžité diskvalifikaci." +
+            "<br></p>" +
+            dashSeparationforTest +
+            "<h3 align=\"center\">9. STATUT PRAVIDEL</h3>" +
+            "<p align=\"center\">Tato pravidla soutěže platí pro všechny zúčastněné týmy.<br>" +
+            "<br>" +
+            "Svým přihlášením do soutěže tým potvrzuje, že se s pravidly seznámil,<br>" +
+            "souhlasí s jejich zněním a zavazuje se tato pravidla dodržovat.<br>" +
+            "<br>" +
+            "Jakékoliv prohřešky proti pravidlům soutěže mohou být potrestány diskvalifikací celého týmu.<br>" +
+            "<br>" +
+            "Organizátoři si vyhrazují právo na drobné změny v pravidlech." +
+            "<br></p>" +
+            dashSeparationforTest +
+            "<html>";
+    Font fontTestTitle, fontTeamforTest, fontTitleforTest;
+    JLabel labelTestTitle, labelMatfyzforTest, labelBrezinkyforTest, labelTeamNameforTest, labelTaskContentforTest, labelTaskTitleforTest, labelResultFormatforTest, labelMemeDoIt, labelMemeDone, labelRulesContentforTest;
+    JTextField textResultforTest, textUnitsforTest;
+    JButton buttonRankforTest, buttonTaskforTest, buttonRulesforTest, buttonSubmitforTest, buttonContinue;
     JScrollPane scrollPaneRulesContentforTest;
     paintComponent horizontalLineDownforTest, horizontalLineUpforTest, verticalLineforTest;
     JPanel panelTest;
@@ -1350,16 +1482,7 @@ public class GraphicalUserInterface extends JFrame {
         panelTest.setLayout(null);
         panelTest.setBackground(Color.decode(BACKGROUND_COLOR));
 
-        button = new JButton("Dálší");
-        button.setBounds(100, 100, 100, 100);
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                panelTest.setVisible(false);
-                panelRules.setVisible(true);
-            }
-        });
-        panelTest.add(button);
+        done = false;
 
         fontTestTitle = new Font("Serif", Font.PLAIN, 30);
 
@@ -1379,6 +1502,22 @@ public class GraphicalUserInterface extends JFrame {
                 buttonRulesforTest.setBackground(Color.LIGHT_GRAY);
 
                 scrollPaneRulesContentforTest.setVisible(false);
+
+                if(done) {
+                    labelMemeDone.setVisible(true);
+                    labelMemeDoIt.setVisible(false);
+                    buttonContinue.setVisible(true);
+                } else {
+                    labelMemeDone.setVisible(false);
+                    labelMemeDoIt.setVisible(true);
+                    buttonContinue.setVisible(false);
+                }
+
+                textResultforTest.setVisible(true);
+                textUnitsforTest.setVisible(true);
+                buttonSubmitforTest.setVisible(true);
+                labelTaskTitleforTest.setVisible(true);
+                labelTaskContentforTest.setVisible(true);
             }
         });
         panelTest.add(buttonTaskforTest);
@@ -1396,6 +1535,23 @@ public class GraphicalUserInterface extends JFrame {
                 JOptionPane.showMessageDialog(null, "V testu není pořadí dostupné", "Informace", JOptionPane.INFORMATION_MESSAGE);
 
                 scrollPaneRulesContentforTest.setVisible(false);
+
+                if(done) {
+                    labelMemeDone.setVisible(true);
+                    labelMemeDoIt.setVisible(false);
+                    buttonContinue.setVisible(true);
+                } else {
+                    labelMemeDone.setVisible(false);
+                    labelMemeDoIt.setVisible(true);
+                    buttonContinue.setVisible(false);
+                }
+
+                textResultforTest.setVisible(true);
+                textUnitsforTest.setVisible(true);
+                buttonSubmitforTest.setVisible(true);
+                labelTaskTitleforTest.setVisible(true);
+                labelTaskContentforTest.setVisible(true);
+
                 buttonTaskforTest.setBackground(Color.CYAN);
                 buttonRankforTest.setBackground(Color.LIGHT_GRAY);
                 buttonRulesforTest.setBackground(Color.LIGHT_GRAY);
@@ -1413,10 +1569,28 @@ public class GraphicalUserInterface extends JFrame {
                 buttonRankforTest.setBackground(Color.LIGHT_GRAY);
                 buttonRulesforTest.setBackground(Color.CYAN);
 
+                labelMemeDone.setVisible(false);
+                labelMemeDoIt.setVisible(false);
+                buttonContinue.setVisible(false);
+                textResultforTest.setVisible(false);
+                textUnitsforTest.setVisible(false);
+                buttonSubmitforTest.setVisible(false);
+                labelTaskTitleforTest.setVisible(false);
+                labelTaskContentforTest.setVisible(false);
+
                 scrollPaneRulesContentforTest.setVisible(true);
             }
         });
         panelTest.add(buttonRulesforTest);
+
+        labelMemeDoIt = new JLabel(new ImageIcon(pathPics + "memeDoIt.png"));
+        labelMemeDoIt.setBounds(20, 80, 260, 218);
+        panelTest.add(labelMemeDoIt);
+
+        labelMemeDone = new JLabel(new ImageIcon(pathPics + "memeDone.jpg"));
+        labelMemeDone.setBounds(20, 80, 260, 218);
+        labelMemeDone.setVisible(false);
+        panelTest.add(labelMemeDone);
 
         fontTeamforTest = new Font("Comic Sans", Font.PLAIN, 15);
 
@@ -1426,6 +1600,72 @@ public class GraphicalUserInterface extends JFrame {
         labelTeamNameforTest.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         labelTeamNameforTest.setFont(fontTeamforTest);
         panelTest.add(labelTeamNameforTest);
+
+        fontTitleforTest = new Font("Serif", Font.BOLD, 20);
+
+        labelTaskTitleforTest = new JLabel("0. Ukázkový příklad");
+        labelTaskTitleforTest.setBounds(300, 70, 350, 30);
+        labelTaskTitleforTest.setFont(fontTitleforTest);
+        panelTest.add(labelTaskTitleforTest);
+
+        labelTaskContentforTest = new JLabel("<html><p align=\"justify\">Do textového pole zapište výsledek příkladu 12,7 m/s + 11 m/s a dbejte pokynů pro formát</p></html>");
+        labelTaskContentforTest.setBounds(300, 120, 370, 220);
+        labelTaskContentforTest.setVerticalAlignment(JLabel.TOP);
+        panelTest.add(labelTaskContentforTest);
+
+        textResultforTest = new JTextField();
+        textResultforTest.setBounds(300, 400, 200, 20);
+        textResultforTest.setText("Zadejte výsledek");
+        textResultforTest.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                textResultforTest.setText("");
+            }
+        });
+        panelTest.add(textResultforTest);
+
+        textUnitsforTest = new JTextField("km/h");
+        textUnitsforTest.setBounds(500, 400, 50, 20);
+        textUnitsforTest.setHorizontalAlignment(JTextField.CENTER);
+        textUnitsforTest.setEditable(false);
+        panelTest.add(textUnitsforTest);
+
+        buttonSubmitforTest = new JButton("Potvrdit");
+        buttonSubmitforTest.setBounds(570, 400, 100, 20);
+        buttonSubmitforTest.setBackground(Color.LIGHT_GRAY);
+        buttonSubmitforTest.setForeground(Color.BLACK);
+        buttonSubmitforTest.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(textResultforTest.getText().equals("85,3") || textResultforTest.getText().equals("85.3")) {
+                    labelMemeDoIt.setVisible(false);
+                    labelMemeDone.setVisible(true);
+                    buttonContinue.setVisible(true);
+                    done = true;
+                    textResultforTest.setText("");
+                } else {
+                    textResultforTest.setText(textResultforTest.getText() + " není správně");
+                }
+            }
+        });
+        panelTest.add(buttonSubmitforTest);
+
+        buttonContinue = new JButton("Pokračovat");
+        buttonContinue.setBounds(435, 250, 100, 30);
+        buttonContinue.setBackground(Color.GREEN);
+        buttonContinue.setVisible(false);
+        buttonContinue.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panelTest.setVisible(false);
+                panelRules.setVisible(true);
+            }
+        });
+        panelTest.add(buttonContinue);
+
+        labelResultFormatforTest = new JLabel("Výsledek zaokrouhlete na jedno desetinné místo.");
+        labelResultFormatforTest.setBounds(300, 415, 370, 60);
+        panelTest.add(labelResultFormatforTest);
 
         labelMatfyzforTest = new JLabel(new ImageIcon(pathPics + "mff.gif"));
         labelMatfyzforTest.setBounds(810, 130, 150, 150);
@@ -1447,8 +1687,10 @@ public class GraphicalUserInterface extends JFrame {
         horizontalLineUpforTest.setBackground(Color.LIGHT_GRAY);
         panelTest.add(horizontalLineUpforTest);
 
+        labelRulesContentforTest = new JLabel(rulesContentforTest);
+
         scrollPaneRulesContentforTest = new JScrollPane();
-        scrollPaneRulesContentforTest.setViewportView(labelRulesContent);
+        scrollPaneRulesContentforTest.setViewportView(labelRulesContentforTest);
         scrollPaneRulesContentforTest.setBounds(85, 70, 600, 460);
         scrollPaneRulesContentforTest.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 3));
         scrollPaneRulesContentforTest.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
