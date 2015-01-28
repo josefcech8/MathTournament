@@ -1,12 +1,18 @@
-cmyk 35_
-kolodej 70_
-namaha 0_
-univerzal 3_
-kacka 310_
-pepik 700_
-gymtri 20_
-dymytry 300_
-poslednicci 1_
-samsung -4_
-jjkr 10_
-paka 3_
+Neggrici/0_
+Redondo/0_
+anti Matematici/0_
+Kondori/0_
+A.T.O.M./0_
+plastova okna/0_
+Bazinga/0_
+Mozkozrouti/0_
+Zagi team/0_
+Dream team/0_
+MHD/0_
+SMARTIES/0_
+Spolecenstvo prstenu/0_
+Soutezivci/0_
+Kiwi/0_
+---/0_
+---/0_
+---/0_

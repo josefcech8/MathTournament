@@ -58,7 +58,7 @@ public class ResultEvaluation {
                                  "Průměrná rychlost je podíl celkové dráhy a celkového času",
                                  "",
                                  "",
-                                 "Určíme nejprve, o kolik měli zhubnout podle předsevzetí.<br>Vzhledem k tomu, že oba chtěli zhubnout o stejné procento, potřebujeme vypočítat, kolik je 10% z mZ + mJ = 200 kg.<br>Potom spočítáme, kolik každý z manželů doopravdy zhubl. Paní Zita zhubla mZ · 15% a pan Jakub mJ · 5%.<br>Nyní dáme dáme hodnoty dohromady a určíme rozdíl.",
+                                 "Určíme nejprve, o kolik měli zhubnout podle předsevzetí.<br>Vzhledem k tomu, že oba chtěli zhubnout o stejné procento, potřebujeme vypočítat, kolik je 10% z m<sub>Z</sub> + m<sub>J</sub> = 200 kg.<br>Potom spočítáme, kolik každý z manželů doopravdy zhubl. Paní Zita zhubla m<sub>Z</sub> · 15% a pan Jakub m<sub>J</sub> · 5%.<br>Nyní dáme dáme hodnoty dohromady a určíme rozdíl.",
                                  "Mezi devíti stromy je mezi stromy 8 stejných mezer.<br>Zjistíme, jaký čas trvá Lence přeběhnout jednu mezeru.",
                                  "Ze zadání vyplývá, že za minutu se napustí studenou vodou 1/4 vany (poněvadž za 4 minuty se napustí celá vana)<br>a horkou vodou 1/12 vany. Z toho dokážeme určit kolik se celkem napustí za minutu.",
                                  "Tři nejmenší prvočísla jsou 2, 3 a 5. Jsou nesoudělná, hledané číslo proto bude muset<br>být dělitelné jejich součinem – hledáme tedy násobek 30. To je to samé<br>jako bychom hledali násobek 3 a nakonec dopsali nulu. Kritériem pro dělitelnost trojkou<br>je podmínka, že ciferný součet čísla musí být dělitelný třemi.",
@@ -111,12 +111,20 @@ public class ResultEvaluation {
         taskState[index] = state;
     }
 
-    public void setNextTaskUnlock(int index) {
-        for(i = 6; i < taskState.length - 6; i++) {
+    public void setNextTaskUnlock() {
+        for(i = 6; i < taskState.length; i++) {
             if(taskState[i] == 1) {
                 taskState[i] = 2;
                 return;
             }
+        }
+    }
+
+    public void setAdminTaskUnlock() {
+        for(i = 0; i < taskState.length; i++) {
+            helpTextAvailable[i] = true;
+            if(taskState[i] == 1)
+                taskState[i] = 2;
         }
     }
 

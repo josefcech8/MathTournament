@@ -16,7 +16,8 @@ public class FileHandler {
 
     /*
     MATH TOURNAMENT
-    P:\\
+    P:\\sources\login\login
+    P:\\sources\points\\
     */
 
     String pathLogin = "C:\\Users\\Ronald.Pavel-PC\\IdeaProjects\\MathTournament.git\\MathTournament\\sources\\login\\login";
@@ -73,6 +74,8 @@ public class FileHandler {
     }
 
     public void addRecords(String fileName, int points, String fileMessage) {
+        if(fileName.equals("admin"))
+            return;
         try {
             PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(pathPoints + fileName.toLowerCase() + ".txt", true)));
             out.println(points + " " + fileMessage);

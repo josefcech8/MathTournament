@@ -20,7 +20,7 @@ public class GraphicalUserInterface extends JFrame {
 
     /*
     MATH TOURNAMENT
-    P:\\
+    P:\\sources\\pics\\
     */
 
     String pathPics = "C:\\Users\\Ronald.Pavel-PC\\IdeaProjects\\MathTournament.git\\MathTournament\\sources\\pics\\";
@@ -28,9 +28,8 @@ public class GraphicalUserInterface extends JFrame {
     private int screenSizeX, screenSizeY, FRAME_SIZE_X, FRAME_SIZE_Y;
     private String BACKGROUND_COLOR = "#00A08A";
     private Dimension screenSize;
-    /*devTool*/
+
     private ResultEvaluation resultEvaluation = new ResultEvaluation();
-    /*end*/
 
     public GraphicalUserInterface() {
         super("Matematický turnaj");
@@ -38,10 +37,7 @@ public class GraphicalUserInterface extends JFrame {
         FRAME_SIZE_X = 1000;
         FRAME_SIZE_Y = 600;
 
-        /*setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);*/
-        /*devTool*/
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        /*end*/
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new CardLayout(0, 0));
 
@@ -50,7 +46,6 @@ public class GraphicalUserInterface extends JFrame {
         screenSizeY = screenSize.height;
         setBounds(screenSizeX / 2 - FRAME_SIZE_X / 2, screenSizeY / 2 - FRAME_SIZE_Y / 2, FRAME_SIZE_X, FRAME_SIZE_Y);
 
-        /*
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -60,7 +55,7 @@ public class GraphicalUserInterface extends JFrame {
                 }
 
             }
-        });*/
+        });
 
         initLoginPanel();
         initTestPanel();
@@ -72,7 +67,8 @@ public class GraphicalUserInterface extends JFrame {
     }
 
     //region 1| login
-    private String[] registeredTeams = {"C.M.Y.K.", "Kolodej", "Carodej", "Univeržál jšou"}, registeredTeamsPassword = {"student314", "student14", "student34", "0"};
+    private String[] registeredTeams = {"Neggříci", "Redondo", "antiMATEMATICI", "Kondoři", "A.T.O.M.", "plastová okna", "Bazinga", "Mozkožrouti", "Zagi team", "Dream team", "MHD", "SMARTIES", "Společenstvo prstenu", "Soutěživci", "Kiwi", "universal1", "universal2", "universal3"};
+    private String[] registeredTeamsPassword = {"4677", "3319", "3857", "8027", "3592", "5737", "9922", "6327", "5441", "1503", "8298", "5788", "4669", "1713", "9278", "", "", ""};
     private Font fontLoginTitle, fontGreetings;
     private paintComponent horizontalLineDownforLogin, verticalLineforLogin, horizontalLineUpforLogin;
     private JLabel labelTitle, labelMatfyzforLogin, labelBrezinkyforLogin, labelGreetings;
@@ -139,11 +135,10 @@ public class GraphicalUserInterface extends JFrame {
             public void keyReleased(KeyEvent e) {
                 for (i = 0; i < registeredTeams.length; i++) {
                     if (textUsername.getText().toLowerCase().equals(registeredTeams[i].toLowerCase())) {
-                        if (String.valueOf(passwordPassword.getPassword()).equals(registeredTeamsPassword[i])) {
+                        if (String.valueOf(passwordPassword.getPassword()).equals("student" + registeredTeamsPassword[i])) {
                             resultEvaluation.setTeamName(textUsername.getText());
                             if (!fileHandler.readLogin(textUsername.getText()).equals("1")) {
                                 fileHandler.addLogin(textUsername.getText());
-                                System.out.println("Login OK");
 
                                 panelLogin.setVisible(false);
                                 panelTest.setVisible(true);
@@ -175,11 +170,12 @@ public class GraphicalUserInterface extends JFrame {
                     panelLogin.setVisible(false);
                     panelTask.setVisible(true);
                     labelTeamName.setText(resultEvaluation.getTeamName());
+                    resultEvaluation.setAdminTaskUnlock();
                     return;
                 }
-                for(i = 0; i < registeredTeams.length; i++) {
+                for (i = 0; i < registeredTeams.length; i++) {
                     if(textUsername.getText().toLowerCase().equals(registeredTeams[i].toLowerCase())) {
-                        if(String.valueOf(passwordPassword.getPassword()).equals(registeredTeamsPassword[i])) {
+                        if(String.valueOf(passwordPassword.getPassword()).equals("student" + registeredTeamsPassword[i])) {
                             resultEvaluation.setTeamName(textUsername.getText());
                             if(fileHandler.readLogin(textUsername.getText()).equals("1")) {
                                 JOptionPane.showMessageDialog(null, "Tým je již přihlášen", "Přihlášení se nezdařilo", JOptionPane.ERROR_MESSAGE);
@@ -188,7 +184,6 @@ public class GraphicalUserInterface extends JFrame {
                                 passwordPassword.setText("password");
                             } else {
                                 fileHandler.addLogin(textUsername.getText());
-                                System.out.println("Login OK");
 
                                 panelLogin.setVisible(false);
                                 panelTest.setVisible(true);
@@ -334,8 +329,6 @@ public class GraphicalUserInterface extends JFrame {
         panelRules.setLayout(null);
         panelRules.setBackground(Color.decode(BACKGROUND_COLOR));
 
-        /*teamNameforTest = resultEvaluation.getTeamName();*/
-
         fontRulesTitle = new Font("Serif", Font.PLAIN, 30);
 
         labelRulesTitle = new JLabel("Pravidla", SwingConstants.CENTER);
@@ -359,6 +352,7 @@ public class GraphicalUserInterface extends JFrame {
 
         buttonRulesProceed = new JButton("Pokračovat");
         buttonRulesProceed.setBounds(538, 500, 150, 25);
+        buttonRulesProceed.setBackground(Color.LIGHT_GRAY);
         buttonRulesProceed.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -401,7 +395,7 @@ public class GraphicalUserInterface extends JFrame {
     private Font fontStartCompetitionTitle;
     private paintComponent horizontalLineDownforStartCompetition, verticalLineforStartCompetition, horizontalLineUpforStartCompetition;
     private JLabel labelStartTitle, labelStartInfo, labelMatfyzforStartCompetition, labelBrezinkyforStartCompetition, labelPrice;
-    private JButton buttonStartCompetition;
+    private JTextField textStartCompetition;
     private JPanel panelStartCompetition;
 
     private void initStartCompetition() {
@@ -417,25 +411,34 @@ public class GraphicalUserInterface extends JFrame {
         labelStartTitle.setFont(fontStartCompetitionTitle);
         panelStartCompetition.add(labelStartTitle);
 
-        labelStartInfo = new JLabel("<html>Po stisknutí tlačítka zahájíte<br>" +
+        labelStartInfo = new JLabel("<html>Po zadání hesla zahájíte<br>" +
                                     "soutěž a spustíte časomíru</html>", SwingConstants.CENTER);
         labelStartInfo.setVerticalAlignment(SwingConstants.TOP);
-        labelStartInfo.setBounds(495, 100, 200, 200);
+        labelStartInfo.setFocusable(true);
+        labelStartInfo.setBounds(495, 110, 200, 200);
         panelStartCompetition.add(labelStartInfo);
 
-        buttonStartCompetition = new JButton("Zahájit soutěž");
-        buttonStartCompetition.setBounds(495, 200, 200, 30);
-        buttonStartCompetition.setBackground(Color.LIGHT_GRAY);
-        buttonStartCompetition.addActionListener(new ActionListener() {
+        textStartCompetition = new JTextField("Zadejte heslo");
+        textStartCompetition.setHorizontalAlignment(JTextField.CENTER);
+        textStartCompetition.setBounds(495, 190, 200, 30);
+        textStartCompetition.addMouseListener(new MouseAdapter() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                timer.start();
-                panelStartCompetition.setVisible(false);
-                panelTask.setVisible(true);
-                labelTeamName.setText("Tým: " + resultEvaluation.getTeamName());
+            public void mousePressed(MouseEvent e) {
+                textStartCompetition.setText("");
             }
         });
-        panelStartCompetition.add(buttonStartCompetition);
+        textStartCompetition.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if(textStartCompetition.getText().toLowerCase().equals("palačinka")) {
+                    timer.start();
+                    panelStartCompetition.setVisible(false);
+                    panelTask.setVisible(true);
+                    labelTeamName.setText("Tým: " + resultEvaluation.getTeamName());
+                }
+            }
+        });
+        panelStartCompetition.add(textStartCompetition);
 
         labelPrice = new JLabel(new ImageIcon(pathPics + "price.png"));
         labelPrice.setBounds(20, 50, 400, 459);
@@ -467,7 +470,7 @@ public class GraphicalUserInterface extends JFrame {
 
     //region 5| task
     private boolean pointArraysEqual, endOfCompetition;
-    private int totalPoints, i, pointsHolder = 0, seconds, minutes, hours, triangleMathTextSizeX, triangleMathTextSizeY, penaltyTime, teamNumber = 12;
+    private int totalPoints, i, pointsHolder = 0, seconds, minutes, hours, triangleMathTextSizeX, triangleMathTextSizeY, penaltyTime, teamNumber = registeredTeams.length, crossTime;
     private int[] points = new int[teamNumber], pointsClone;
     private String teamNamesHolder, triangleMathResult, fileOutputBase, fileMessage;
     private String[] columnNames = {"POŘADÍ", "TEAM", "BODY"};
@@ -530,7 +533,7 @@ public class GraphicalUserInterface extends JFrame {
                       "<html><p align=\"justify\">Kuba trénuje na kole. První kilometr, který je do kopce, jezdí rychlostí 10 km/h. Druhý kilometr je už snazší. Kuba ho jezdí rychlostí 40 km/h. Jakou průmernou rychlostí jede Kuba na celé trase.</p>",
                       "<html><p align=\"justify\">Vyberte obrázek, ve kterém je výslednice sil dvou černých a jedné modré nulová.</p>",
                       "<html><p align=\"justify\">Doplňte do vrcholů trojúhelníku a na středy jeho stran čísla 1 až 6 tak, že součet čísel na každé straně bude vždy 9. Každé číslo použijte jenom jednou.</p>",
-                      "<html><p align=\"justify\">Manželé Novákovi si na Nový rok řekli, že nejsou zrovna hubení a mohli by trochu shodit. Jejich cílem bylo zhubnout alespoň 10% své původní společné hmotnosti. Paní Zita Nováková měla na Nový rok hmotnost mZ = 80 kg a její manžel Jakub Novák mJ = 120 kg. Ke konci roku se opět zvážili a zjistili, že paní Nováková sice zhubla o 15%, ale její manžel jen o 5%. O kolik kilogramů více/méně zhubli oba dohromady oproti jejich novoročnímu slibu?</p>",
+                      "<html><p align=\"justify\">Manželé Novákovi si na Nový rok řekli, že nejsou zrovna hubení a mohli by trochu shodit. Jejich cílem bylo zhubnout alespoň 10% své původní společné hmotnosti. Paní Zita Nováková měla na Nový rok hmotnost m<sub>Z</sub> = 80 kg a její manžel Jakub Novák m<sub>J</sub> = 120 kg. Ke konci roku se opět zvážili a zjistili, že paní Nováková sice zhubla o 15%, ale její manžel jen o 5%. O kolik kilogramů více/méně zhubli oba dohromady oproti jejich novoročnímu slibu?</p>",
                       "<html><p align=\"justify\">Lenka si šla jako každé ráno zaběhat, až se dostala do aleje rovnoměrně vysázených stromů. Od prvního stromu k devátému doběhla za osmnáct sekund. Za jak dlouho s takovou rychlostí doběhne od prvního stromu k šedesátému pátému?</p>",
                       "<html><p align=\"justify\">Petrova vana má dva kohoutky, jeden na studenou a jeden na úplně horkou vodou. Vana se napustí studenou vodou za 4 minuty, ale horkou vodou až za 12 minut. Petr odpozoroval, že nejlepší teplotu na horkou koupel má vana tehdy, když nechá oba kohoutky – s horkou i studenou vodou – úplně otevřené. Za jak dlouho se Petrova vana napustí v tomto případě?</p>",
                       "<html><p align=\"justify\">Najděte nejmenší číslo zapsané jen číslicemi 0 a 1, které je beze zbytku dělitelné součinem tří nejmenších prvočísel.</p>",
@@ -541,36 +544,36 @@ public class GraphicalUserInterface extends JFrame {
                       "<html><p align=\"justify\">Čtyři dělníci postupně přehazují lopatou písek z jámy na hromadu, z hromady do kolečka, z kolečka do kbelíku a z kbelíku do míchačky. Při prvním úkonu se během přehazování vysype 20% písku, při dalším opět 20%, při třetím 50% a do míchačky se poslední dělník trefí pouze se 40% úspěšností. Kolik procent písku z jámy tato čtveřice přepraví až do míchačky?</p>",
                       "<html><p align=\"justify\">Kolik váží celý příbor, jestliže vidlička váží 60 g? Hmotnosti pák a kloubů zanedbejte.</p>",
                       "<html><p align=\"justify\">Na obrázku vidíte elektrický obvod. Skládá se ze dvou rezistorů, z nichž každý má elektrický odpor R = 3Ω a jsou připojené ke zdroji stejnosměrného napětí o velikosti U = 2V. Jaký proud I prochází zdrojem napětí?</p>",
-                      "<html><p align=\"justify\">Ve velmi vzdálené planetární soustavě létají okolo hvězdy Orion tři vesmírné lodě po kruhových drahách. Poloměr dráhy nejvnitřnější lodi je r1 = 150 000km, prostřední lodi r2 = 200 000km a nejvzdálenější lodi r3 = 250 000km. Všechny lodě letí díky svému pohonu na antihmotu shodnou rychlostí v = 50 000km/rok. Na začátku se všechny lodě spolu s centrální hvězdou nacházejí v jedné přímce. Kolikrát oběhne nejvzdálenější loď hvězdu Orion, než se lodě a hvězda opět setkají v jedné přímce?</p>",
+                      "<html><p align=\"justify\">Ve velmi vzdálené planetární soustavě létají okolo hvězdy Orion tři vesmírné lodě po kruhových drahách. Poloměr dráhy nejvnitřnější lodi je r<sub>1</sub> = 150 000km, prostřední lodi r <sub>2</sub> = 200 000km a nejvzdálenější lodi r<sub>3</sub> = 250 000km. Všechny lodě letí díky svému pohonu na antihmotu shodnou rychlostí v = 50 000km/rok. Na začátku se všechny lodě spolu s centrální hvězdou nacházejí v jedné přímce. Kolikrát oběhne nejvzdálenější loď hvězdu Orion, než se lodě a hvězda opět setkají v jedné přímce?</p>",
                       "<html><p align=\"justify\">Dan se rozhodl, že si postaví v podkrovním pokojíčku, který je široký s = 6m a dlouhý l = 3m, na jednu ze šikmých stěn horolezeckou stěnu. Kolik metrů čtverečních má k dispozici, když řez střechou je má tvar rovnoramenného trojúhelníku a nejvyšší bod pokoje je v kolmé vzdálenosti od podlahy vzdálený h = 4m?</p>",
                       "<html><p align=\"justify\">Na stole máme nalepeno 0,5m lepicí pásky. Vezmeme jeden její konec a začneme ho strhávat rychlostí v = 4 cm/s (rychlost ruky). Za jakou dobu odlepíme celou pásku?</p>",
                       "<html><p align=\"justify\">Pavel se při hodině nudil, proto si prohledal školní tašku a objevil tam obyčejnou hrací kostku. Začal s ní házet a pokaždé si zapsal, kolik hodil. Všiml si, že jeho první hod byl dvakrát větší než druhý, který byl však třetinový vůči třetímu hodu. Počtvrté hodil tolik, kolik byl součet prvního a druhého hodu, a pátým pokusem hodil polovinu toho, co se mu povedlo třetím hodem. Nakonec všech pět hodů sečetl. Víte, jaké číslo mu vyšlo?</p>",
                       "<html><p align=\"justify\">Bráškové Pepa a Pavel si chtějí postavit houpačku z lehkého prkna dlouhého 4,2m a polena. Když si vše připraví, snaží se ji dát do rovnováhy. V jaké vzdálenosti od Pepy musí poleno umístit, když Pepa váží 24 kg, Pavel 18 kg, a oba sedí na koncích prkna?</p>",
                       "<html><p align=\"justify\">Pro pravoúhlý rovnoběžník s celočíselnými délkami stran platí, že číselná hodnota jeho obsahu je stejná jako hodnota jeho obvodu. Nalezněte rozměry tohoto čtyřúhelníku, který vlastnost výše splňuje a jeho obsah je nejmenší.</p>",
-                      "<html><p align=\"justify\">Máme chuť na hrnek teplého mléka, a tak si jeden připravíme. Mléko o objemu V = 0,25 ℓ má teplotu t0 = 20 ◦C, a chceme si ho ohřát na teplotu t1 = 42 ◦C. Po ruce máme pouze rychlovarnou konvici. Připojíme ji k elektrickému zdroji, který do konvice přivádí proud I = 3,9A při napětí U = 220V. Jak dlouho musíme čekat, než se nám mléko ohřeje? Hustota mléka je stejná jako hustota vody, měrná tepelná kapacita je c = 3 900 J/(kg·◦C). Tepelné ztráty zanedbejte.</p>",
+                      "<html><p align=\"justify\">Máme chuť na hrnek teplého mléka, a tak si jeden připravíme. Mléko o objemu V = 0,25 ℓ má teplotu t<sub>0</sub> = 20 ◦C, a chceme si ho ohřát na teplotu t<sub>1</sub> = 42 ◦C. Po ruce máme pouze rychlovarnou konvici. Připojíme ji k elektrickému zdroji, který do konvice přivádí proud I = 3,9A při napětí U = 220V. Jak dlouho musíme čekat, než se nám mléko ohřeje? Hustota mléka je stejná jako hustota vody, měrná tepelná kapacita je c = 3 900 J/(kg·◦C). Tepelné ztráty zanedbejte.</p>",
                       "<html><p align=\"justify\">Kuba jede na tábor a bere si svoji karimatku, která má tvar kvádru o rozměrech délky l = 180 cm, šířky d = 50 cm a výšky h = 0,7 cm. Kuba si karimatku natěsno sroluje podél delší strany l do tvaru válce. Jaký bude poloměr tohoto válce? Zanedbejte „zub“, který vznikne u konce karimatky. Za PI dosaďte 3,14.</p>",
                       "<html><p align=\"justify\">Ve vlakových kupé jsou dvě zrcadla umístěna proti sobě. To má za následek, že při pohledu do jednoho ze zrcadel mírně zboku vidíme spousty obrazů své tváře: první obraz v zrcadle, na který se díváme, druhý jako obraz obrazu obrazu, třetí jako obraz obrazu obrazu obrazu obrazu a tak dále. V jaké zdánlivé vzdálenosti vidíme druhý pozorovaný obraz, pokud je kupé široké 2m a my stojíme přesně v jeho středu?</p>",
                       "<html><p align=\"justify\">Ondra na noční obloze pozoruje dvojhvězdu, o které si myslí, že je od Země vzdálena 8,24 parseků (pc). Obě složky dvojhvězdy pozoruje pod úhlem 1′′. Jak daleko jsou od sebe vzdáleny složky dvojhvězdy ve skutečnosti? Vzdálenost vyjádřete v astronomických jednotkách (AU). Tip: jeden parsek je vzdálenost, ze které je jedna astronomická jednotka pozorovaná pod úhlem 1′′.</p>",
                       "<html><p align=\"justify\">Tři plechovky o poloměru podstavy r = 5 cm postavíme těsně k sobě tak, aby středy jejich podstav tvořily rovnostranný trojúhelník. Jak dlouhou potravinovou fólii budeme potřebovat, abychom plechovky obmotali jednou kolem dokola?</p>",
                       "<html><p align=\"justify\">Paťo má tři rezistory s odporem R = 1Ω. Paťo rezistory nějak zapojil (ale tak, aby všemi rezistory tekl proud), zapsal si hodnotu výsledného odporu a následně rezistory zapojil jiným způsobem (aby měly jiný odpor). Takto si zapsal hodnoty všech možných výsledných odporů zapojení a výsledky sečetl. Jakou hodnotu dostal?</p>",
-                      "<html><p align=\"justify\">Kolik soli bychom museli nasypat do Baltského moře, aby mělo stejnou salinitu (slanost) jako Rudé moře? Uvažujte rozlohu Baltského moře 400 000km2 a jeho střední hloubku 50m. Průměrná salinita Baltského moře je 10h, Rudého moře 40h (salinita 1h představuje 1 g soli na 1 ℓ vody).</p>",
+                      "<html><p align=\"justify\">Kolik soli bychom museli nasypat do Baltského moře, aby mělo stejnou salinitu (slanost) jako Rudé moře? Uvažujte rozlohu Baltského moře 400 000km<sup>2</sup> a jeho střední hloubku 50m. Průměrná salinita Baltského moře je 10h, Rudého moře 40h (salinita 1h představuje 1 g soli na 1 ℓ vody).</p>",
                       "<html><p align=\"justify\">Auto jede hodinu rychlostí v. Pak zrychlí a další půlhodinu jede rychlostí 2v. Po příjezdu do cíle cesty řidič zjistil, že jeho průměrná rychlost je o 20km/h vyšší, než rychlost v. Jaká byla jeho průměrná rychlost vp?</p>",
                       "<html><p align=\"justify\">Radčina nejlepší kamarádka má narozeniny, a tak se Radka rozhodla, že jí upeče dort. Na dort si připravila těsto, ze kterého vytvarovala kruh o poloměru r. Jenže pak si vzpomněla, že chtěla udělat čtvercový dort, a tak z již připraveného kruhu vykrojila největší možný čtverec, ze kterého pak dort upekla. Jak velká část z původního množství těsta Radce zbyla?</p>",
-                      "<html><p align=\"justify\">Simča si nově pořídila hydraulické zařízení, které se skládá ze dvou propojených pístů s plochami 100 cm2 a 1 000 cm2. Na větší píst umístila měřicí přístroj o hmotnosti 250 kg a zjistila, že zvedat ho pomalu do výšky je brnkačka. Jakou práci Simča při zvedání vykonala, pokud přístroj zvedla do výšky 2m?</p>",
+                      "<html><p align=\"justify\">Simča si nově pořídila hydraulické zařízení, které se skládá ze dvou propojených pístů s plochami 100 cm<sup>2</sup> a 1 000 cm<sup>2</sup>. Na větší píst umístila měřicí přístroj o hmotnosti 250 kg a zjistila, že zvedat ho pomalu do výšky je brnkačka. Jakou práci Simča při zvedání vykonala, pokud přístroj zvedla do výšky 2m?</p>",
                       "<html><p align=\"justify\">Kolik nul na konci má ve svém dekadickém zápise číslo, které dostaneme vynásobením všech čísel od 1 do 100?</p>",
-                      "<html><p align=\"justify\">Bronz je slitina cínu a mědi v hmotnostním poměru 1 : 3. Víme, že hustota cínu je přibližně ϱSn = 7 kg/dm3 a hustota mědi ϱCu = 9 kg/dm3. Jaký bude poměr objemů cínu a mědi VSn/VCu potřebných na výrobu m = 1 kg bronzu?</p>",
+                      "<html><p align=\"justify\">Bronz je slitina cínu a mědi v hmotnostním poměru 1 : 3. Víme, že hustota cínu je přibližně ϱSn = 7 kg/dm<sup>3</sup> a hustota mědi ϱCu = 9 kg/dm<sup>3</sup>. Jaký bude poměr objemů cínu a mědi VSn/VCu potřebných na výrobu m = 1 kg bronzu?</p>",
                       "<html><p align=\"justify\">Znavený turista se zastavil v hospodě u cesty a koupil si chlazený nápoj. Nápoj má teplotu t0 = 7 ◦C a objem V = 250mℓ, jeho energetická hodnota je \u03B5 = 1 000 kJ/kg. Svými vlastnostmi se nápoj blíží vodě, má tedy hustotu ϱ = 1 kg/ℓ a měrnou tepelnou kapacitu c = 4 kJ/(kg·◦C). Kolik energie turista z nápoje získá, jestliže ho po vypití ve svém těle zahřeje na t1 = 37 ◦C?</p>",
                       "<html><p align=\"justify\">Lenka si namalovala rovnoramenný trojúhelník ABC a s překvapením zjistila, že na jeho ramenech AB, resp. AC, lze najít body P, resp. Q, takové, že |BC| = |CP| = |PQ| = |QA|. Určete velikost úhlu ∡BAC.</p>",
-                      "<html><p align=\"justify\">V obývacím pokoji máme skříň o hmotnosti m = 50 kg a šířce 1,2m a chceme přestěhovat její střed o 4m dále. Mezi původní a novou polohou skříně jsou dva metry koberce a poté dva metry lina. Třecí koeficient mezi skříní a kobercem je f1 = 1,0 a mezi skříní a linem f2 = 0,5. Vypočítejte jakou u toho vykonáme práci. Za gravitační zrychlení dosaďte 10 m/s^2.</p>",
+                      "<html><p align=\"justify\">V obývacím pokoji máme skříň o hmotnosti m = 50 kg a šířce 1,2m a chceme přestěhovat její střed o 4m dále. Mezi původní a novou polohou skříně jsou dva metry koberce a poté dva metry lina. Třecí koeficient mezi skříní a kobercem je f<sub>1</sub> = 1,0 a mezi skříní a linem f<sub>2</sub> = 0,5. Vypočítejte jakou u toho vykonáme práci. Za gravitační zrychlení dosaďte 10 m/s<sup>2</sup>.</p>",
                       "<html><p align=\"justify\">Najděte tři po sobě jdoucí přirozená čísla, která v součtu dávají pátou mocninu některého přirozeného čísla.</p>",
                       "<html><p align=\"justify\">V lunaparku mají novou horskou dráhu. Na začátku jízdy je vozíček na vrcholu stoupání ve výšce h = 20m, ze kterého následně sjede dolů. Dole je rovinka dlouhá s = 200m, na které vozíček brzdí s konstantním zpomalením. S jakým zpomalením (záporným zrychlením) vozíček brzdí, jestliže zastaví přesně na konci rovinky? Odporové síly zanedbejte.</p>",
                       "<html><p align=\"justify\">Kubo si chce doma zavěsit obraz. Má jeden hřebík a jeden provaz, který praskne, pokud je na něj působící síla větší než T = 100N. Jaký nejtěžší obdélníkový obraz si Kubo může pověsit na provaz a hřebík, když provaz a obraz svírají úhel \u000B = 30◦?</p>",
-                      "<html><p align=\"justify\">Ve válcovém poháru naplněném vodou, který má plochu podstavy 200 cm2, se vznáší kostka ledu. Vznáší se, neboť je v ledu zamrznutý kamínek o hmotnosti 100 g a hustotě 5 000 kg/m3. Časem se led rozpustí a kamínek klesne na dno. Co se stane s hladinou vody? Klesne, stoupne, nebo se nezmění? Pokud se změní, tak o kolik?</p>",
+                      "<html><p align=\"justify\">Ve válcovém poháru naplněném vodou, který má plochu podstavy 200 cm<sup>2</sup>, se vznáší kostka ledu. Vznáší se, neboť je v ledu zamrznutý kamínek o hmotnosti 100 g a hustotě 5 000 kg/m<sup>3</sup>. Časem se led rozpustí a kamínek klesne na dno. Co se stane s hladinou vody? Klesne, stoupne, nebo se nezmění? Pokud se změní, tak o kolik?</p>",
     };
     private Object[][] dataRank;
-    private Timer timer, penaltyTimer;
+    private Timer timer, penaltyTimer, crossTimer;
     private Font fontTitle, fontTotalPoints, fontTeam, fontTime, fontTaskPoints, fontFinish;
-    private JLabel labelTaskTitle, labelTaskContent, labelTaskPoints, labelTotalPoints, labelTime, labelTeamName, labelResultFormat, labelThunder, labelCircuit, labelMountaineer, labelCheck, labelLock, labelEndOfCompetition, labelFinish, labelMatfyz, labelBrezinky, labelCutlery;
+    private JLabel labelTaskTitle, labelTaskContent, labelTaskPoints, labelTotalPoints, labelTime, labelTeamName, labelResultFormat, labelThunder, labelCircuit, labelMountaineer, labelCheck, labelLock, labelEndOfCompetition, labelFinish, labelMatfyz, labelBrezinky, labelCutlery, labelCross;
     private JLabel[] labelVector;
     private NumberFormatter numberFormatter;
     private JTextField textUnits, textResult;
@@ -592,6 +595,11 @@ public class GraphicalUserInterface extends JFrame {
 
         endOfCompetition = false;
         totalPoints = 0;
+
+        labelCross = new JLabel(new ImageIcon(pathPics + "cross.png"));
+        labelCross.setBounds(400, 180, 200, 200);
+        labelCross.setVisible(false);
+        panelTask.add(labelCross);
 
         buttonTask = new JButton("Úlohy");
         buttonTask.setBounds(20, 20, 100, 25);
@@ -741,6 +749,8 @@ public class GraphicalUserInterface extends JFrame {
         buttonSubmit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(textResult.getText().equals("") || textResult.getText().equals("Zadejte výsledek") || textResult.getText().equals("Není vybrána žádná možnost") || textResult.getText().equals("Klikněte na obrázek"))
+                    return;
                 try {
                     if (resultEvaluation.getEvaluation(listTasks.getSelectedIndex(), textResult.getText())) {
                         totalPoints += resultEvaluation.getTaskPoints(listTasks.getSelectedIndex());
@@ -748,9 +758,22 @@ public class GraphicalUserInterface extends JFrame {
                         fileMessage = "(vyřešení příkladu " + listTasks.getSelectedIndex() + ")";
                         fileHandler.addRecords(resultEvaluation.getTeamName(), totalPoints, fileMessage);
                         resultEvaluation.setTaskState(listTasks.getSelectedIndex(), 3);
-                        resultEvaluation.setNextTaskUnlock(listTasks.getSelectedIndex());
+                        resultEvaluation.setNextTaskUnlock();
                         setTaskMode(listTasks.getSelectedIndex());
                     } else {
+                        crossTime = 3;
+                        crossTimer = new Timer(1000, new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                labelCross.setVisible(true);
+                                crossTime--;
+                                if(crossTime == 0) {
+                                    crossTimer.stop();
+                                    labelCross.setVisible(false);
+                                }
+                            }
+                        });
+                        crossTimer.start();
                         if (resultEvaluation.getTaskPoints(listTasks.getSelectedIndex()) != 1) {
                             resultEvaluation.setTaskPoints(listTasks.getSelectedIndex());
                             labelTaskPoints.setText("[" + resultEvaluation.getTaskPoints(listTasks.getSelectedIndex()) + " " + resultEvaluation.getPointsTextFormat(resultEvaluation.getTaskPoints(listTasks.getSelectedIndex())) + "]");
@@ -1069,7 +1092,7 @@ public class GraphicalUserInterface extends JFrame {
         fileOutput = fileOutputBase.split("_");
 
         for(i = 0; i < fileOutput.length; i++) {
-            fileTeam = fileOutput[i].split(" ");
+            fileTeam = fileOutput[i].split("/");
             teamNames[i] = fileTeam[0];
             points[i] = Integer.parseInt(fileTeam[1]);
         }
@@ -1365,15 +1388,11 @@ public class GraphicalUserInterface extends JFrame {
     public class paintComponent extends JPanel {
         public void paint(Graphics g) {
             super.paint(g);
-
-            /*devTool*/
-            /*rename x & y*/
             if(listTasks.getSelectedIndex() == 5) {
                 int[] x = {185, 100, 270}, y = {20, 140, 140};
                 g.setColor(Color.DARK_GRAY);
                 g.fillPolygon(x, y, 3);
             }
-            /*end*/
         }
     }
     //endregion
@@ -1468,13 +1487,13 @@ public class GraphicalUserInterface extends JFrame {
             "<br></p>" +
             dashSeparationforTest +
             "<html>";
-    Font fontTestTitle, fontTeamforTest, fontTitleforTest;
-    JLabel labelTestTitle, labelMatfyzforTest, labelBrezinkyforTest, labelTeamNameforTest, labelTaskContentforTest, labelTaskTitleforTest, labelResultFormatforTest, labelMemeDoIt, labelMemeDone, labelRulesContentforTest;
-    JTextField textResultforTest, textUnitsforTest;
-    JButton buttonRankforTest, buttonTaskforTest, buttonRulesforTest, buttonSubmitforTest, buttonContinue;
-    JScrollPane scrollPaneRulesContentforTest;
-    paintComponent horizontalLineDownforTest, horizontalLineUpforTest, verticalLineforTest;
-    JPanel panelTest;
+    private Font fontTestTitle, fontTeamforTest, fontTitleforTest;
+    private JLabel labelTestTitle, labelMatfyzforTest, labelBrezinkyforTest, labelTeamNameforTest, labelTaskContentforTest, labelTaskTitleforTest, labelResultFormatforTest, labelMemeDoIt, labelMemeDone, labelRulesContentforTest;
+    private JTextField textResultforTest, textUnitsforTest;
+    private JButton buttonRankforTest, buttonTaskforTest, buttonRulesforTest, buttonSubmitforTest, buttonContinue;
+    private JScrollPane scrollPaneRulesContentforTest;
+    private paintComponent horizontalLineDownforTest, horizontalLineUpforTest, verticalLineforTest;
+    private JPanel panelTest;
 
     private void initTestPanel() {
         panelTest = new JPanel();
@@ -1513,6 +1532,7 @@ public class GraphicalUserInterface extends JFrame {
                     buttonContinue.setVisible(false);
                 }
 
+                labelResultFormatforTest.setVisible(true);
                 textResultforTest.setVisible(true);
                 textUnitsforTest.setVisible(true);
                 buttonSubmitforTest.setVisible(true);
@@ -1546,6 +1566,7 @@ public class GraphicalUserInterface extends JFrame {
                     buttonContinue.setVisible(false);
                 }
 
+                labelResultFormatforTest.setVisible(true);
                 textResultforTest.setVisible(true);
                 textUnitsforTest.setVisible(true);
                 buttonSubmitforTest.setVisible(true);
@@ -1569,6 +1590,7 @@ public class GraphicalUserInterface extends JFrame {
                 buttonRankforTest.setBackground(Color.LIGHT_GRAY);
                 buttonRulesforTest.setBackground(Color.CYAN);
 
+                labelResultFormatforTest.setVisible(false);
                 labelMemeDone.setVisible(false);
                 labelMemeDoIt.setVisible(false);
                 buttonContinue.setVisible(false);
